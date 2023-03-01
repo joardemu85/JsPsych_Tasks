@@ -419,7 +419,7 @@ var welcome = {
 main_timeline.push(welcome); 
 
 
-var learn_instructions = {
+var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
@@ -434,7 +434,7 @@ var learn_instructions = {
     choices: ['START'],
     post_trial_gap: 250
 };
-main_timeline.push(learn_instructions);
+main_timeline.push(pretest_instructions);
 
 var pretest_pic = {
     type: jsPsychImageButtonResponse,
@@ -455,7 +455,7 @@ var fixation = {
     choices: "NO_KEYS",
     trial_duration: function(){
        //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-       return 1000;
+       return 10;
       }, 
     data: {
 	    task: 'fixation'
@@ -478,10 +478,101 @@ var rest = {
 };
 main_timeline.push(rest);
 
+
+// Study items
+var study_instructions = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <div style="font-size:24px;">
+    <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
+    <p>Now, you will perform a study session of the items .</p>
+    <p>The flags will appear in sets of 10 with a rest interval between sets.</p>    
+    <p>You will practice on the items 4 times.</p>   
+    </div>
+    <p>Tap "START" to begin.</p>
+    </div>
+    `,
+    choices: ['START'],
+    post_trial_gap: 250
+};
+main_timeline.push(study_instructions);
+
+
+//Initially, the picture will be shown
+var trial_pic = {
+    type: jsPsychImageKeyboardResponse,   
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
+    trial_duration: 1000,  
+    response_ends_trial: false
+ }; 
+
+ //The picture is followed by the name of the item
+ var trial_name = {
+    type: jsPsychHtmlKeyboardResponse,   
+    stimulus: function (){
+        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
+    }, 
+    trial_duration: 2000,
+    response_ends_trial: false  
+}; 
+
+
+var n_trials = 1;
+var chunk_size = 10;
+var start_indeces = [0, 10, 20, 30, 40];
+var n_items = variables.length;
+
+
+for (var i=0; i<n_trials; i++){
+    
+    //randomize the whole list
+    var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(variables,n_items);
+
+    //split the whole list in sets of 10 elements
+    set_1 = randomized_variables.slice(start_indeces[0], start_indeces[0] + chunk_size);
+    set_2 = randomized_variables.slice(start_indeces[1], start_indeces[1] + chunk_size);
+    set_3 = randomized_variables.slice(start_indeces[2], start_indeces[2] + chunk_size);
+    set_4 = randomized_variables.slice(start_indeces[3], start_indeces[3] + chunk_size);
+    set_5 = randomized_variables.slice(start_indeces[4], start_indeces[4] + chunk_size);
+
+    var study_set1 = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set_1,  
+     };
+     main_timeline.push(study_set1,rest);
+
+     var study_set2 = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set_2,  
+     };
+     main_timeline.push(study_set2,rest);
+
+     var study_set3 = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set_3,  
+     };
+     main_timeline.push(study_set3,rest); 
+
+     var study_set4 = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set_4,  
+     };
+     main_timeline.push(study_set4,rest);
+     
+    var study_set5 = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set_5,  
+     };
+     main_timeline.push(study_set5,rest);
+}
+
+
+
 /*
 //create new list whit shuffled elements, the second argument indicates the number of repetitions
 //var repeated_variables = jsPsych.randomization.repeat(variables,1);
-
 
 //Initially, the picture will be shown
 var trial_pic = {
