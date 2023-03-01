@@ -7,7 +7,6 @@ var jsPsych = initJsPsych({
 //declare main timeline
 var main_timeline = [];
 
-
 //Preload Media
 var preload = {
     type: jsPsychPreload,
@@ -210,19 +209,6 @@ var preload = {
 };
 main_timeline.push(preload);
 
-
-//The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
-var welcome = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `<div style="font-size:32px;">
-               <p>Welcome to the experiment.</p> 
-               <p>Tap "START" to begin.</p>
-               </div>`,
-               choices: ['START']
-};
-main_timeline.push(welcome); 
-
-
 //timeline variables
 var variables = [
     //STAND ALONE FORMAT 
@@ -419,17 +405,28 @@ var variables = [
     {picture: 'img/ye.png', name: 'YEMEN'},
     {picture: 'img/zm.png', name: 'ZAMBIA'},
     {picture: 'img/zw.png', name: 'ZIMBABWE'}   
-];    
+];  
 
+//The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
+var welcome = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `<div style="font-size:32px;">
+               <p>Welcome to the experiment.</p> 
+               <p>Tap "START" to begin.</p>
+               </div>`,
+               choices: ['START']
+};
+main_timeline.push(welcome); 
 
+  
 var learn_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
-    <p>In this part of the experiment, you will be shown a random set of flags corresponding to UN member countries followed by their names.</p>
-    <p>Each flag will reappear 3 times randomly, so you are able to associate the flag to the right country.</p>
-    <p>After this session, you will be shown a flag and check if you are able to remember the right name of the country.</p>
-    <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>   
+    <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
+    <p>In this part of the experiment, you will be shown a set of flags corresponding to UN member countries.</p>
+    <p>You will be asked if you can recognize the flag.</p>
+    <p>Tap YES if you recognize to which country the flag belongs to or NO if you are not sure or is the first time you see it</p>     
     </div>
     <p>Tap "START" to begin.</p>
     </div>
@@ -439,6 +436,21 @@ var learn_instructions = {
 };
 main_timeline.push(learn_instructions);
 
+var trial_test = {
+    type: jsPsychImageButtonResponse,
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
+    choices: ['Yes', 'No'],
+    prompt:  `
+    <div style="font-size:24px;">
+    <p>Do you know whose country is this flag?</p>
+    </div>`
+};
+main_timeline.push(trial_test);
+
+
+/*
 //create new list whit shuffled elements, the second argument indicates the number of repetitions
 //var repeated_variables = jsPsych.randomization.repeat(variables,1);
 
