@@ -587,7 +587,7 @@ main_timeline.push(recog_instructions);
 
 
 //pre if
-var trial_test = {
+var pic_test = {
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
@@ -595,7 +595,7 @@ var trial_test = {
     choices: ['Yes', 'No'],
     prompt:  `
     <div style="font-size:24px;">
-    <p>Can you name this animal?</p>
+    <p>Can you tell whose flag is?</p>
     </div>`
 };
 
@@ -640,13 +640,10 @@ var feedback = {
     response_ends_trial: false  
 }; 
 
-/*
-var randomized_variables = jsPsych.randomization.repeat(variables,1);
-
 var recognition_test = {
-  timeline: [trial_test,if_node,feedback,fixation],
-  //timeline: [trial_test,feedback,fixation],
-  timeline_variables: randomized_variables, 
+  timeline: [pic_test,if_node,feedback,fixation],
+  timeline_variables: variables,
+  randomize_order: true 
 };
 main_timeline.push(recognition_test);
 
@@ -660,7 +657,7 @@ var finalization = {
     post_trial_gap: 500
 };
 main_timeline.push(finalization);
-*/
+
 
 //jsPsych.run([gb].concat(trials));
 jsPsych.run(main_timeline);
