@@ -478,7 +478,6 @@ var rest = {
 };
 main_timeline.push(rest);
 
-
 // Study items
 var study_instructions = {
     type: jsPsychHtmlButtonResponse,
@@ -503,7 +502,7 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 1000,  
+    trial_duration: 500,  
     response_ends_trial: false
  }; 
 
@@ -513,7 +512,7 @@ var trial_pic = {
     stimulus: function (){
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
     }, 
-    trial_duration: 2000,
+    trial_duration: 500,
     response_ends_trial: false  
 }; 
 
@@ -569,76 +568,23 @@ for (var i=0; i<n_trials; i++){
 }
 
 
-
-/*
-//create new list whit shuffled elements, the second argument indicates the number of repetitions
-//var repeated_variables = jsPsych.randomization.repeat(variables,1);
-
-//Initially, the picture will be shown
-var trial_pic = {
-   type: jsPsychImageKeyboardResponse,   
-   stimulus: jsPsych.timelineVariable("picture"),
-   stimulus_width: 640,
-   stimulus_height: 480,
-   trial_duration: 1000,  
-   response_ends_trial: true
-};  
-
-//The picture is followed by the name of the item
-var trial_name = {
-    type: jsPsychHtmlKeyboardResponse,   
-    stimulus: function (){
-        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
-    }, 
-    trial_duration: 1000,
-    response_ends_trial: true  
-}; 
-
-//Fixation cross inbetween trials 
-var fixation = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: '<div style="font-size:96px;">+</div>',
-    choices: "NO_KEYS",
-    trial_duration: function(){
-       //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-       return 1000;
-      }, 
-    data: {
-	    task: 'fixation'
-	  }
-}; 
-
-var flashcard_study = {
-   timeline: [trial_pic,trial_name,fixation],
-   //timeline_variables: repeated_variables, 
-   timeline_variables: variables  
-};
-main_timeline.push(flashcard_study);
-
-var rest = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: '<div style="font-size:32px;">Please wait a moment...you can take a short break</div>',
-    choices: "NO_KEYS",
-    trial_duration: 2000	  
-};
-main_timeline.push(rest);
-
-/*
+//TEST
 var recog_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
-    <p>Now you will be asked if you remember the right name of the animal shown before.</p>
-    <p>Each animal picture will be shown once and you will click YES if you remember the right name of the animal or NO if you do not.</p>
-    <p>Right after, you will be asked if you are confident on the name of the animal. Please click "Completely" if you are absolute sure 
-    you can remember, "Barely" if you cannot remember the right name or "Just Guessing if you are not sure your answer is right".</p>
-    <p>Tap "START" to begin.</p>
+    <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
+    <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
+    <p>Each flag will be shown once and you will click YES if you remember the right name of the country or NO if you do not.</p>
+    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "Completely" if you are absolutely sure 
+    you can remember, or "Just Guessing if you are not sure your answer is right".</p>    <p>Tap "START" to begin.</p>
     </div>
     `,
     choices: ['START'],
     post_trial_gap: 1000
 };
 main_timeline.push(recog_instructions);
+
 
 //pre if
 var trial_test = {
@@ -694,6 +640,7 @@ var feedback = {
     response_ends_trial: false  
 }; 
 
+/*
 var randomized_variables = jsPsych.randomization.repeat(variables,1);
 
 var recognition_test = {
