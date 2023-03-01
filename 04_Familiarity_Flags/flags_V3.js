@@ -436,7 +436,7 @@ var learn_instructions = {
 };
 main_timeline.push(learn_instructions);
 
-var trial_test = {
+var pretest_pic = {
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
@@ -447,8 +447,26 @@ var trial_test = {
     <p>Do you know whose country is this flag?</p>
     </div>`
 };
-main_timeline.push(trial_test);
 
+ //Fixation cross inbetween trials 
+var fixation = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: '<div style="font-size:96px;">+</div>',
+    choices: "NO_KEYS",
+    trial_duration: function(){
+       //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+       return 1000;
+      }, 
+    data: {
+	    task: 'fixation'
+	  }
+}; 
+
+var flashcard_pretest = {
+    timeline: [pretest_pic,fixation],
+    timeline_variables: variables  
+ };
+ main_timeline.push(flashcard_pretest);
 
 /*
 //create new list whit shuffled elements, the second argument indicates the number of repetitions
