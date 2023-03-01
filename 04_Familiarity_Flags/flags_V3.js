@@ -497,7 +497,6 @@ var study_instructions = {
 };
 main_timeline.push(study_instructions);
 
-
 //Initially, the picture will be shown
 var trial_pic = {
     type: jsPsychImageKeyboardResponse,   
@@ -519,15 +518,15 @@ var trial_pic = {
 }; 
 
 
-var n_trials = 1;
-var chunk_size = 10;
-var start_indeces = [0, 10, 20, 30, 40];
+var n_trials = 1;  //number of repetitions on the study set
+var chunk_size = 10; //number of elements to study in one set
+var start_indeces = [0, 10, 20, 30, 40]; //Index of the first element of each set
 var n_items = variables.length;
 
-
+//one trial consists of the study of the whole list divided into 5 chunks with the same number of items
 for (var i=0; i<n_trials; i++){
     
-    //randomize the whole list
+    //randomize the whole list without repetition
     var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(variables,n_items);
 
     //split the whole list in sets of 10 elements
@@ -537,6 +536,7 @@ for (var i=0; i<n_trials; i++){
     set_4 = randomized_variables.slice(start_indeces[3], start_indeces[3] + chunk_size);
     set_5 = randomized_variables.slice(start_indeces[4], start_indeces[4] + chunk_size);
 
+    //This might be optimized, but for now let's leave it like this
     var study_set1 = {
         timeline: [trial_pic,trial_name,fixation],
         timeline_variables: set_1,  
