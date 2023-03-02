@@ -444,7 +444,7 @@ var pretest_pic = {
     choices: ['Yes', 'No'],
     prompt:  `
     <div style="font-size:24px;">
-    <p>Do you know whose country is this flag?</p>
+    <p>Do you know which country is this flag?</p>
     </div>`
 };
 

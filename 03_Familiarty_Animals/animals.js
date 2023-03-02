@@ -202,11 +202,11 @@ var repeated_variables = jsPsych.randomization.repeat(variables,1);
 //Initially, the picture will be shown
 var trial_pic = {
    type: jsPsychImageKeyboardResponse,   
-   //stimulus: jsPsych.timelineVariable("picture"), 
-   stimulus: function (){
-      return `<img src= "${jsPsych.timelineVariable ("picture")}" width="240" height="160"></img>`;
-    },
-   trial_duration: 100,  
+   stimulus: jsPsych.timelineVariable("picture"), 
+   //stimulus: function (){
+    //  return `<img src= "${jsPsych.timelineVariable ("picture")}" width="240" height="160"></img>`;
+    //},
+   trial_duration: 1000,  
    response_ends_trial: false 
 };   
 
@@ -216,7 +216,7 @@ var trial_name = {
     stimulus: function (){
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`
     }, 
-    trial_duration: 100,
+    trial_duration: 1000,
     response_ends_trial: false  
  };   
 
@@ -224,7 +224,7 @@ var trial_name = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: '<div style="font-size:96px;">+</div>',
     choices: "NO_KEYS",
-   trial_duration: 500
+   trial_duration: 2000
   };
   
 var flashcard_study = {
