@@ -425,8 +425,8 @@ var pretest_instructions = {
     <div style="font-size:24px;">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>In this part of the experiment, you will be shown a set of flags corresponding to UN member countries.</p>
-    <p>You will be asked if you can recognize the flag.</p>
-    <p>Tap YES if you recognize to which country the flag belongs to or NO if you are not sure or is the first time you see it</p>     
+    <p>You will be asked if you can name the country the flag belongs to.</p>
+    <p>Tap YES if you recognize to which country the flag belongs to or NO if you do not</p>     
     </div>
     <p>Tap "START" to begin.</p>
     </div>
@@ -492,7 +492,7 @@ var study_instructions = {
     </div>
     `,
     choices: ['START'],
-    post_trial_gap: 250
+    post_trial_gap: 500
 };
 main_timeline.push(study_instructions);
 
@@ -502,7 +502,7 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 500,  
+    trial_duration: 1250,  
     response_ends_trial: false
  }; 
 
@@ -512,12 +512,12 @@ var trial_pic = {
     stimulus: function (){
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
     }, 
-    trial_duration: 500,
+    trial_duration: 2000,
     response_ends_trial: false  
 }; 
 
 
-var n_trials = 1;  //number of repetitions on the study set
+var n_trials = 3;  //number of repetitions on the study set
 var chunk_size = 10; //number of elements to study in one set
 var start_indeces = [0, 10, 20, 30, 40]; //Index of the first element of each set
 var n_items = variables.length;
