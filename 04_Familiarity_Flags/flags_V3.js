@@ -1,3 +1,4 @@
+var iter_count = 0;
 var jsPsych = initJsPsych({
     on_finish: function() {
         jsPsych.data.displayData();
@@ -213,193 +214,193 @@ main_timeline.push(preload);
 var variables = [
     //STAND ALONE FORMAT 
     {picture: 'img/af.png', name: 'AFGHANISTAN'},
-    //{picture: 'img/al.png', name: 'ALBANIA'},
-    //{picture: 'img/dz.png', name: 'ALGERIA'},
-    //{picture: 'img/ad.png', name: 'ANDORRA'},
-    //{picture: 'img/ao.png', name: 'ANGOLA'},
-    //{picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},
+    {picture: 'img/al.png', name: 'ALBANIA'},
+    {picture: 'img/dz.png', name: 'ALGERIA'},
+    {picture: 'img/ad.png', name: 'ANDORRA'},
+    {picture: 'img/ao.png', name: 'ANGOLA'},
+    {picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},
     {picture: 'img/ar.png', name: 'ARGENTINA'},
-    //{picture: 'img/am.png', name: 'ARMENIA'},
-    //{picture: 'img/au.png', name: 'AUSTRALIA'},
-    //{picture: 'img/at.png', name: 'AUSTRIA'},
+    {picture: 'img/am.png', name: 'ARMENIA'},
+    {picture: 'img/au.png', name: 'AUSTRALIA'},
+    {picture: 'img/at.png', name: 'AUSTRIA'},
     {picture: 'img/az.png', name: 'AZERBAIJAN'},
-    //{picture: 'img/bs.png', name: 'BAHAMAS'}, //
-    //{picture: 'img/bh.png', name: 'BAHARAIN'},
-    //{picture: 'img/bd.png', name: 'BANGLADESH'},
-    //{picture: 'img/bb.png', name: 'BARBADOS'},
-    //{picture: 'img/by.png', name: 'BELARUS'},
+    {picture: 'img/bs.png', name: 'BAHAMAS'}, //
+    {picture: 'img/bh.png', name: 'BAHARAIN'},
+    {picture: 'img/bd.png', name: 'BANGLADESH'},
+    {picture: 'img/bb.png', name: 'BARBADOS'},
+    {picture: 'img/by.png', name: 'BELARUS'},
     {picture: 'img/be.png', name: 'BELGIUM'},
-    //{picture: 'img/bz.png', name: 'BELIZE'},
-    //{picture: 'img/bj.png', name: 'BENIN'},
-    //{picture: 'img/bt.png', name: 'BHUTAN'},
-    //{picture: 'img/bo.png', name: 'BOLIVIA'},
-    //{picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},
-    //{picture: 'img/bw.png', name: 'BOTSWANA'},
+    {picture: 'img/bz.png', name: 'BELIZE'},
+    {picture: 'img/bj.png', name: 'BENIN'},
+    {picture: 'img/bt.png', name: 'BHUTAN'},
+    {picture: 'img/bo.png', name: 'BOLIVIA'},
+    {picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},
+    {picture: 'img/bw.png', name: 'BOTSWANA'},
     {picture: 'img/br.png', name: 'BRAZIL'},
-    //{picture: 'img/bn.png', name: 'BRUNEI'},
-    //{picture: 'img/bg.png', name: 'BULGARIA'},
-    //{picture: 'img/bf.png', name: 'BURKINA FASO'},
-    //{picture: 'img/bi.png', name: 'BURUNDI'},
-    //{picture: 'img/kh.png', name: 'CAMBODIA'},
+    {picture: 'img/bn.png', name: 'BRUNEI'},
+    {picture: 'img/bg.png', name: 'BULGARIA'},
+    {picture: 'img/bf.png', name: 'BURKINA FASO'},
+    {picture: 'img/bi.png', name: 'BURUNDI'},
+    {picture: 'img/kh.png', name: 'CAMBODIA'},
     {picture: 'img/cm.png', name: 'CAMEROON'},
-    //{picture: 'img/ca.png', name: 'CANADA'},
-    //{picture: 'img/cv.png', name: 'CAPE VERDE'},
-    //{picture: 'img/cf.png', name: 'CENTRAL AFRICAN REPUBLIC'},
-    //{picture: 'img/td.png', name: 'CHAD'},
-    //{picture: 'img/cl.png', name: 'CHILE'},
-    //{picture: 'img/cn.png', name: 'CHINA'},//
+    {picture: 'img/ca.png', name: 'CANADA'},
+    {picture: 'img/cv.png', name: 'CAPE VERDE'},
+    {picture: 'img/cf.png', name: 'CENTRAL AFRICAN REPUBLIC'},
+    {picture: 'img/td.png', name: 'CHAD'},
+    {picture: 'img/cl.png', name: 'CHILE'},
+    {picture: 'img/cn.png', name: 'CHINA'},//
     {picture: 'img/co.png', name: 'COLOMBIA'},
-    //{picture: 'img/km.png', name: 'COMOROS'},
-    //{picture: 'img/cg.png', name: 'REPUBLIC OF THE CONGO'},
-    //{picture: 'img/cd.png', name: 'DR CONGO'},
-    //{picture: 'img/cr.png', name: 'COSTA RICA'},
-    //{picture: 'img/ci.png', name: 'IVORY COAST'},
-    //{picture: 'img/hr.png', name: 'CROATIA'},
-    //{picture: 'img/cu.png', name: 'CUBA'},
-    //{picture: 'img/cy.png', name: 'CYPRUS'},
-    //{picture: 'img/cz.png', name: 'CZECHIA'},
+    {picture: 'img/km.png', name: 'COMOROS'},
+    {picture: 'img/cg.png', name: 'REPUBLIC OF THE CONGO'},
+    {picture: 'img/cd.png', name: 'DR CONGO'},
+    {picture: 'img/cr.png', name: 'COSTA RICA'},
+    {picture: 'img/ci.png', name: 'IVORY COAST'},
+    {picture: 'img/hr.png', name: 'CROATIA'},
+    {picture: 'img/cu.png', name: 'CUBA'},
+    {picture: 'img/cy.png', name: 'CYPRUS'},
+    {picture: 'img/cz.png', name: 'CZECHIA'},
     {picture: 'img/dk.png', name: 'DENMARK'},
-    //{picture: 'img/dj.png', name: 'DJIBOUTI'},
-    //{picture: 'img/dm.png', name: 'DOMINICA'},
+    {picture: 'img/dj.png', name: 'DJIBOUTI'},
+    {picture: 'img/dm.png', name: 'DOMINICA'},
     {picture: 'img/do.png', name: 'DOMINICAN REPUBLIC'},
     {picture: 'img/ec.png', name: 'ECUADOR'},
-    //{picture: 'img/eg.png', name: 'EGYPT'},
-    //{picture: 'img/sv.png', name: 'EL SALVADOR'},
-    //picture: 'img/gq.png', name: 'EQUATORIAL GUINEA'},
-    //{picture: 'img/er.png', name: 'ERITREA'},
+    {picture: 'img/eg.png', name: 'EGYPT'},
+    {picture: 'img/sv.png', name: 'EL SALVADOR'},
+    {picture: 'img/gq.png', name: 'EQUATORIAL GUINEA'},
+    {picture: 'img/er.png', name: 'ERITREA'},
     {picture: 'img/ee.png', name: 'ESTONIA'},
-    //{picture: 'img/sz.png', name: 'ESWATINI'},
-    //{picture: 'img/et.png', name: 'ETHIOPIA'},
+    {picture: 'img/sz.png', name: 'ESWATINI'},
+    {picture: 'img/et.png', name: 'ETHIOPIA'},
     {picture: 'img/fj.png', name: 'FIJI'},
     {picture: 'img/fi.png', name: 'FINLAND'},//
-    //{picture: 'img/fr.png', name: 'FRANCE'},
-    //{picture: 'img/ga.png', name: 'GABON'},
-    //{picture: 'img/gm.png', name: 'GAMBIA'},
-    //{picture: 'img/ge.png', name: 'GEORGIA'},
+    {picture: 'img/fr.png', name: 'FRANCE'},
+    {picture: 'img/ga.png', name: 'GABON'},
+    {picture: 'img/gm.png', name: 'GAMBIA'},
+    {picture: 'img/ge.png', name: 'GEORGIA'},
     {picture: 'img/de.png', name: 'GERMANY'},
-    //{picture: 'img/gh.png', name: 'GHANA'},
-    //{picture: 'img/gr.png', name: 'GREECE'},
-    //{picture: 'img/gd.png', name: 'GRENADA'},
+    {picture: 'img/gh.png', name: 'GHANA'},
+    {picture: 'img/gr.png', name: 'GREECE'},
+    {picture: 'img/gd.png', name: 'GRENADA'},
     {picture: 'img/gt.png', name: 'GUATEMALA'},
-    //{picture: 'img/gn.png', name: 'GUINEA'},
-    //{picture: 'img/gw.png', name: 'GUINEA-BISSAU'},
-    //{picture: 'img/gy.png', name: 'GUYANA'},
-    //{picture: 'img/ht.png', name: 'HAITI'},
-    //{picture: 'img/hn.png', name: 'HONDURAS'},
-    //{picture: 'img/hu.png', name: 'HUNGARY'},
+    {picture: 'img/gn.png', name: 'GUINEA'},
+    {picture: 'img/gw.png', name: 'GUINEA-BISSAU'},
+    {picture: 'img/gy.png', name: 'GUYANA'},
+    {picture: 'img/ht.png', name: 'HAITI'},
+    {picture: 'img/hn.png', name: 'HONDURAS'},
+    {picture: 'img/hu.png', name: 'HUNGARY'},
     {picture: 'img/is.png', name: 'ICELAND'},
     {picture: 'img/in.png', name: 'INDIA'},
-    //{picture: 'img/id.png', name: 'INDONESIA'},
+    {picture: 'img/id.png', name: 'INDONESIA'},
     {picture: 'img/ir.png', name: 'IRAN'},
-    //{picture: 'img/iq.png', name: 'IRAQ'},
-    //{picture: 'img/ie.png', name: 'IRELAND'},
-    //{picture: 'img/il.png', name: 'ISRAEL'},
-    //{picture: 'img/it.png', name: 'ITALY'},
+    {picture: 'img/iq.png', name: 'IRAQ'},
+    {picture: 'img/ie.png', name: 'IRELAND'},
+    {picture: 'img/il.png', name: 'ISRAEL'},
+    {picture: 'img/it.png', name: 'ITALY'},
     {picture: 'img/jm.png', name: 'JAMAICA'},//
-    //{picture: 'img/jp.png', name: 'JAPAN'},
+    {picture: 'img/jp.png', name: 'JAPAN'},
     {picture: 'img/jo.png', name: 'JORDAN'},
     {picture: 'img/kz.png', name: 'KAZAKHSTAN'},
     {picture: 'img/ke.png', name: 'KENYA'},
-    //{picture: 'img/ki.png', name: 'KIRIBATI'},
-    //{picture: 'img/kp.png', name: 'NORTH KOREA'},
-    //{picture: 'img/kr.png', name: 'SOUTH KOREA'},
-    //{picture: 'img/kw.png', name: 'KUWAIT'},
-    //{picture: 'img/kg.png', name: 'KYRGYZSTAN'},
+    {picture: 'img/ki.png', name: 'KIRIBATI'},
+    {picture: 'img/kp.png', name: 'NORTH KOREA'},
+    {picture: 'img/kr.png', name: 'SOUTH KOREA'},
+    {picture: 'img/kw.png', name: 'KUWAIT'},
+    {picture: 'img/kg.png', name: 'KYRGYZSTAN'},
     {picture: 'img/la.png', name: 'LAOS'},
-    //{picture: 'img/lv.png', name: 'LATVIA'},
-    //{picture: 'img/lb.png', name: 'LEBANON'},
-    //{picture: 'img/ls.png', name: 'LESOTHO'},
-    //{picture: 'img/lr.png', name: 'LIBERIA'},
+    {picture: 'img/lv.png', name: 'LATVIA'},
+    {picture: 'img/lb.png', name: 'LEBANON'},
+    {picture: 'img/ls.png', name: 'LESOTHO'},
+    {picture: 'img/lr.png', name: 'LIBERIA'},
     {picture: 'img/ly.png', name: 'LIBYA'},
-    //{picture: 'img/li.png', name: 'LIECHTENSTEIN'},
-    //{picture: 'img/lt.png', name: 'LITHUANIA'},
-    //{picture: 'img/lu.png', name: 'LUXENBOURG'},
+    {picture: 'img/li.png', name: 'LIECHTENSTEIN'},
+    {picture: 'img/lt.png', name: 'LITHUANIA'},
+    {picture: 'img/lu.png', name: 'LUXENBOURG'},
     {picture: 'img/mg.png', name: 'MADAGASCAR'},
-    //{picture: 'img/mw.png', name: 'MALAWI'},
-    //{picture: 'img/my.png', name: 'MALAYSIA'},
-    //{picture: 'img/mv.png', name: 'MALDIVES'},
-    //{picture: 'img/ml.png', name: 'MALI'},
+    {picture: 'img/mw.png', name: 'MALAWI'},
+    {picture: 'img/my.png', name: 'MALAYSIA'},
+    {picture: 'img/mv.png', name: 'MALDIVES'},
+    {picture: 'img/ml.png', name: 'MALI'},
     {picture: 'img/mt.png', name: 'MALTA'},//
-    //{picture: 'img/mh.png', name: 'MARSHALL ISLANDS'},
-    //{picture: 'img/mr.png', name: 'MAURITANIA'},
-    //{picture: 'img/mu.png', name: 'MAURITIUS'},
+    {picture: 'img/mh.png', name: 'MARSHALL ISLANDS'},
+    {picture: 'img/mr.png', name: 'MAURITANIA'},
+    {picture: 'img/mu.png', name: 'MAURITIUS'},
     {picture: 'img/mx.png', name: 'MEXICO'},
-    //{picture: 'img/fm.png', name: 'MICRONESIA'},
-    //{picture: 'img/md.png', name: 'MOLDOVA'},
-    //{picture: 'img/mc.png', name: 'MONACO'},
-    //{picture: 'img/mn.png', name: 'MONGOLIA'},
-    //{picture: 'img/me.png', name: 'MONTENEGRO'},
+    {picture: 'img/fm.png', name: 'MICRONESIA'},
+    {picture: 'img/md.png', name: 'MOLDOVA'},
+    {picture: 'img/mc.png', name: 'MONACO'},
+    {picture: 'img/mn.png', name: 'MONGOLIA'},
+    {picture: 'img/me.png', name: 'MONTENEGRO'},
     {picture: 'img/ma.png', name: 'MOROCCO'},
-    //{picture: 'img/mz.png', name: 'MOZAMBIQUE'},
-    //{picture: 'img/mm.png', name: 'MYANMAR'},
-    //{picture: 'img/na.png', name: 'NAMIBIA'},
-    //{picture: 'img/nr.png', name: 'NAURU'},
+    {picture: 'img/mz.png', name: 'MOZAMBIQUE'},
+    {picture: 'img/mm.png', name: 'MYANMAR'},
+    {picture: 'img/na.png', name: 'NAMIBIA'},
+    {picture: 'img/nr.png', name: 'NAURU'},
     {picture: 'img/np.png', name: 'NEPAL'},
     {picture: 'img/nl.png', name: 'NETHERLANDS'},
-    //{picture: 'img/nz.png', name: 'NEW ZEALAND'},
-    //{picture: 'img/ni.png', name: 'NICARAGUA'},
-    //{picture: 'img/ne.png', name: 'NIGER'},
-    //{picture: 'img/ng.png', name: 'NIGERIA'},
-    //{picture: 'img/mk.png', name: 'NORTH MACEDONIA'},
+    {picture: 'img/nz.png', name: 'NEW ZEALAND'},
+    {picture: 'img/ni.png', name: 'NICARAGUA'},
+    {picture: 'img/ne.png', name: 'NIGER'},
+    {picture: 'img/ng.png', name: 'NIGERIA'},
+    {picture: 'img/mk.png', name: 'NORTH MACEDONIA'},
     {picture: 'img/no.png', name: 'NORWAY'},
     {picture: 'img/om.png', name: 'OMAN'},
-    //{picture: 'img/pk.png', name: 'PAKISTAN'},//
-    //{picture: 'img/pw.png', name: 'PALAU'},
-    //{picture: 'img/pa.png', name: 'PANAMA'},
-    //{picture: 'img/pg.png', name: 'PAPUA NEW GUINEA'},
-    //{picture: 'img/py.png', name: 'PARAGUAY'},
+    {picture: 'img/pk.png', name: 'PAKISTAN'},//
+    {picture: 'img/pw.png', name: 'PALAU'},
+    {picture: 'img/pa.png', name: 'PANAMA'},
+    {picture: 'img/pg.png', name: 'PAPUA NEW GUINEA'},
+    {picture: 'img/py.png', name: 'PARAGUAY'},
     {picture: 'img/pe.png', name: 'PERU'},
-    //{picture: 'img/ph.png', name: 'PHILIPINES'},
-    //{picture: 'img/pl.png', name: 'POLAND'},
+    {picture: 'img/ph.png', name: 'PHILIPINES'},
+    {picture: 'img/pl.png', name: 'POLAND'},
     {picture: 'img/pt.png', name: 'PORTUGAL'},
     {picture: 'img/qa.png', name: 'QATAR'},
-    //{picture: 'img/ro.png', name: 'ROMANIA'},
+    {picture: 'img/ro.png', name: 'ROMANIA'},
     {picture: 'img/ru.png', name: 'RUSSIA'},
     {picture: 'img/rw.png', name: 'RWANDA'},
-    //{picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},
-    //{picture: 'img/lc.png', name: 'SAINT LUCIA'},
-    //{picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},
-    //{picture: 'img/ws.png', name: 'SAMOA'},
-    //{picture: 'img/sm.png', name: 'SAN MARINO'},
-    //{picture: 'img/st.png', name: 'SAO TOME AND PRINCIPE'},
-    //{picture: 'img/sa.png', name: 'SAUDI ARABIA'},
+    {picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},
+    {picture: 'img/lc.png', name: 'SAINT LUCIA'},
+    {picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},
+    {picture: 'img/ws.png', name: 'SAMOA'},
+    {picture: 'img/sm.png', name: 'SAN MARINO'},
+    {picture: 'img/st.png', name: 'SAO TOME AND PRINCIPE'},
+    {picture: 'img/sa.png', name: 'SAUDI ARABIA'},
     {picture: 'img/sn.png', name: 'SENEGAL'},
     {picture: 'img/rs.png', name: 'SERBIA'},
-    //{picture: 'img/sc.png', name: 'SEYCHELLES'},
-    //{picture: 'img/sl.png', name: 'SIERRA LEONE'},
-    //{picture: 'img/sg.png', name: 'SINGAPORE'},//
-    //{picture: 'img/sk.png', name: 'SLOVAKIA'},
-    //{picture: 'img/si.png', name: 'SLOVENIA'},
-    //{picture: 'img/sb.png', name: 'SOLOMON ISLANDS'},
-    //{picture: 'img/so.png', name: 'SOMALIA'},
-    //{picture: 'img/za.png', name: 'SOUTH AFRICA'},
-    //{picture: 'img/ss.png', name: 'SOUTH SUDAN'},
+    {picture: 'img/sc.png', name: 'SEYCHELLES'},
+    {picture: 'img/sl.png', name: 'SIERRA LEONE'},
+    {picture: 'img/sg.png', name: 'SINGAPORE'},//
+    {picture: 'img/sk.png', name: 'SLOVAKIA'},
+    {picture: 'img/si.png', name: 'SLOVENIA'},
+    {picture: 'img/sb.png', name: 'SOLOMON ISLANDS'},
+    {picture: 'img/so.png', name: 'SOMALIA'},
+    {picture: 'img/za.png', name: 'SOUTH AFRICA'},
+    {picture: 'img/ss.png', name: 'SOUTH SUDAN'},
     {picture: 'img/es.png', name: 'SPAIN'},
-    //{picture: 'img/lk.png', name: 'SRI LANKA'},
-    //{picture: 'img/sd.png', name: 'SUDAN'},
-    //{picture: 'img/sr.png', name: 'SURINAME'},
+    {picture: 'img/lk.png', name: 'SRI LANKA'},
+    {picture: 'img/sd.png', name: 'SUDAN'},
+    {picture: 'img/sr.png', name: 'SURINAME'},
     {picture: 'img/se.png', name: 'SWEEDEN'},
-    //{picture: 'img/ch.png', name: 'SWITZERLAND'},
-    //{picture: 'img/sy.png', name: 'SYRIA'},
-    //{picture: 'img/tj.png', name: 'TAJIKISTAN'},
-    //{picture: 'img/tz.png', name: 'TANZANIA'},
+    {picture: 'img/ch.png', name: 'SWITZERLAND'},
+    {picture: 'img/sy.png', name: 'SYRIA'},
+    {picture: 'img/tj.png', name: 'TAJIKISTAN'},
+    {picture: 'img/tz.png', name: 'TANZANIA'},
     {picture: 'img/th.png', name: 'THAILAND'},
-    //{picture: 'img/tl.png', name: 'TIMOR-LESTE'},
-    //{picture: 'img/tg.png', name: 'TOGO'},
-    //{picture: 'img/to.png', name: 'TONGA'},
+    {picture: 'img/tl.png', name: 'TIMOR-LESTE'},
+    {picture: 'img/tg.png', name: 'TOGO'},
+    {picture: 'img/to.png', name: 'TONGA'},
     {picture: 'img/tt.png', name: 'TRINIDAD AND TOBAGO'},
-    //{picture: 'img/tn.png', name: 'TUNISIA'},
-    //{picture: 'img/tr.png', name: 'TURKEY'},
-    //{picture: 'img/tm.png', name: 'TURKMENISTAN'},
-    //{picture: 'img/tv.png', name: 'TUVALU'}, //
-    //{picture: 'img/ug.png', name: 'UGANDA'},
+    {picture: 'img/tn.png', name: 'TUNISIA'},
+    {picture: 'img/tr.png', name: 'TURKEY'},
+    {picture: 'img/tm.png', name: 'TURKMENISTAN'},
+    {picture: 'img/tv.png', name: 'TUVALU'}, //
+    {picture: 'img/ug.png', name: 'UGANDA'},
     {picture: 'img/ua.png', name: 'UKRAINE'},
-    //{picture: 'img/ae.png', name: 'UNITED ARAB EMIRATES'},
-    //{picture: 'img/gb.png', name: 'UNITED KINGDOM'},
-    //{picture: 'img/us.png', name: 'UNITED STATES'},
+    {picture: 'img/ae.png', name: 'UNITED ARAB EMIRATES'},
+    {picture: 'img/gb.png', name: 'UNITED KINGDOM'},
+    {picture: 'img/us.png', name: 'UNITED STATES'},
     {picture: 'img/uy.png', name: 'URUGUAY'},
-    //{picture: 'img/uz.png', name: 'UZBEKISTAN'},
-    //{picture: 'img/vu.png', name: 'VANUATU'},
+    {picture: 'img/uz.png', name: 'UZBEKISTAN'},
+    {picture: 'img/vu.png', name: 'VANUATU'},
     {picture: 'img/ve.png', name: 'VENEZUELA'},
     {picture: 'img/vn.png', name: 'VIETNAM'},
     {picture: 'img/ye.png', name: 'YEMEN'},
@@ -418,6 +419,8 @@ var welcome = {
 };
 main_timeline.push(welcome); 
 
+var sample_size = 50;
+var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 
 var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
@@ -442,10 +445,16 @@ var pretest_pic = {
     stimulus_width: 640,
     stimulus_height: 480,
     choices: ['Yes', 'No'],
-    prompt:  `
-    <div style="font-size:24px;">
-    <p>Do you know which country is this flag?</p>
-    </div>`
+    //prompt:  `
+    //<div style="font-size:24px;">
+    //<p>Do you know which country is this flag?</p>
+    //</div>`
+
+    //promt for debugging purposes
+    prompt: function (){
+        return `
+          <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
+    },
 };
 
  //Fixation cross inbetween trials 
@@ -464,7 +473,7 @@ var fixation = {
 
 var flashcard_pretest = {
     timeline: [pretest_pic,fixation],
-    timeline_variables: variables,
+    timeline_variables: sample_variables,
     randomize_order: true 
  };
  main_timeline.push(flashcard_pretest);
@@ -478,7 +487,7 @@ var rest = {
 };
 main_timeline.push(rest);
 
-// Study items
+// Study items Change trial duration and response ends trial attributes for debugging
 var study_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
@@ -502,7 +511,7 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 1250,  
+    trial_duration: 250,  
     response_ends_trial: false
  }; 
 
@@ -512,21 +521,36 @@ var trial_pic = {
     stimulus: function (){
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
     }, 
-    trial_duration: 2000,
+    trial_duration: 100,
     response_ends_trial: false  
 }; 
 
 
-var n_trials = 3;  //number of repetitions on the study set
+var n_trials = 3;  //number of repetitions on the study set play around with this one for debug
 var chunk_size = 10; //number of elements to study in one set
 var start_indeces = [0, 10, 20, 30, 40]; //Index of the first element of each set
-var n_items = variables.length;
+
+//try to optimize this by using the size and number of trials to get the chunks of the whole list in a loop
+//then, in the next iteration, shuffle the list and get new chunks for study.
 
 //one trial consists of the study of the whole list divided into 5 chunks with the same number of items
 for (var i=0; i<n_trials; i++){
     
+    console.log(iter_count++);
+    //console.log(iter_count);    
+    //iter_count++;
+    //var trial_number = {
+    //    type: jsPsychHtmlKeyboardResponse,   
+    //     stimulus: function (){
+    //     return `<div style="font-size:72px;">${iter_count}</div>`;
+    //     }, 
+    //     trial_duration: 500,
+    //     response_ends_trial: false  
+    //  };
+    //  main_timeline.push(trial_number); 
+    
     //randomize the whole list without repetition
-    var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(variables,n_items);
+    var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size);
 
     //split the whole list in sets of 10 elements
     set_1 = randomized_variables.slice(start_indeces[0], start_indeces[0] + chunk_size);
@@ -536,6 +560,8 @@ for (var i=0; i<n_trials; i++){
     set_5 = randomized_variables.slice(start_indeces[4], start_indeces[4] + chunk_size);
 
     //This might be optimized, but for now let's leave it like this
+     //The picture is followed by the name of the item
+    
     var study_set1 = {
         timeline: [trial_pic,trial_name,fixation],
         timeline_variables: set_1,  
