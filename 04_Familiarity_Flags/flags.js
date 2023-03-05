@@ -535,7 +535,6 @@ var trial_pic = {
 //consider adding console.log lines to check the output.
 var n_trials = 3;  //number of repetitions on the study set play around with this one for debug
 var chunk_size = 5; //number of elements to study in one set
-var first_el = 0;
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into 5 chunks with the same number of items
