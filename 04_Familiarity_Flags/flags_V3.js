@@ -419,8 +419,12 @@ var welcome = {
 };
 main_timeline.push(welcome); 
 
-var sample_size = 50;
+//Select a sample of the total items in the list, this can be changed depending of the time available for the task
+var sample_size = 20;
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
+
+
+// PART 1: PRE-TEST.
 
 var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
@@ -474,7 +478,7 @@ var fixation = {
 var flashcard_pretest = {
     timeline: [pretest_pic,fixation],
     timeline_variables: sample_variables,
-    randomize_order: true 
+    randomize_order: false 
  };
  main_timeline.push(flashcard_pretest);
 
@@ -486,6 +490,9 @@ var rest = {
     trial_duration: 2000	  
 };
 main_timeline.push(rest);
+
+
+//PART 2. STUDY
 
 // Study items Change trial duration and response ends trial attributes for debugging
 var study_instructions = {
@@ -511,7 +518,7 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 250,  
+    trial_duration: 1000,  
     response_ends_trial: false
  }; 
 
@@ -521,81 +528,49 @@ var trial_pic = {
     stimulus: function (){
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
     }, 
-    trial_duration: 100,
-    response_ends_trial: false  
+    //trial_duration: 1000,
+    response_ends_trial: true  
 }; 
 
-
+//consider adding console.log lines to check the output.
 var n_trials = 3;  //number of repetitions on the study set play around with this one for debug
-var chunk_size = 10; //number of elements to study in one set
-var start_indeces = [0, 10, 20, 30, 40]; //Index of the first element of each set
-
-//try to optimize this by using the size and number of trials to get the chunks of the whole list in a loop
-//then, in the next iteration, shuffle the list and get new chunks for study.
+var chunk_size = 5; //number of elements to study in one set
+var first_el = 0;
+var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into 5 chunks with the same number of items
 for (var i=0; i<n_trials; i++){
+
+//first we define where the chunk starts and where it ends    
+var first_el = 0;
+var last_el = chunk_size;
+
+//randomize the whole list without repetition
+//var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
+ 
+ for (var k=0; k<n_sets; k++) {
     
-    console.log(iter_count++);
-    //console.log(iter_count);    
-    //iter_count++;
-    //var trial_number = {
-    //    type: jsPsychHtmlKeyboardResponse,   
-    //     stimulus: function (){
-    //     return `<div style="font-size:72px;">${iter_count}</div>`;
-    //     }, 
-    //     trial_duration: 500,
-    //     response_ends_trial: false  
-    //  };
-    //  main_timeline.push(trial_number); 
+    //Inside this loop, we go through the whole item list in sets defined by chunk_size variable,
+    //Every set will be studied once, when the whole list is done, it will restart 
     
-    //randomize the whole list without repetition
-    var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size);
-
-    //split the whole list in sets of 10 elements
-    set_1 = randomized_variables.slice(start_indeces[0], start_indeces[0] + chunk_size);
-    set_2 = randomized_variables.slice(start_indeces[1], start_indeces[1] + chunk_size);
-    set_3 = randomized_variables.slice(start_indeces[2], start_indeces[2] + chunk_size);
-    set_4 = randomized_variables.slice(start_indeces[3], start_indeces[3] + chunk_size);
-    set_5 = randomized_variables.slice(start_indeces[4], start_indeces[4] + chunk_size);
-
-    //This might be optimized, but for now let's leave it like this
-     //The picture is followed by the name of the item
+    set = sample_variables.slice(first_el, last_el);
     
-    var study_set1 = {
+    var study_set = {
         timeline: [trial_pic,trial_name,fixation],
-        timeline_variables: set_1,  
+        timeline_variables: set  
      };
-     main_timeline.push(study_set1,rest);
-
-     var study_set2 = {
-        timeline: [trial_pic,trial_name,fixation],
-        timeline_variables: set_2,  
-     };
-     main_timeline.push(study_set2,rest);
-
-     var study_set3 = {
-        timeline: [trial_pic,trial_name,fixation],
-        timeline_variables: set_3,  
-     };
-     main_timeline.push(study_set3,rest); 
-
-     var study_set4 = {
-        timeline: [trial_pic,trial_name,fixation],
-        timeline_variables: set_4,  
-     };
-     main_timeline.push(study_set4,rest);
+     main_timeline.push(study_set,rest);
      
-    var study_set5 = {
-        timeline: [trial_pic,trial_name,fixation],
-        timeline_variables: set_5,  
-     };
-     main_timeline.push(study_set5,rest);
+     //once the set is displayed for study, the indeces are shifted to continue with the next set
+     first_el = first_el+chunk_size;
+     last_el = last_el+chunk_size; 
+     
+    }   
 }
 
+//PART 3. TEST
 
-//TEST
-var recog_instructions = {
+var test_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
@@ -609,7 +584,7 @@ var recog_instructions = {
     choices: ['START'],
     post_trial_gap: 1000
 };
-main_timeline.push(recog_instructions);
+main_timeline.push(test_instructions);
 
 
 //pre if
