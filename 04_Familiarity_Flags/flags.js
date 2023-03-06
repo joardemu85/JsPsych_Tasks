@@ -425,7 +425,6 @@ console.log(sample_variables); //show the item sample in console for debugging
 
 
 // PART 1: PRE-TEST.
-
 var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
@@ -433,7 +432,7 @@ var pretest_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>In this part of the experiment, you will be shown a set of flags corresponding to UN member countries.</p>
     <p>You will be asked if you can name the country the flag belongs to.</p>
-    <p>Tap YES if you recognize to which country the flag belongs to or NO if you do not</p>     
+    <p>Tap YES if you recognize to which country the flag belongs to or NO if you do not.</p>     
     </div>
     <p>Tap "START" to begin.</p>
     </div>
@@ -493,7 +492,6 @@ main_timeline.push(rest);
 
 
 //PART 2. STUDY
-
 // Study items Change trial duration and response ends trial attributes for debugging
 var study_instructions = {
     type: jsPsychHtmlButtonResponse,
@@ -570,7 +568,6 @@ console.log(random_study);
      
     }   
 }
-
 
 
 //PART 3. TEST
