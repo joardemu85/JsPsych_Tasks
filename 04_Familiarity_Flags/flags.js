@@ -1,4 +1,3 @@
-var iter_count = 0;
 var jsPsych = initJsPsych({
     on_finish: function() {
         jsPsych.data.displayData();
@@ -422,6 +421,7 @@ main_timeline.push(welcome);
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
 var sample_size = 20;
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
+console.log(sample_variables); //show the item sample in console for debugging
 
 
 // PART 1: PRE-TEST.
@@ -449,16 +449,16 @@ var pretest_pic = {
     stimulus_width: 640,
     stimulus_height: 480,
     choices: ['Yes', 'No'],
-    //prompt:  `
-    //<div style="font-size:24px;">
-    //<p>Do you know which country is this flag?</p>
-    //</div>`
+    prompt:  `
+    <div style="font-size:24px;">
+    <p>Do you know which country is this flag?</p>
+    </div>`
 
-    //promt for debugging purposes
-    prompt: function (){
-        return `
-          <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
-    },
+    //prompt for debugging purposes only, shows the name of the country
+    //prompt: function (){
+    //    return `
+    //      <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
+    //},
 };
 
  //Fixation cross inbetween trials 
@@ -468,7 +468,7 @@ var fixation = {
     choices: "NO_KEYS",
     trial_duration: function(){
        //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-       return 10;
+       return 100;
       }, 
     data: {
 	    task: 'fixation'
@@ -478,7 +478,7 @@ var fixation = {
 var flashcard_pretest = {
     timeline: [pretest_pic,fixation],
     timeline_variables: sample_variables,
-    randomize_order: false 
+    randomize_order: false //no need to randomize again fetched items
  };
  main_timeline.push(flashcard_pretest);
 
@@ -501,8 +501,9 @@ var study_instructions = {
     <div style="font-size:24px;">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now, you will perform a study session of the items .</p>
-    <p>The flags will appear in sets of 10 with a rest interval between sets.</p>    
-    <p>You will practice on the items 4 times.</p>   
+    <p>Each flag will appear followed by the country name in sets with a short break between sets.</p> 
+    <p>Hit the SPACE bar to move on to the next item.</p>    
+    <p>You will practice on the whole list of items 4 times.</p>   
     </div>
     <p>Tap "START" to begin.</p>
     </div>
@@ -529,11 +530,12 @@ var trial_pic = {
         return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
     }, 
     //trial_duration: 1000,
+    choices: ' ',
     response_ends_trial: true  
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 3;  //number of repetitions on the study set play around with this one for debug
+var n_trials = 4;  //number of repetitions on the study set play around with this one for debug
 var chunk_size = 5; //number of elements to study in one set
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
@@ -545,15 +547,17 @@ var first_el = 0;
 var last_el = chunk_size;
 
 //randomize the whole list without repetition
-//var randomized_variables = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
+var random_study = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
+console.log(random_study);
  
  for (var k=0; k<n_sets; k++) {
     
     //Inside this loop, we go through the whole item list in sets defined by chunk_size variable,
     //Every set will be studied once, when the whole list is done, it will restart 
     
-    set = sample_variables.slice(first_el, last_el);
-    
+    set = random_study.slice(first_el, last_el);
+    console.log(set);
+
     var study_set = {
         timeline: [trial_pic,trial_name,fixation],
         timeline_variables: set  
@@ -566,6 +570,8 @@ var last_el = chunk_size;
      
     }   
 }
+
+
 
 //PART 3. TEST
 
@@ -642,7 +648,7 @@ var feedback = {
 
 var recognition_test = {
   timeline: [pic_test,if_node,feedback,fixation],
-  timeline_variables: variables,
+  timeline_variables: sample_variables,
   randomize_order: true 
 };
 main_timeline.push(recognition_test);
