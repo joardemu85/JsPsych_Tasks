@@ -588,7 +588,6 @@ var test_instructions = {
 };
 main_timeline.push(test_instructions);
 
-
 //pre if
 var pic_test = {
     type: jsPsychImageButtonResponse,
