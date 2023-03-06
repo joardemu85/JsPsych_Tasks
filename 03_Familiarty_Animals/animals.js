@@ -172,66 +172,80 @@ main_timeline.push(preload);
  
 //LET'S START PLACING TRIALS FROM HERE    
   
-/*The first trial will be a simple welcome message using the html-kbeyboard-response plugin.*/    
+//The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
 var welcome = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:32px;">Welcome to the experiment. Press any key to begin.</div>`	  
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `<div style="font-size:32px;">
+               <p>Welcome to the experiment.</p> 
+               <p>Tap "START" to begin.</p>
+               </div>`,
+               choices: ['START']
 };
-main_timeline.push(welcome); 
+main_timeline.push(welcome);
 
-var learn_instructions = {
-    type: jsPsychHtmlKeyboardResponse,
+//Select a sample of the total items in the list, this can be changed depending of the time available for the task
+var sample_size = 20;
+var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
+console.log(sample_variables); //show the item sample in console for debugging
+
+
+// PART 1: PRE-TEST.
+
+var pretest_instructions = {
+    type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
-    <p>In this part of the experiment, you will be shown a random pictures of animals followed by their names.</p>
-    <p>The picture will reappear in a random way a 3 times, so you are able to associate
-    the picture with the right name.</p>
-    <p>After this session, you will be asked if you are able to remember the right name of the animal.</p>
-    <div style='float: center;'><img src='img/Armadilo.jpg'></img>   
+    <div style='float: center;'><img src='img/Armadilo.jpg'></img> 
+    <p>In this part of the experiment, you will be shown a set of pictures of animals.</p>
+    <p>You will be asked if you can name the animal that is shown on screen.</p>
+    <p>Tap YES if you can tell the animal's name to or NO if you do not.</p>
     </div>
-    <p>Press any key to begin.</p>
+    <p>Tap "START" to begin</p>
     </div>
     `,
-    post_trial_gap: 1000
+    choices: ['START'],
+    post_trial_gap: 250
 };
-main_timeline.push(learn_instructions);
+main_timeline.push(pretest_instructions);
 
-//create new list whit shuffled elements, the second argument indicates the number of repetitions
-var repeated_variables = jsPsych.randomization.repeat(variables,1);
+var pretest_pic = {
+    type: jsPsychImageButtonResponse,
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
+    choices: ['Yes', 'No'],
+    prompt:  `
+    <div style="font-size:24px;">
+    <p>Do you know the name of this animal?</p>
+    </div>`
 
-//Initially, the picture will be shown
-var trial_pic = {
-   type: jsPsychImageKeyboardResponse,   
-   stimulus: jsPsych.timelineVariable("picture"), 
-   //stimulus: function (){
-    //  return `<img src= "${jsPsych.timelineVariable ("picture")}" width="240" height="160"></img>`;
+    //prompt for debugging purposes only, shows the name of the country
+    //prompt: function (){
+    //    return `
+    //      <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
     //},
-   trial_duration: 1000,  
-   response_ends_trial: false 
-};   
-
-//The picture is followed by the name of the item
-var trial_name = {
-    type: jsPsychHtmlKeyboardResponse,   
-    stimulus: function (){
-        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`
-    }, 
-    trial_duration: 1000,
-    response_ends_trial: false  
- };   
-
- var fixation = {
+};
+ 
+//Fixation cross inbetween trials 
+var fixation = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: '<div style="font-size:96px;">+</div>',
     choices: "NO_KEYS",
-   trial_duration: 2000
-  };
-  
-var flashcard_study = {
-   timeline: [trial_pic,trial_name,fixation],
-   timeline_variables: repeated_variables,   
-};
-main_timeline.push(flashcard_study);
+    trial_duration: function(){
+       //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+       return 100;
+      }, 
+    data: {
+	    task: 'fixation'
+	  }
+}; 
+
+var flashcard_pretest = {
+    timeline: [pretest_pic,fixation],
+    timeline_variables: sample_variables,
+    randomize_order: false //no need to randomize again fetched items
+ };
+ main_timeline.push(flashcard_pretest);
 
 var rest = {
     type: jsPsychHtmlKeyboardResponse,
@@ -241,59 +255,175 @@ var rest = {
 };
 main_timeline.push(rest);
 
-var recog_instructions = {
-    type: jsPsychHtmlKeyboardResponse,
+
+//PART 2. STUDY
+
+// Study items Change trial duration and response ends trial attributes for debugging
+var study_instructions = {
+    type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:24px;">
-    <p>Now you will be asked if you remember the right name of the animal shown before.</p>
-    <p>Each animal picture will be shown once and you will click YES if you remember the right name of the animal or NO if you do not.</p>
-    <p>Right after, you will be asked if you are confident on the name of the animal. Please click "Completely" if you are absolute sure 
-    you can remember, "Barely" if you cannot remember the right name or "Just Guessing if you are not sure your answer is right".</p>
-    <p>Press any key to begin.</p>
+    <div style='float: center;'><img src='img/gOOSE.JPg' width="320" height="240"></img> 
+    <p>Now, you will perform a study session of the items .</p>
+    <p>Each animal will appear followed by its name in sets with a short break between sets.</p> 
+    <p>Hit the SPACE bar to move on to the next item.</p>    
+    <p>You will practice on the whole list of items 4 times.</p>   
+    </div>
+    <p>Tap "START" to begin.</p>
     </div>
     `,
-    post_trial_gap: 2000
+    choices: ['START'],
+    post_trial_gap: 500
 };
-main_timeline.push(recog_instructions);
+main_timeline.push(study_instructions);
 
-var trial_test = {
+//Initially, the picture will be shown
+var trial_pic = {
+    type: jsPsychImageKeyboardResponse,   
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
+    trial_duration: 1000,  
+    response_ends_trial: false
+ }; 
+
+ //The picture is followed by the name of the item
+ var trial_name = {
+    type: jsPsychHtmlKeyboardResponse,   
+    stimulus: function (){
+        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
+    }, 
+    //trial_duration: 1000,
+    choices: ' ',
+    response_ends_trial: true  
+}; 
+
+var n_trials = 4;  //number of repetitions on the study set play around with this one for debug
+var chunk_size = 5; //number of elements to study in one set
+var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
+
+//one trial consists of the study of the whole list divided into 5 chunks with the same number of items
+for (var i=0; i<n_trials; i++){
+
+//first we define where the chunk starts and where it ends    
+var first_el = 0;
+var last_el = chunk_size;
+
+//randomize the whole list without repetition
+var random_study = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
+console.log(random_study);
+ 
+ for (var k=0; k<n_sets; k++) {
+    
+    //Inside this loop, we go through the whole item list in sets defined by chunk_size variable,
+    //Every set will be studied once, when the whole list is done, it will restart 
+    
+    set = random_study.slice(first_el, last_el);
+    console.log(set);
+
+    var study_set = {
+        timeline: [trial_pic,trial_name,fixation],
+        timeline_variables: set  
+     };
+     main_timeline.push(study_set,rest);
+     
+     //once the set is displayed for study, the indeces are shifted to continue with the next set
+     first_el = first_el+chunk_size;
+     last_el = last_el+chunk_size; 
+     
+    }   
+}
+
+//PART 3. TEST
+var test_instructions = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <div style="font-size:24px;">
+    <div style='float: center;'><img src='img/Coyote.jpg' width="320" height="240"></img> 
+    <p>Now you will be asked if you remember the right name of the animals associated to their pictures.</p>
+    <p>Each animal will be shown once and you will click YES if you remember the right name or NO if you do not.</p>
+    <p>If you answer YES, you will be asked if you are confident on the name of the animal. Please click "Completely" if you are absolutely sure 
+    you can remember, or "Just Guessing if you are not sure your answer is right".</p>    <p>Tap "START" to begin.</p>
+    </div>
+    `,
+    choices: ['START'],
+    post_trial_gap: 1000
+};
+main_timeline.push(test_instructions);
+
+
+//pre if (see if I can use the same node as in the pretest)
+var pic_test = {
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
     choices: ['Yes', 'No'],
     prompt:  `
     <div style="font-size:24px;">
-    <p>Can you name this animal?</p>
+    <p>Do you know the name of this animal?</p>
     </div>`
 };
 
+//if trial
 var confidence = { 
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
-    choices: ['Completely', 'Barely', 'Just Guessing'],
+    stimulus_width: 640,
+    stimulus_height: 480,    
+    choices: ['Completely', 'Just Guessing'],
     prompt: `<div style="font-size:24px;">
     <p>How confident do you feel about your decission?</p>
     </div>`
 };
 
-var randomized_variables = jsPsych.randomization.repeat(variables,1);
+var if_node = {
+  timeline: [confidence],
+  conditional_function: function (){
+    var data = jsPsych.data.get().last(1).values()[0];
+    console.log(data); 
+    if (data.response == 0){
+      return true;
+    }else {
+      return false;
+    }
+  }
+};
+
+//after if
+var feedback = { 
+    type: jsPsychImageKeyboardResponse,   
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,       
+    trial_duration: 1000,
+    //${jsPsych.timelineVariable ("name")}
+    prompt: function (){
+        return `
+        <div style="font-size:24px;"><p>The right answer is:</p></div>
+        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
+    },
+    response_ends_trial: false  
+}; 
 
 var recognition_test = {
-  timeline: [trial_test,confidence,fixation],
-  timeline_variables: randomized_variables, 
+  timeline: [pic_test,if_node,feedback,fixation],
+  timeline_variables: sample_variables,
+  randomize_order: true 
 };
 main_timeline.push(recognition_test);
 
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
-    <div style="font-size:32px;">
+    <div style="font-size:48px;">
     <p>This is the end of the experiment.</p>
     <p>Thank you very much for your participation.</p>
     </div>`,
-    post_trial_gap: 2000
+    post_trial_gap: 500
 };
 main_timeline.push(finalization);
 
-/*and then, run the timeline*/
-jsPsych.run(main_timeline);
 
+//jsPsych.run([gb].concat(trials));
+jsPsych.run(main_timeline);
