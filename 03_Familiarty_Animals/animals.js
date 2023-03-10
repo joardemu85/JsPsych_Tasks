@@ -51,8 +51,7 @@ var preload = {
       'img/Fly.jpg', 
       'img/Flying_Squirrel.jpg',
       'img/Fox.jpg',  
-      'img/Frog.jpg', 
-      'img/Gavial.jpg', 
+      'img/Frog.jpg',       
       'img/Gekko.jpg', 
       'img/Goanna.jpg', 
       'img/Goose.jpg', 
@@ -82,8 +81,7 @@ var preload = {
       'img/Mole.jpg', 
       'img/Mosquito.jpg', 
       'img/Moth.jpg',
-      'img/Mule.jpg', 
-      'img/Nightingale.jpg', 
+      'img/Mule.jpg',        
       'img/Opossum.jpg', 
       'img/Orangutan.jpg', 
       'img/Orca.jpg',
@@ -95,13 +93,11 @@ var preload = {
       'img/Pheasant.jpg', 
       'img/Platypus.jpg', 
       'img/Porcupine.jpg', 
-      'img/Quokka.jpg', 
-      'img/Quoll.jpg', 
+      'img/Quokka.jpg',        
       'img/Rabbit.jpg', 
       'img/Racoon.jpg', 
       'img/Ram.jpg', 
       'img/Rattlesnake.jpg', 
-      'img/Raven.jpg', 
       'img/Red_panda.jpg', 
       'img/Rhinoceross.jpg', 
       'img/Salmon.jpg',
@@ -112,14 +108,12 @@ var preload = {
       'img/Sparrow.jpg', 
       'img/Squirrel.jpg',
       'img/Stingray.jpg', 
-      'img/Sugar_Glider.jpg',
-      'img/Swallow.jpg', 
+      'img/Sugar_Glider.jpg',       
       'img/Swan.jpg', 
       'img/Tapir.jpg', 
       'img/Tasmanian_Devil.jpg', 
       'img/Tiger.jpg', 
       'img/Toad.jpg', 
-      'img/Tortoise.jpg', 
       'img/Trout.jpg', 
       'img/Turkey.jpg', 
       'img/Turtle.jpg', 
@@ -137,126 +131,120 @@ main_timeline.push(preload);
 
 /*timeline variables*/
  var variables = [
-   {picture: 'img/Aardvark.jpg',  name: 'AARDVARK'},
-   {picture: 'img/Albatross.jpg', name: 'ALBATROSS'},
-   {picture: 'img/Alligator.jpg', name: 'ALLIGATOR'},
-   {picture: 'img/Ant.jpg', name: 'ANT'},
-   {picture: 'img/Armadilo.jpg', name: 'ARMADILO'},
-   {picture: 'img/Baboon.jpg', name: 'BABOON'},
-   {picture: 'img/Badger.jpg', name: 'BADGER'},
-   {picture: 'img/Bandicoot.jpg', name: 'BANDICOOT'},
-   {picture: 'img/Beaver.jpg', name: 'BEAVER'},
-   {picture: 'img/Beetle.jpg', name: 'BEETLE'},
-   {picture: 'img/Billby.jpg', name: 'BILLBY'},
-   {picture: 'img/Boar.jpg', name: 'BOAR'},
-   {picture: 'img/Butterfly.jpg', name: 'BUTTERFLY'},
-   {picture: 'img/Capybara.jpg', name: 'CAPYBARA'},
-   {picture: 'img/Centipede.jpg', name: 'CENTIPEDE'},
-   {picture: 'img/Cheetah.jpg', name: 'CHEETAH'},
-   {picture: 'img/Chimpanzee.jpg', name: 'CHIMPANZEE'},
-   {picture: 'img/Cockatoo.jpg', name: 'COCKATOO'},
-   {picture: 'img/Cockroach.jpg', name: 'COCKROACH'},
-   {picture: 'img/Condor.jpg', name: 'CONDOR'},
-   {picture: 'img/Coyote.jpg', name: 'COYOTE'},
-   {picture: 'img/Crayfish.jpg', name: 'CRAYFISH'},
-   {picture: 'img/Crocodile.jpg', name: 'CROCODILE'},
-   {picture: 'img/Crow.jpg', name: 'CROW'},
-   {picture: 'img/Cuckoo.jpg', name: 'CUCKOO'},
-   {picture: 'img/Deer.jpg', name: 'DEER'},
-   {picture: 'img/Dingo.jpg', name: 'DINGO'},
-   {picture: 'img/Donkey.jpg', name: 'DONKEY'},
-   {picture: 'img/Dragonfly.jpg', name: 'DRAGONFLY'},
-   {picture: 'img/Earthworm.jpg', name: 'EARTHWORM'},
-   {picture: 'img/Echidna.jpg', name: 'ECHIDNA'},
-   {picture: 'img/Elephant.jpg', name: 'ELEPHANT'},
-   {picture: 'img/Elk.jpg', name: 'ELK'},
-   {picture: 'img/Emu.jpg', name: 'EMU'},
-   {picture: 'img/Falcon.jpg', name: 'FALCON'},
-   {picture: 'img/Fennec.jpg', name: 'FENNEC'},
-   {picture: 'img/Ferret.jpg', name: 'FERRET'},
-   {picture: 'img/Fly.jpg', name: 'FLY'},
-   {picture: 'img/Flying_Squirrel.jpg', name: 'FLYING SQUIRREL'},
-   {picture: 'img/Fox.jpg', name: 'FOX'},
-   {picture: 'img/Frog.jpg', name: 'FROG'},
-   {picture: 'img/Gavial.jpg', name: 'GAVIAL'},
-   {picture: 'img/Gekko.jpg', name: 'GECKO'},
-   {picture: 'img/Goanna.jpg', name: 'GOANNA'},
-   {picture: 'img/Goose.jpg', name: 'GOOSE'},
-   {picture: 'img/Grasshopper.jpg', name: 'GRASSHOPPER'}, 
-   {picture: 'img/Gull.jpg', name: 'GULL'},
-   {picture: 'img/Hare.jpg', name: 'HARE'},
-   {picture: 'img/Hedgehog.jpg', name: 'HEDGEHOG'},
-   {picture: 'img/Hippopotamus.jpg', name: 'HIPPOPOTAMUS'},
-   {picture: 'img/Honey_Badger.jpg', name: 'HONEY BADGER'},
-   {picture: 'img/Hyena.jpg', name: 'HYENA'},
-   {picture: 'img/Iguana.jpg', name: 'IGUANA'},
-   {picture: 'img/Jaguar.jpg', name: 'JAGUAR'},
-   {picture: 'img/Jellyfish.jpg', name: 'JELLYFISH'},
-   {picture: 'img/Kangaroo.jpg', name: 'KANGAROO'},
-   {picture: 'img/Kookaburra.jpg', name: 'KOOKABURRA'},
-   {picture: 'img/Ladybug.jpg', name: 'LADYBUG'},
-   {picture: 'img/Lamb.jpg', name: 'LAMB'},
-   {picture: 'img/Leech.jpg', name: 'LEECH'},
-   {picture: 'img/Leopard.jpg',  name: 'LEOPARD'},
-   {picture: 'img/Lemur.jpg', name: 'LEMUR'},
-   {picture: 'img/Lobster.jpg', name: 'LOBSTER'},
-   {picture: 'img/Lynx.jpg', name: 'LYNX'},
-   {picture: 'img/Lyrebird.jpg', name: 'LYREBIRD'},
-   {picture: 'img/Marmot.jpg', name: 'MARMOT'},
-   {picture: 'img/Millipede.jpg',name: 'MILLIPEDE'},
-   {picture: 'img/Mink.jpg', name: 'MINK'},
-   {picture: 'img/Mole.jpg', name: 'MOLE'},
-   {picture: 'img/Mosquito.jpg', name: 'MOSQUITO'},
-   {picture: 'img/Moth.jpg', name: 'MOTH'},
-   {picture: 'img/Mule.jpg', name: 'MULE'},
-   {picture: 'img/Nightingale.jpg', name: 'NIGHTINGALE'},
-   {picture: 'img/Opossum.jpg', name: 'OPOSSUM'},
-   {picture: 'img/Orangutan.jpg', name: 'ORANGUTAN'},
-   {picture: 'img/Orca.jpg',name: 'ORCA'},
-   {picture: 'img/Ostrich.jpg', name: 'OSTRICH'},
-   {picture: 'img/Otter.jpg', name: 'OTTER'},
-   {picture: 'img/Owl.jpg', name: 'OWL'},
-   {picture: 'img/Pangolin.jpg', name: 'PANGOLIN'},
-   {picture: 'img/Peacock.jpg', name: 'PEACOCK'},
-   {picture: 'img/Pheasant.jpg', name: 'PHEASANT'},
-   {picture: 'img/Platypus.jpg', name: 'PLATYPUS'},
-   {picture: 'img/Porcupine.jpg', name: 'PORCUPINE'},
-   {picture: 'img/Quokka.jpg', name: 'QUOKKA'},
-   {picture: 'img/Quoll.jpg', name: 'QUOLL'},
-   {picture: 'img/Rabbit.jpg', name: 'RABBIT'},
-   {picture: 'img/Racoon.jpg', name: 'RACOON'},
-   {picture: 'img/Ram.jpg', name: 'RAM'},
-   {picture: 'img/Rattlesnake.jpg', name: 'RATTLESNAKE'},
-   {picture: 'img/Raven.jpg', name: 'RAVEN'},
-   {picture: 'img/Red_panda.jpg', name: 'RED PANDA'},
-   {picture: 'img/Rhinoceross.jpg', name: 'RHINOCEROSS'},
-   {picture: 'img/Salmon.jpg', name: 'SALMON'},
-   {picture: 'img/Seal.jpg', name: 'SEAL'},
-   {picture: 'img/Shark.jpg', name: 'SHARK'},
-   {picture: 'img/Slug.jpg', name: 'SLUG'},
-   {picture: 'img/Snail.jpg', name: 'SNAIL'},
-   {picture: 'img/Sparrow.jpg', name: 'SPARROW'},
-   {picture: 'img/Squirrel.jpg', name: 'SQUIRREL'},
-   {picture: 'img/Stingray.jpg', name: 'SQUIRREL'},
-   {picture: 'img/Sugar_Glider.jpg',name: 'SUGAR GLIDER'},
-   {picture: 'img/Swallow.jpg', name: 'SWALLOW'},
-   {picture: 'img/Swan.jpg', name: 'SWAN'},
-   {picture: 'img/Tapir.jpg', name: 'TAPIR'},
-   {picture: 'img/Tasmanian_Devil.jpg', name: 'TASMANIAN DEVIL'},
-   {picture: 'img/Tiger.jpg', name: 'TIGER'},
-   {picture: 'img/Toad.jpg', name: 'TOAD'},
-   {picture: 'img/Tortoise.jpg', name: 'TORTOISE'},
-   {picture: 'img/Trout.jpg', name: 'TROUT'},
-   {picture: 'img/Turkey.jpg', name: 'TURKEY'},
-   {picture: 'img/Turtle.jpg', name: 'TURTLE'},
-   {picture: 'img/Viper.jpg', name: 'VIPER'},
-   {picture: 'img/Vulture.jpg',name: 'VULTURE'},
-   {picture: 'img/Wallaby.jpg', name: 'WALLABY'},
-   {picture: 'img/Walrus.jpg', name: 'WALRUS'},
-   {picture: 'img/Whale.jpg', name: 'WHALE'},
-   {picture: 'img/Wolverine.jpg',name: 'WOLVERINE'},
-   {picture: 'img/Wombat.jpg', name: 'WOMBAT'},
-   {picture: 'img/Zebra.jpg', name: 'ZEBRA'},
+   {picture: 'img/Aardvark.jpg',  name: 'AARDVARK'}, //ツチブタ
+   {picture: 'img/Albatross.jpg', name: 'ALBATROSS'}, //アルバトロス
+   {picture: 'img/Alligator.jpg', name: 'ALLIGATOR'}, //アリゲーター
+   {picture: 'img/Ant.jpg', name: 'ANT'}, //蟻
+   {picture: 'img/Armadilo.jpg', name: 'ARMADILO'}, //アルマジロ
+   {picture: 'img/Baboon.jpg', name: 'BABOON'}, //ヒヒ
+   {picture: 'img/Badger.jpg', name: 'BADGER'}, // 狸
+   {picture: 'img/Bandicoot.jpg', name: 'BANDICOOT'}, //バンディクート
+   {picture: 'img/Beaver.jpg', name: 'BEAVER'}, //ビーバー
+   {picture: 'img/Beetle.jpg', name: 'BEETLE'},//甲虫
+   {picture: 'img/Billby.jpg', name: 'BILLBY'},//ビルビー
+   {picture: 'img/Boar.jpg', name: 'BOAR'},//いのしし
+   {picture: 'img/Butterfly.jpg', name: 'BUTTERFLY'},//蝶
+   {picture: 'img/Capybara.jpg', name: 'CAPYBARA'},//カピバラ
+   {picture: 'img/Centipede.jpg', name: 'CENTIPEDE'},//ムカデ
+   {picture: 'img/Cheetah.jpg', name: 'CHEETAH'},//チーター
+   {picture: 'img/Chimpanzee.jpg', name: 'CHIMPANZEE'},//チンパンジー
+   {picture: 'img/Cockatoo.jpg', name: 'COCKATOO'},//コカトゥー
+   {picture: 'img/Cockroach.jpg', name: 'COCKROACH'},//ゴキブリ
+   {picture: 'img/Condor.jpg', name: 'CONDOR'},//兀鷹
+   {picture: 'img/Coyote.jpg', name: 'COYOTE'},//コヨーテ
+   {picture: 'img/Crayfish.jpg', name: 'CRAYFISH'},//ザリガニ
+   {picture: 'img/Crocodile.jpg', name: 'CROCODILE'},//鰐
+   {picture: 'img/Crow.jpg', name: 'CROW'},//カラス consider removing this one or raven
+   {picture: 'img/Cuckoo.jpg', name: 'CUCKOO'}, // カッコウ
+   {picture: 'img/Deer.jpg', name: 'DEER'}, //鹿
+   {picture: 'img/Dingo.jpg', name: 'DINGO'},//ディンゴ
+   {picture: 'img/Donkey.jpg', name: 'DONKEY'},//ロバ
+   {picture: 'img/Dragonfly.jpg', name: 'DRAGONFLY'},//トンボ
+   {picture: 'img/Earthworm.jpg', name: 'EARTHWORM'},//ミミズ
+   {picture: 'img/Echidna.jpg', name: 'ECHIDNA'},//エキドナ
+   {picture: 'img/Elephant.jpg', name: 'ELEPHANT'},//象
+   {picture: 'img/Elk.jpg', name: 'ELK'},//エルク
+   {picture: 'img/Emu.jpg', name: 'EMU'},//エミュ
+   {picture: 'img/Falcon.jpg', name: 'FALCON'},//鷹
+   {picture: 'img/Fennec.jpg', name: 'FENNEC'},//フェネック
+   {picture: 'img/Ferret.jpg', name: 'FERRET'},//フェレット
+   {picture: 'img/Fly.jpg', name: 'FLY'}, //蝿
+   {picture: 'img/Flying_Squirrel.jpg', name: 'FLYING SQUIRREL'}, //むささび
+   {picture: 'img/Fox.jpg', name: 'FOX'}, //狐
+   {picture: 'img/Frog.jpg', name: 'FROG'}, //蛙   
+   {picture: 'img/Gekko.jpg', name: 'GECKO'}, //ヤモリ
+   {picture: 'img/Goanna.jpg', name: 'GOANNA'}, //ゴアナ
+   {picture: 'img/Goose.jpg', name: 'GOOSE'}, //ガチョウ
+   {picture: 'img/Grasshopper.jpg', name: 'GRASSHOPPER'}, //バッタ
+   {picture: 'img/Gull.jpg', name: 'GULL'}, //ガル
+   {picture: 'img/Hare.jpg', name: 'HARE'}, //野ウサギ
+   {picture: 'img/Hedgehog.jpg', name: 'HEDGEHOG'}, //ハリネズミ
+   {picture: 'img/Hippopotamus.jpg', name: 'HIPPOPOTAMUS'}, // カバ
+   {picture: 'img/Honey_Badger.jpg', name: 'HONEY BADGER'}, //ラーテル
+   {picture: 'img/Hyena.jpg', name: 'HYENA'}, //ハイエナ
+   {picture: 'img/Iguana.jpg', name: 'IGUANA'}, //イグアナ
+   {picture: 'img/Jaguar.jpg', name: 'JAGUAR'}, //ジャガー
+   {picture: 'img/Jellyfish.jpg', name: 'JELLYFISH'}, //クラゲ
+   {picture: 'img/Kangaroo.jpg', name: 'KANGAROO'}, // カンガルー
+   {picture: 'img/Kookaburra.jpg', name: 'KOOKABURRA'}, //ワライカワセミ
+   {picture: 'img/Ladybug.jpg', name: 'LADYBUG'}, // てんとう虫
+   {picture: 'img/Lamb.jpg', name: 'LAMB'}, //子羊
+   {picture: 'img/Leech.jpg', name: 'LEECH'}, //リーチ
+   {picture: 'img/Leopard.jpg',  name: 'LEOPARD'},//ヒョウ
+   {picture: 'img/Lemur.jpg', name: 'LEMUR'}, //キツネザル
+   {picture: 'img/Lobster.jpg', name: 'LOBSTER'},// イセエビ
+   {picture: 'img/Lynx.jpg', name: 'LYNX'}, //リンクス
+   {picture: 'img/Lyrebird.jpg', name: 'LYREBIRD'}, //ライバード
+   {picture: 'img/Marmot.jpg', name: 'MARMOT'},//マーモット
+   {picture: 'img/Millipede.jpg',name: 'MILLIPEDE'},//ヤスデ
+   {picture: 'img/Mink.jpg', name: 'MINK'}, //ミンク
+   {picture: 'img/Mole.jpg', name: 'MOLE'}, //モグラ
+   {picture: 'img/Mosquito.jpg', name: 'MOSQUITO'}, //蚊
+   {picture: 'img/Moth.jpg', name: 'MOTH'}, //蛾
+   {picture: 'img/Mule.jpg', name: 'MULE'}, //ラバ   
+   {picture: 'img/Opossum.jpg', name: 'OPOSSUM'}, //袋鼠
+   {picture: 'img/Orangutan.jpg', name: 'ORANGUTAN'}, //オランウータン
+   {picture: 'img/Orca.jpg',name: 'ORCA'}, //シャチ
+   {picture: 'img/Ostrich.jpg', name: 'OSTRICH'}, //ダチョウ
+   {picture: 'img/Otter.jpg', name: 'OTTER'}, //カワウソ
+   {picture: 'img/Owl.jpg', name: 'OWL'}, //フクロウ
+   {picture: 'img/Pangolin.jpg', name: 'PANGOLIN'}, //センザンコウ
+   {picture: 'img/Peacock.jpg', name: 'PEACOCK'}, //孔雀
+   {picture: 'img/Pheasant.jpg', name: 'PHEASANT'}, // キジ
+   {picture: 'img/Platypus.jpg', name: 'PLATYPUS'}, //カモノハシ
+   {picture: 'img/Porcupine.jpg', name: 'PORCUPINE'}, //ヤマアラシ
+   {picture: 'img/Quokka.jpg', name: 'QUOKKA'}, //クオッカ   
+   {picture: 'img/Rabbit.jpg', name: 'RABBIT'}, //兎
+   {picture: 'img/Racoon.jpg', name: 'RACOON'}, //あらいぐま
+   {picture: 'img/Ram.jpg', name: 'RAM'}, //exclude
+   {picture: 'img/Rattlesnake.jpg', name: 'RATTLESNAKE'}, //ガラガラヘビ
+   {picture: 'img/Red_panda.jpg', name: 'RED PANDA'}, //レッサーパンダ
+   {picture: 'img/Rhinoceross.jpg', name: 'RHINOCEROSS'}, //サイ
+   {picture: 'img/Salmon.jpg', name: 'SALMON'}, //鮭
+   {picture: 'img/Seal.jpg', name: 'SEAL'}, //海豹
+   {picture: 'img/Shark.jpg', name: 'SHARK'}, //鮫
+   {picture: 'img/Slug.jpg', name: 'SLUG'}, //ナメクジ
+   {picture: 'img/Snail.jpg', name: 'SNAIL'}, //カタツムリ
+   {picture: 'img/Sparrow.jpg', name: 'SPARROW'}, //スズメ
+   {picture: 'img/Squirrel.jpg', name: 'SQUIRREL'}, //リス
+   {picture: 'img/Stingray.jpg', name: 'STINGRAY'},  //エイ
+   {picture: 'img/Sugar_Glider.jpg',name: 'SUGAR GLIDER'}, //フクロモモンガ   
+   {picture: 'img/Swan.jpg', name: 'SWAN'}, //白鳥
+   {picture: 'img/Tapir.jpg', name: 'TAPIR'}, //バク
+   {picture: 'img/Tasmanian_Devil.jpg', name: 'TASMANIAN DEVIL'}, //タスマニアデビル
+   {picture: 'img/Tiger.jpg', name: 'TIGER'}, //虎
+   {picture: 'img/Toad.jpg', name: 'TOAD'}, //ヒキガエル
+   {picture: 'img/Trout.jpg', name: 'TROUT'}, //マス
+   {picture: 'img/Turkey.jpg', name: 'TURKEY'}, //シチメンチョウ
+   {picture: 'img/Turtle.jpg', name: 'TURTLE'}, //亀
+   {picture: 'img/Viper.jpg', name: 'VIPER'}, //毒へび
+   {picture: 'img/Vulture.jpg',name: 'VULTURE'}, //禿鷹
+   {picture: 'img/Wallaby.jpg', name: 'WALLABY'}, //ワラビー
+   {picture: 'img/Walrus.jpg', name: 'WALRUS'}, //セイウチ
+   {picture: 'img/Whale.jpg', name: 'WHALE'}, //鯨
+   {picture: 'img/Wolverine.jpg',name: 'WOLVERINE'}, //クズリ
+   {picture: 'img/Wombat.jpg', name: 'WOMBAT'}, // ウォンバット
+   {picture: 'img/Zebra.jpg', name: 'ZEBRA'}, //シマウマ
    ];
  
 //LET'S START PLACING TRIALS FROM HERE    
@@ -297,6 +285,7 @@ var pretest_instructions = {
 };
 main_timeline.push(pretest_instructions);
 
+
 var pretest_pic = {
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
@@ -304,16 +293,17 @@ var pretest_pic = {
     stimulus_height: 480,
     choices: ['Yes', 'No'],
     prompt:  `
-    <div style="font-size:24px;">
-    <p>Do you know the name of this animal?</p>
-    </div>`
-
+    <p>
+    <div style="font-size:24px;"> Do you know the name of this animal?</div> 
+    </p>       
+    `
     //prompt for debugging purposes only, shows the name of the country
     //prompt: function (){
     //    return `
     //      <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
     //},
 };
+
  
 //Fixation cross inbetween trials 
 var fixation = {
@@ -321,8 +311,8 @@ var fixation = {
     stimulus: '<div style="font-size:96px;">+</div>',
     choices: "NO_KEYS",
     trial_duration: function(){
-       //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-       return 100;
+       //return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
+       return 500; //fixation time for debugging
       }, 
     data: {
 	    task: 'fixation'
@@ -330,7 +320,7 @@ var fixation = {
 }; 
 
 var flashcard_pretest = {
-    timeline: [pretest_pic,fixation],
+    timeline: [fixation, pretest_pic],
     timeline_variables: sample_variables,
     randomize_order: false //no need to randomize again fetched items
  };
@@ -338,9 +328,12 @@ var flashcard_pretest = {
 
 var rest = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: '<div style="font-size:32px;">Please wait a moment...you can take a short break</div>',
-    choices: "NO_KEYS",
-    trial_duration: 2000	  
+    stimulus: `<div style="font-size:32px;">
+               <p>You can take a short break now.</p>
+               <p>Please hit the SPACE key when you are ready to continue.</p>
+               </div>`,
+    choices: " ",
+    response_ends_trial: true	  
 };
 main_timeline.push(rest);
 
@@ -387,7 +380,7 @@ var trial_pic = {
     response_ends_trial: true  
 }; 
 
-var n_trials = 4;  //number of repetitions on the study set play around with this one for debug
+var n_trials = 2;  //number of repetitions on the study set play around with this one for debug
 var chunk_size = 5; //number of elements to study in one set
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
@@ -411,7 +404,7 @@ console.log(random_study);
     console.log(set);
 
     var study_set = {
-        timeline: [trial_pic,trial_name,fixation],
+        timeline: [fixation,trial_pic,trial_name],
         timeline_variables: set  
      };
      main_timeline.push(study_set,rest);
@@ -451,7 +444,8 @@ var pic_test = {
     prompt:  `
     <div style="font-size:24px;">
     <p>Do you know the name of this animal?</p>
-    </div>`
+    </div>
+    `
 };
 
 //if trial
@@ -463,7 +457,8 @@ var confidence = {
     choices: ['Completely', 'Just Guessing'],
     prompt: `<div style="font-size:24px;">
     <p>How confident do you feel about your decission?</p>
-    </div>`
+    </div>
+    `
 };
 
 var if_node = {
@@ -495,8 +490,24 @@ var feedback = {
     response_ends_trial: false  
 }; 
 
+var conf = { 
+    type: jsPsychImageButtonResponse,   
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,       
+    trial_duration: 1000,
+    //${jsPsych.timelineVariable ("name")}
+    prompt: function (){
+        return `
+        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>
+        <div style="font-size:24px;"><p>is this the name you remembered?:</p>
+        </div>
+        `;},
+    choices: ['Yes', 'No'],       
+};
+
 var recognition_test = {
-  timeline: [pic_test,if_node,feedback,fixation],
+  timeline: [fixation,pic_test,if_node,feedback,conf],
   timeline_variables: sample_variables,
   randomize_order: true 
 };
