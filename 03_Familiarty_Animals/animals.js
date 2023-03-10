@@ -327,12 +327,12 @@ var flashcard_pretest = {
  main_timeline.push(flashcard_pretest);
 
 var rest = {
-    type: jsPsychHtmlKeyboardResponse,
+    type: jsPsychHtmlButtonResponse,
     stimulus: `<div style="font-size:32px;">
                <p>You can take a short break now.</p>
-               <p>Please hit the SPACE key when you are ready to continue.</p>
+               <p>Please tap CONTINUE button when you are ready.</p>
                </div>`,
-    choices: " ",
+    choices: ['Continue'],
     response_ends_trial: true	  
 };
 main_timeline.push(rest);
@@ -495,12 +495,10 @@ var conf = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,       
-    trial_duration: 1000,
-    //${jsPsych.timelineVariable ("name")}
-    prompt: function (){
+     prompt: function (){
         return `
         <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>
-        <div style="font-size:24px;"><p>is this the name you remembered?:</p>
+        <div style="font-size:24px;"><p>Is this the name you remembered?</p>
         </div>
         `;},
     choices: ['Yes', 'No'],       
