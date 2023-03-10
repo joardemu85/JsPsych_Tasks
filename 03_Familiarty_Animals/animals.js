@@ -480,7 +480,7 @@ var feedback = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,       
-    trial_duration: 1000,
+    trial_duration: 2000,
     //${jsPsych.timelineVariable ("name")}
     prompt: function (){
         return `
@@ -504,8 +504,21 @@ var conf = {
     choices: ['Yes', 'No'],       
 };
 
+var if_node_2 = {
+    timeline: [conf],
+    conditional_function: function (){
+      var data = jsPsych.data.get().last(2).values()[0];
+      console.log(data); 
+      if (data.response == 0){
+        return true;
+      }else {
+        return false;
+      }
+    }
+  };
+
 var recognition_test = {
-  timeline: [fixation,pic_test,if_node,feedback,conf],
+  timeline: [fixation,pic_test,if_node,feedback,if_node_2],
   timeline_variables: sample_variables,
   randomize_order: true 
 };

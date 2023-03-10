@@ -466,8 +466,8 @@ var fixation = {
     stimulus: '<div style="font-size:96px;">+</div>',
     choices: "NO_KEYS",
     trial_duration: function(){
-       //return jsPsych.randomization.sampleWithoutReplacement([500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-       return 100;
+       //return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
+       return 500;
       }, 
     data: {
 	    task: 'fixation'
@@ -475,7 +475,7 @@ var fixation = {
 }; 
 
 var flashcard_pretest = {
-    timeline: [pretest_pic,fixation],
+    timeline: [fixation, pretest_pic],
     timeline_variables: sample_variables,
     randomize_order: false //no need to randomize again fetched items
  };
@@ -483,10 +483,13 @@ var flashcard_pretest = {
 
  //rest after section is done 
 var rest = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: '<div style="font-size:32px;">Please wait a moment...you can take a short break</div>',
-    choices: "NO_KEYS",
-    trial_duration: 2000	  
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `<div style="font-size:32px;">
+    <p>You can take a short break now.</p>
+    <p>Please tap CONTINUE button when you are ready.</p>
+    </div>`,
+    choices: ['Continue'],
+    response_ends_trial: true	  
 };
 main_timeline.push(rest);
 
@@ -533,7 +536,7 @@ var trial_pic = {
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 4;  //number of repetitions on the study set play around with this one for debug
+var n_trials = 2;  //number of repetitions on the study set play around with this one for debug
 var chunk_size = 5; //number of elements to study in one set
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
@@ -557,7 +560,7 @@ console.log(random_study);
     console.log(set);
 
     var study_set = {
-        timeline: [trial_pic,trial_name,fixation],
+        timeline: [fixation,trial_pic,trial_name],
         timeline_variables: set  
      };
      main_timeline.push(study_set,rest);
@@ -632,18 +635,45 @@ var feedback = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,       
-    trial_duration: 1000,
-    //${jsPsych.timelineVariable ("name")}
+    trial_duration: 2000,
     prompt: function (){
         return `
         <div style="font-size:24px;"><p>The right answer is:</p></div>
-        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
-    },
-    response_ends_trial: false  
+        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>        
+        `;
+        },
+ 
 }; 
 
+var conf = { 
+    type: jsPsychImageButtonResponse,   
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,       
+     prompt: function (){
+        return `
+        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>
+        <div style="font-size:24px;"><p>Is this the name you remembered?</p>
+        </div>
+        `;},
+    choices: ['Yes', 'No'],       
+};
+
+var if_node_2 = {
+    timeline: [conf],
+    conditional_function: function (){
+      var data = jsPsych.data.get().last(2).values()[0];
+      console.log(data); 
+      if (data.response == 0){
+        return true;
+      }else {
+        return false;
+      }
+    }
+  };
+
 var recognition_test = {
-  timeline: [pic_test,if_node,feedback,fixation],
+  timeline: [fixation,pic_test,if_node,feedback,if_node_2],
   timeline_variables: sample_variables,
   randomize_order: true 
 };
@@ -659,7 +689,6 @@ var finalization = {
     post_trial_gap: 500
 };
 main_timeline.push(finalization);
-
 
 //jsPsych.run([gb].concat(trials));
 jsPsych.run(main_timeline);
