@@ -212,199 +212,199 @@ main_timeline.push(preload);
 //timeline variables
 var variables = [
     //STAND ALONE FORMAT 
-    {picture: 'img/af.png', name: 'AFGHANISTAN'},
-    {picture: 'img/al.png', name: 'ALBANIA'},
-    {picture: 'img/dz.png', name: 'ALGERIA'},
-    {picture: 'img/ad.png', name: 'ANDORRA'},
-    {picture: 'img/ao.png', name: 'ANGOLA'},
-    {picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},
-    {picture: 'img/ar.png', name: 'ARGENTINA'},
-    {picture: 'img/am.png', name: 'ARMENIA'},
-    {picture: 'img/au.png', name: 'AUSTRALIA'},
-    {picture: 'img/at.png', name: 'AUSTRIA'},
-    {picture: 'img/az.png', name: 'AZERBAIJAN'},
-    {picture: 'img/bs.png', name: 'BAHAMAS'}, //
-    {picture: 'img/bh.png', name: 'BAHARAIN'},
-    {picture: 'img/bd.png', name: 'BANGLADESH'},
-    {picture: 'img/bb.png', name: 'BARBADOS'},
-    {picture: 'img/by.png', name: 'BELARUS'},
-    {picture: 'img/be.png', name: 'BELGIUM'},
-    {picture: 'img/bz.png', name: 'BELIZE'},
-    {picture: 'img/bj.png', name: 'BENIN'},
-    {picture: 'img/bt.png', name: 'BHUTAN'},
-    {picture: 'img/bo.png', name: 'BOLIVIA'},
-    {picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},
-    {picture: 'img/bw.png', name: 'BOTSWANA'},
-    {picture: 'img/br.png', name: 'BRAZIL'},
-    {picture: 'img/bn.png', name: 'BRUNEI'},
-    {picture: 'img/bg.png', name: 'BULGARIA'},
-    {picture: 'img/bf.png', name: 'BURKINA FASO'},
-    {picture: 'img/bi.png', name: 'BURUNDI'},
-    {picture: 'img/kh.png', name: 'CAMBODIA'},
-    {picture: 'img/cm.png', name: 'CAMEROON'},
-    {picture: 'img/ca.png', name: 'CANADA'},
-    {picture: 'img/cv.png', name: 'CAPE VERDE'},
-    {picture: 'img/cf.png', name: 'CENTRAL AFRICAN REPUBLIC'},
-    {picture: 'img/td.png', name: 'CHAD'},
-    {picture: 'img/cl.png', name: 'CHILE'},
-    {picture: 'img/cn.png', name: 'CHINA'},//
-    {picture: 'img/co.png', name: 'COLOMBIA'},
-    {picture: 'img/km.png', name: 'COMOROS'},
-    {picture: 'img/cg.png', name: 'REPUBLIC OF THE CONGO'},
-    {picture: 'img/cd.png', name: 'DR CONGO'},
-    {picture: 'img/cr.png', name: 'COSTA RICA'},
-    {picture: 'img/ci.png', name: 'IVORY COAST'},
-    {picture: 'img/hr.png', name: 'CROATIA'},
-    {picture: 'img/cu.png', name: 'CUBA'},
-    {picture: 'img/cy.png', name: 'CYPRUS'},
-    {picture: 'img/cz.png', name: 'CZECHIA'},
-    {picture: 'img/dk.png', name: 'DENMARK'},
-    {picture: 'img/dj.png', name: 'DJIBOUTI'},
-    {picture: 'img/dm.png', name: 'DOMINICA'},
-    {picture: 'img/do.png', name: 'DOMINICAN REPUBLIC'},
-    {picture: 'img/ec.png', name: 'ECUADOR'},
-    {picture: 'img/eg.png', name: 'EGYPT'},
-    {picture: 'img/sv.png', name: 'EL SALVADOR'},
-    {picture: 'img/gq.png', name: 'EQUATORIAL GUINEA'},
-    {picture: 'img/er.png', name: 'ERITREA'},
-    {picture: 'img/ee.png', name: 'ESTONIA'},
-    {picture: 'img/sz.png', name: 'ESWATINI'},
-    {picture: 'img/et.png', name: 'ETHIOPIA'},
-    {picture: 'img/fj.png', name: 'FIJI'},
-    {picture: 'img/fi.png', name: 'FINLAND'},//
-    {picture: 'img/fr.png', name: 'FRANCE'},
-    {picture: 'img/ga.png', name: 'GABON'},
-    {picture: 'img/gm.png', name: 'GAMBIA'},
-    {picture: 'img/ge.png', name: 'GEORGIA'},
-    {picture: 'img/de.png', name: 'GERMANY'},
-    {picture: 'img/gh.png', name: 'GHANA'},
-    {picture: 'img/gr.png', name: 'GREECE'},
-    {picture: 'img/gd.png', name: 'GRENADA'},
-    {picture: 'img/gt.png', name: 'GUATEMALA'},
-    {picture: 'img/gn.png', name: 'GUINEA'},
-    {picture: 'img/gw.png', name: 'GUINEA-BISSAU'},
-    {picture: 'img/gy.png', name: 'GUYANA'},
-    {picture: 'img/ht.png', name: 'HAITI'},
-    {picture: 'img/hn.png', name: 'HONDURAS'},
-    {picture: 'img/hu.png', name: 'HUNGARY'},
-    {picture: 'img/is.png', name: 'ICELAND'},
-    {picture: 'img/in.png', name: 'INDIA'},
-    {picture: 'img/id.png', name: 'INDONESIA'},
-    {picture: 'img/ir.png', name: 'IRAN'},
-    {picture: 'img/iq.png', name: 'IRAQ'},
-    {picture: 'img/ie.png', name: 'IRELAND'},
-    {picture: 'img/il.png', name: 'ISRAEL'},
-    {picture: 'img/it.png', name: 'ITALY'},
-    {picture: 'img/jm.png', name: 'JAMAICA'},//
-    {picture: 'img/jp.png', name: 'JAPAN'},
-    {picture: 'img/jo.png', name: 'JORDAN'},
-    {picture: 'img/kz.png', name: 'KAZAKHSTAN'},
-    {picture: 'img/ke.png', name: 'KENYA'},
-    {picture: 'img/ki.png', name: 'KIRIBATI'},
-    {picture: 'img/kp.png', name: 'NORTH KOREA'},
-    {picture: 'img/kr.png', name: 'SOUTH KOREA'},
-    {picture: 'img/kw.png', name: 'KUWAIT'},
-    {picture: 'img/kg.png', name: 'KYRGYZSTAN'},
-    {picture: 'img/la.png', name: 'LAOS'},
-    {picture: 'img/lv.png', name: 'LATVIA'},
-    {picture: 'img/lb.png', name: 'LEBANON'},
-    {picture: 'img/ls.png', name: 'LESOTHO'},
-    {picture: 'img/lr.png', name: 'LIBERIA'},
-    {picture: 'img/ly.png', name: 'LIBYA'},
-    {picture: 'img/li.png', name: 'LIECHTENSTEIN'},
-    {picture: 'img/lt.png', name: 'LITHUANIA'},
-    {picture: 'img/lu.png', name: 'LUXENBOURG'},
-    {picture: 'img/mg.png', name: 'MADAGASCAR'},
-    {picture: 'img/mw.png', name: 'MALAWI'},
-    {picture: 'img/my.png', name: 'MALAYSIA'},
-    {picture: 'img/mv.png', name: 'MALDIVES'},
-    {picture: 'img/ml.png', name: 'MALI'},
-    {picture: 'img/mt.png', name: 'MALTA'},//
-    {picture: 'img/mh.png', name: 'MARSHALL ISLANDS'},
-    {picture: 'img/mr.png', name: 'MAURITANIA'},
-    {picture: 'img/mu.png', name: 'MAURITIUS'},
-    {picture: 'img/mx.png', name: 'MEXICO'},
-    {picture: 'img/fm.png', name: 'MICRONESIA'},
-    {picture: 'img/md.png', name: 'MOLDOVA'},
-    {picture: 'img/mc.png', name: 'MONACO'},
-    {picture: 'img/mn.png', name: 'MONGOLIA'},
-    {picture: 'img/me.png', name: 'MONTENEGRO'},
-    {picture: 'img/ma.png', name: 'MOROCCO'},
-    {picture: 'img/mz.png', name: 'MOZAMBIQUE'},
-    {picture: 'img/mm.png', name: 'MYANMAR'},
-    {picture: 'img/na.png', name: 'NAMIBIA'},
-    {picture: 'img/nr.png', name: 'NAURU'},
-    {picture: 'img/np.png', name: 'NEPAL'},
-    {picture: 'img/nl.png', name: 'NETHERLANDS'},
-    {picture: 'img/nz.png', name: 'NEW ZEALAND'},
-    {picture: 'img/ni.png', name: 'NICARAGUA'},
-    {picture: 'img/ne.png', name: 'NIGER'},
-    {picture: 'img/ng.png', name: 'NIGERIA'},
-    {picture: 'img/mk.png', name: 'NORTH MACEDONIA'},
-    {picture: 'img/no.png', name: 'NORWAY'},
-    {picture: 'img/om.png', name: 'OMAN'},
-    {picture: 'img/pk.png', name: 'PAKISTAN'},//
-    {picture: 'img/pw.png', name: 'PALAU'},
-    {picture: 'img/pa.png', name: 'PANAMA'},
-    {picture: 'img/pg.png', name: 'PAPUA NEW GUINEA'},
-    {picture: 'img/py.png', name: 'PARAGUAY'},
-    {picture: 'img/pe.png', name: 'PERU'},
-    {picture: 'img/ph.png', name: 'PHILIPINES'},
-    {picture: 'img/pl.png', name: 'POLAND'},
-    {picture: 'img/pt.png', name: 'PORTUGAL'},
-    {picture: 'img/qa.png', name: 'QATAR'},
-    {picture: 'img/ro.png', name: 'ROMANIA'},
-    {picture: 'img/ru.png', name: 'RUSSIA'},
-    {picture: 'img/rw.png', name: 'RWANDA'},
-    {picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},
-    {picture: 'img/lc.png', name: 'SAINT LUCIA'},
-    {picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},
-    {picture: 'img/ws.png', name: 'SAMOA'},
-    {picture: 'img/sm.png', name: 'SAN MARINO'},
-    {picture: 'img/st.png', name: 'SAO TOME AND PRINCIPE'},
-    {picture: 'img/sa.png', name: 'SAUDI ARABIA'},
-    {picture: 'img/sn.png', name: 'SENEGAL'},
-    {picture: 'img/rs.png', name: 'SERBIA'},
-    {picture: 'img/sc.png', name: 'SEYCHELLES'},
-    {picture: 'img/sl.png', name: 'SIERRA LEONE'},
-    {picture: 'img/sg.png', name: 'SINGAPORE'},//
-    {picture: 'img/sk.png', name: 'SLOVAKIA'},
-    {picture: 'img/si.png', name: 'SLOVENIA'},
-    {picture: 'img/sb.png', name: 'SOLOMON ISLANDS'},
-    {picture: 'img/so.png', name: 'SOMALIA'},
-    {picture: 'img/za.png', name: 'SOUTH AFRICA'},
-    {picture: 'img/ss.png', name: 'SOUTH SUDAN'},
-    {picture: 'img/es.png', name: 'SPAIN'},
-    {picture: 'img/lk.png', name: 'SRI LANKA'},
-    {picture: 'img/sd.png', name: 'SUDAN'},
-    {picture: 'img/sr.png', name: 'SURINAME'},
-    {picture: 'img/se.png', name: 'SWEEDEN'},
-    {picture: 'img/ch.png', name: 'SWITZERLAND'},
-    {picture: 'img/sy.png', name: 'SYRIA'},
-    {picture: 'img/tj.png', name: 'TAJIKISTAN'},
-    {picture: 'img/tz.png', name: 'TANZANIA'},
-    {picture: 'img/th.png', name: 'THAILAND'},
-    {picture: 'img/tl.png', name: 'TIMOR-LESTE'},
-    {picture: 'img/tg.png', name: 'TOGO'},
-    {picture: 'img/to.png', name: 'TONGA'},
-    {picture: 'img/tt.png', name: 'TRINIDAD AND TOBAGO'},
-    {picture: 'img/tn.png', name: 'TUNISIA'},
-    {picture: 'img/tr.png', name: 'TURKEY'},
-    {picture: 'img/tm.png', name: 'TURKMENISTAN'},
-    {picture: 'img/tv.png', name: 'TUVALU'}, //
-    {picture: 'img/ug.png', name: 'UGANDA'},
-    {picture: 'img/ua.png', name: 'UKRAINE'},
-    {picture: 'img/ae.png', name: 'UNITED ARAB EMIRATES'},
-    {picture: 'img/gb.png', name: 'UNITED KINGDOM'},
-    {picture: 'img/us.png', name: 'UNITED STATES'},
-    {picture: 'img/uy.png', name: 'URUGUAY'},
-    {picture: 'img/uz.png', name: 'UZBEKISTAN'},
-    {picture: 'img/vu.png', name: 'VANUATU'},
-    {picture: 'img/ve.png', name: 'VENEZUELA'},
-    {picture: 'img/vn.png', name: 'VIETNAM'},
-    {picture: 'img/ye.png', name: 'YEMEN'},
-    {picture: 'img/zm.png', name: 'ZAMBIA'},
-    {picture: 'img/zw.png', name: 'ZIMBABWE'}   
+    {picture: 'img/af.png', name: 'AFGHANISTAN'}, // アフガニスタン
+    {picture: 'img/al.png', name: 'ALBANIA'}, // アルバニア
+    {picture: 'img/dz.png', name: 'ALGERIA'}, // アルジェリア
+    {picture: 'img/ad.png', name: 'ANDORRA'}, // アンドラ
+    {picture: 'img/ao.png', name: 'ANGOLA'}, // アンゴラ
+    //{picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},// アンティグア・バーブーダ
+    {picture: 'img/ar.png', name: 'ARGENTINA'}, // アルゼンチン
+    {picture: 'img/am.png', name: 'ARMENIA'}, // アルメニア
+    {picture: 'img/au.png', name: 'AUSTRALIA'}, // オーストラリア
+    {picture: 'img/at.png', name: 'AUSTRIA'}, // オーストリア
+    {picture: 'img/az.png', name: 'AZERBAIJAN'}, // アゼルバイジャン
+    {picture: 'img/bs.png', name: 'BAHAMAS'}, // バハマ
+    {picture: 'img/bh.png', name: 'BAHARAIN'}, // バーレーン
+    {picture: 'img/bd.png', name: 'BANGLADESH'}, // ングラデシュ
+    {picture: 'img/bb.png', name: 'BARBADOS'},// バルバドス
+    {picture: 'img/by.png', name: 'BELARUS'},// ベラルーシ
+    {picture: 'img/be.png', name: 'BELGIUM'},// ベルギー
+    {picture: 'img/bz.png', name: 'BELIZE'},// ベリーズ
+    {picture: 'img/bj.png', name: 'BENIN'}, // ベナン
+    {picture: 'img/bt.png', name: 'BHUTAN'}, // ブータン
+    {picture: 'img/bo.png', name: 'BOLIVIA'}, // ボリビア
+    //{picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},// ボスニア・ヘルツェゴビナ
+    {picture: 'img/bw.png', name: 'BOTSWANA'}, // ボツワナ
+    {picture: 'img/br.png', name: 'BRAZIL'},// ブラジル
+    {picture: 'img/bn.png', name: 'BRUNEI'}, // ブルネイ
+    {picture: 'img/bg.png', name: 'BULGARIA'}, // ブルガリア
+    {picture: 'img/bf.png', name: 'BURKINA FASO'}, // ブルキナファソ
+    {picture: 'img/bi.png', name: 'BURUNDI'}, // ブルンジ
+    {picture: 'img/kh.png', name: 'CAMBODIA'}, // カンボジア
+    {picture: 'img/cm.png', name: 'CAMEROON'}, // カメルーン
+    {picture: 'img/ca.png', name: 'CANADA'}, // カナダ
+    {picture: 'img/cv.png', name: 'CAPE VERDE'}, // カーボベルデ 
+    {picture: 'img/cf.png', name: 'CENTRAL AFRICAN REPUBLIC'},// 中央アフリカ 
+    {picture: 'img/td.png', name: 'CHAD'}, // チャド
+    {picture: 'img/cl.png', name: 'CHILE'}, // チリ
+    {picture: 'img/cn.png', name: 'CHINA'}, // 中国
+    {picture: 'img/co.png', name: 'COLOMBIA'}, // コロンビア
+    {picture: 'img/km.png', name: 'COMOROS'}, // コモロ
+    {picture: 'img/cg.png', name: 'REPUBLIC OF THE CONGO'}, // コンゴ
+    {picture: 'img/cd.png', name: 'DR CONGO'},// コンゴ民主共和国
+    {picture: 'img/cr.png', name: 'COSTA RICA'}, // コスタリカ
+    {picture: 'img/ci.png', name: 'IVORY COAST'}, // コートジボワール
+    {picture: 'img/hr.png', name: 'CROATIA'}, // クロアチア
+    {picture: 'img/cu.png', name: 'CUBA'},// キューバ
+    {picture: 'img/cy.png', name: 'CYPRUS'},// キプロス
+    {picture: 'img/cz.png', name: 'CZECHIA'},// チェコ
+    {picture: 'img/dk.png', name: 'DENMARK'}, // デンマーク
+    {picture: 'img/dj.png', name: 'DJIBOUTI'}, //ジブチ
+    {picture: 'img/dm.png', name: 'DOMINICA'}, //ドミニカ国
+    {picture: 'img/do.png', name: 'DOMINICAN REPUBLIC'}, //ドミニカ共和国
+    {picture: 'img/ec.png', name: 'ECUADOR'}, // エクアドル
+    {picture: 'img/eg.png', name: 'EGYPT'}, // エジプト
+    {picture: 'img/sv.png', name: 'EL SALVADOR'}, //エルサルバドル
+    {picture: 'img/gq.png', name: 'EQUATORIAL GUINEA'}, // 赤道ギニア
+    {picture: 'img/er.png', name: 'ERITREA'}, // エリトリア
+    {picture: 'img/ee.png', name: 'ESTONIA'}, //エストニア
+    {picture: 'img/sz.png', name: 'ESWATINI'}, // エスワティニ
+    {picture: 'img/et.png', name: 'ETHIOPIA'}, // エチオピア
+    {picture: 'img/fj.png', name: 'FIJI'},// フィジー
+    {picture: 'img/fi.png', name: 'FINLAND'},// フィンランド
+    {picture: 'img/fr.png', name: 'FRANCE'},// フランス
+    {picture: 'img/ga.png', name: 'GABON'},// ガボン 
+    {picture: 'img/gm.png', name: 'GAMBIA'},// ガンビア
+    {picture: 'img/ge.png', name: 'GEORGIA'},// ジョージア
+    {picture: 'img/de.png', name: 'GERMANY'}, //ドイツ
+    {picture: 'img/gh.png', name: 'GHANA'}, // ガーナ
+    {picture: 'img/gr.png', name: 'GREECE'},// ギリシャ
+    {picture: 'img/gd.png', name: 'GRENADA'}, // グレナダ
+    {picture: 'img/gt.png', name: 'GUATEMALA'}, // グアテマラ
+    {picture: 'img/gn.png', name: 'GUINEA'},// ギニア
+    {picture: 'img/gw.png', name: 'GUINEA-BISSAU'},// ギニアビサウ
+    {picture: 'img/gy.png', name: 'GUYANA'},// ガイアナ
+    {picture: 'img/ht.png', name: 'HAITI'},// ハイチ
+    {picture: 'img/hn.png', name: 'HONDURAS'},// ホンジュラス
+    {picture: 'img/hu.png', name: 'HUNGARY'},// ハンガリー
+    {picture: 'img/is.png', name: 'ICELAND'},// アイスランド
+    {picture: 'img/in.png', name: 'INDIA'},// インド　
+    {picture: 'img/id.png', name: 'INDONESIA'},// インドネシア
+    {picture: 'img/ir.png', name: 'IRAN'},// イラン
+    {picture: 'img/iq.png', name: 'IRAQ'},// イラク
+    {picture: 'img/ie.png', name: 'IRELAND'},// アイルランド
+    {picture: 'img/il.png', name: 'ISRAEL'},// イスラエル
+    {picture: 'img/it.png', name: 'ITALY'},// イタリア
+    {picture: 'img/jm.png', name: 'JAMAICA'},// ジャマイカ
+    {picture: 'img/jp.png', name: 'JAPAN'},// 日本
+    {picture: 'img/jo.png', name: 'JORDAN'},// ヨルダン
+    {picture: 'img/kz.png', name: 'KAZAKHSTAN'},// カザフスタン
+    {picture: 'img/ke.png', name: 'KENYA'}, // ケニア
+    {picture: 'img/ki.png', name: 'KIRIBATI'}, // キリバス
+    {picture: 'img/kp.png', name: 'NORTH KOREA'},// 北朝鮮
+    {picture: 'img/kr.png', name: 'SOUTH KOREA'},// 韓国
+    {picture: 'img/kw.png', name: 'KUWAIT'},// クウェート
+    {picture: 'img/kg.png', name: 'KYRGYZSTAN'}, // キルギス
+    {picture: 'img/la.png', name: 'LAOS'}, // ラオス
+    {picture: 'img/lv.png', name: 'LATVIA'},// ラトビア
+    {picture: 'img/lb.png', name: 'LEBANON'},// レバノン
+    {picture: 'img/ls.png', name: 'LESOTHO'},// レソト
+    {picture: 'img/lr.png', name: 'LIBERIA'},// リベリア
+    {picture: 'img/ly.png', name: 'LIBYA'},// リビア
+    {picture: 'img/li.png', name: 'LIECHTENSTEIN'},// リヒテンシュタイン
+    {picture: 'img/lt.png', name: 'LITHUANIA'},// リトアニア
+    {picture: 'img/lu.png', name: 'LUXENBOURG'},// ルクセンブルク
+    {picture: 'img/mg.png', name: 'MADAGASCAR'},// マダガスカル
+    {picture: 'img/mw.png', name: 'MALAWI'},// マラウイ
+    {picture: 'img/my.png', name: 'MALAYSIA'}, // マレーシア
+    {picture: 'img/mv.png', name: 'MALDIVES'},// モルディブ
+    {picture: 'img/ml.png', name: 'MALI'},// マリ
+    {picture: 'img/mt.png', name: 'MALTA'},// マルタ
+    {picture: 'img/mh.png', name: 'MARSHALL ISLANDS'},// マーシャル諸島
+    {picture: 'img/mr.png', name: 'MAURITANIA'},// モーリタニア
+    {picture: 'img/mu.png', name: 'MAURITIUS'},// モーリシャス
+    {picture: 'img/mx.png', name: 'MEXICO'},// メキシコ
+    {picture: 'img/fm.png', name: 'MICRONESIA'},// ミクロネシア 
+    {picture: 'img/md.png', name: 'MOLDOVA'},// モルドバ
+    {picture: 'img/mc.png', name: 'MONACO'},// モナコ
+    {picture: 'img/mn.png', name: 'MONGOLIA'},// モンゴル
+    {picture: 'img/me.png', name: 'MONTENEGRO'},// モンテネグロ
+    {picture: 'img/ma.png', name: 'MOROCCO'},// モロッコ
+    {picture: 'img/mz.png', name: 'MOZAMBIQUE'},// モザンビーク
+    {picture: 'img/mm.png', name: 'MYANMAR'},// ミャンマー
+    {picture: 'img/na.png', name: 'NAMIBIA'},// ナミビア
+    {picture: 'img/nr.png', name: 'NAURU'},// ナウル
+    {picture: 'img/np.png', name: 'NEPAL'},// ネパール
+    {picture: 'img/nl.png', name: 'NETHERLANDS'},// オランダ
+    {picture: 'img/nz.png', name: 'NEW ZEALAND'},// ニュージーランド
+    {picture: 'img/ni.png', name: 'NICARAGUA'},// ニカラグア
+    {picture: 'img/ne.png', name: 'NIGER'},// ニジェール
+    {picture: 'img/ng.png', name: 'NIGERIA'},// ナイジェリア
+    {picture: 'img/mk.png', name: 'NORTH MACEDONIA'},// 北マケドニア
+    {picture: 'img/no.png', name: 'NORWAY'},// ノルウェー
+    {picture: 'img/om.png', name: 'OMAN'},// オマーン
+    {picture: 'img/pk.png', name: 'PAKISTAN'},// パキスタン
+    {picture: 'img/pw.png', name: 'PALAU'},// パラオ
+    {picture: 'img/pa.png', name: 'PANAMA'}, // パナマ
+    {picture: 'img/pg.png', name: 'PAPUA NEW GUINEA'}, // パプアニューギニア
+    {picture: 'img/py.png', name: 'PARAGUAY'},// パラグアイ
+    {picture: 'img/pe.png', name: 'PERU'},// ペルー
+    {picture: 'img/ph.png', name: 'PHILIPINES'},// フィリピン
+    {picture: 'img/pl.png', name: 'POLAND'},// ポーランド
+    {picture: 'img/pt.png', name: 'PORTUGAL'},// ポルトガル
+    {picture: 'img/qa.png', name: 'QATAR'},// カタール
+    {picture: 'img/ro.png', name: 'ROMANIA'},// ルーマニア
+    {picture: 'img/ru.png', name: 'RUSSIA'},// ロシア
+    {picture: 'img/rw.png', name: 'RWANDA'},// ルワンダ
+    //{picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},// セントクリストファー・ネイビス
+    {picture: 'img/lc.png', name: 'SAINT LUCIA'},// セントルシア
+    //{picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},// セントビンセント・グレナディーン
+    {picture: 'img/ws.png', name: 'SAMOA'},// サモア
+    {picture: 'img/sm.png', name: 'SAN MARINO'}, // サンマリノ
+    {picture: 'img/st.png', name: 'SAO TOME AND PRINCIPE'},// サントメ・プリンシペ
+    {picture: 'img/sa.png', name: 'SAUDI ARABIA'},// サウジアラビア
+    {picture: 'img/sn.png', name: 'SENEGAL'},// セネガル
+    {picture: 'img/rs.png', name: 'SERBIA'},// セルビア
+    {picture: 'img/sc.png', name: 'SEYCHELLES'},// セーシェル
+    {picture: 'img/sl.png', name: 'SIERRA LEONE'},// シエラレオネ
+    {picture: 'img/sg.png', name: 'SINGAPORE'},// シンガポール
+    {picture: 'img/sk.png', name: 'SLOVAKIA'},// スロバキア
+    {picture: 'img/si.png', name: 'SLOVENIA'},// スロベニア
+    {picture: 'img/sb.png', name: 'SOLOMON ISLANDS'},// ソロモン諸島
+    {picture: 'img/so.png', name: 'SOMALIA'},// ソマリア
+    {picture: 'img/za.png', name: 'SOUTH AFRICA'},// 南アフリカ
+    {picture: 'img/ss.png', name: 'SOUTH SUDAN'},// 南スーダン
+    {picture: 'img/es.png', name: 'SPAIN'},// スペイン
+    {picture: 'img/lk.png', name: 'SRI LANKA'},// スリランカ
+    {picture: 'img/sd.png', name: 'SUDAN'},// スーダン
+    {picture: 'img/sr.png', name: 'SURINAME'},// スリナム
+    {picture: 'img/se.png', name: 'SWEEDEN'},// スウェーデン
+    {picture: 'img/ch.png', name: 'SWITZERLAND'},// スイス
+    {picture: 'img/sy.png', name: 'SYRIA'},// シリア
+    {picture: 'img/tj.png', name: 'TAJIKISTAN'},// タジキスタン
+    {picture: 'img/tz.png', name: 'TANZANIA'},// タンザニア
+    {picture: 'img/th.png', name: 'THAILAND'},// タイ
+    {picture: 'img/tl.png', name: 'TIMOR-LESTE'},// 東ティモール
+    {picture: 'img/tg.png', name: 'TOGO'},// トーゴ
+    {picture: 'img/to.png', name: 'TONGA'},// トンガ
+    {picture: 'img/tt.png', name: 'TRINIDAD AND TOBAGO'},// トリニダード・トバゴ
+    {picture: 'img/tn.png', name: 'TUNISIA'},// チュニジア
+    {picture: 'img/tr.png', name: 'TURKEY'},// トルコ
+    {picture: 'img/tm.png', name: 'TURKMENISTAN'},// トルクメニスタン
+    {picture: 'img/tv.png', name: 'TUVALU'}, // ツバル
+    {picture: 'img/ug.png', name: 'UGANDA'},// ウガンダ
+    {picture: 'img/ua.png', name: 'UKRAINE'},// ウクライナ
+    {picture: 'img/ae.png', name: 'UNITED ARAB EMIRATES'},// アラブ首長国連邦
+    {picture: 'img/gb.png', name: 'UNITED KINGDOM'},// イギリス
+    {picture: 'img/us.png', name: 'UNITED STATES'},// アメリカ
+    {picture: 'img/uy.png', name: 'URUGUAY'},// ウルグアイ
+    {picture: 'img/uz.png', name: 'UZBEKISTAN'},// ウズベキスタン
+    {picture: 'img/vu.png', name: 'VANUATU'},// バヌアツ
+    {picture: 'img/ve.png', name: 'VENEZUELA'},// ベネズエラ
+    {picture: 'img/vn.png', name: 'VIETNAM'},// ベトナム
+    {picture: 'img/ye.png', name: 'YEMEN'},// イエメン
+    {picture: 'img/zm.png', name: 'ZAMBIA'},// ザンビア
+    {picture: 'img/zw.png', name: 'ZIMBABWE'}// ジンバブエ   
 ];  
 
 //The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
