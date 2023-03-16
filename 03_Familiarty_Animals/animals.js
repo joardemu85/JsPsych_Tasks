@@ -371,12 +371,14 @@ var trial_pic = {
 
  //The picture is followed by the name of the item
  var trial_name = {
-    type: jsPsychHtmlKeyboardResponse,   
+    type: jsPsychHtmlButtonResponse,   
     stimulus: function (){
-        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
+        return `<div style="font-size:72px;">
+        <p>${jsPsych.timelineVariable ("name")}</p>
+        </div>`;
     }, 
     //trial_duration: 1000,
-    choices: ' ',
+    choices: ['Next'],
     response_ends_trial: true  
 }; 
 

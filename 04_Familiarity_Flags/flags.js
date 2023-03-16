@@ -450,7 +450,7 @@ var pretest_pic = {
     choices: ['Yes', 'No'],
     prompt:  `
     <div style="font-size:24px;">
-    <p>Do you know which country is this flag?</p>
+    <p>Do you know which country is this flag from?</p>
     </div>`
 
     //prompt for debugging purposes only, shows the name of the country
@@ -503,7 +503,7 @@ var study_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now, you will perform a study session of the items .</p>
     <p>Each flag will appear followed by the country name in sets with a short break between sets.</p> 
-    <p>Hit the SPACE bar to move on to the next item.</p>    
+    <p>Hit the NEXT button to move on to the next item.</p>    
     <p>You will practice on the whole list of items 4 times.</p>   
     </div>
     <p>Tap "START" to begin.</p>
@@ -520,18 +520,20 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 1000,  
+    trial_duration: 1250,  
     response_ends_trial: false
  }; 
 
  //The picture is followed by the name of the item
  var trial_name = {
-    type: jsPsychHtmlKeyboardResponse,   
+    type: jsPsychHtmlButtonResponse,   
     stimulus: function (){
-        return `<div style="font-size:72px;">${jsPsych.timelineVariable ("name")}</div>`;
+        return `<div style="font-size:72px;">
+        <p>${jsPsych.timelineVariable ("name")}</p>
+        </div>`;
     }, 
     //trial_duration: 1000,
-    choices: ' ',
+    choices: ['Next'],
     response_ends_trial: true  
 }; 
 
