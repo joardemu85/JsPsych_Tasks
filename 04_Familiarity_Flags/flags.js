@@ -413,10 +413,19 @@ var welcome = {
     stimulus: `<div style="font-size:32px;">
                <p>Welcome to the experiment.</p> 
                <p>Tap "START" to begin.</p>
-               </div>`,
+               </div>
+               <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+               `,
                choices: ['START']
 };
 main_timeline.push(welcome); 
+
+//Switch on fullscreen
+var enter_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: true
+};
+main_timeline.push(enter_fullscreen);
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
 var sample_size = 20;
@@ -451,7 +460,9 @@ var pretest_pic = {
     prompt:  `
     <div style="font-size:24px;">
     <p>Do you know which country is this flag from?</p>
-    </div>`
+    </div>
+    <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+    `
 
     //prompt for debugging purposes only, shows the name of the country
     //prompt: function (){
@@ -463,7 +474,8 @@ var pretest_pic = {
  //Fixation cross inbetween trials 
 var fixation = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: '<div style="font-size:96px;">+</div>',
+    stimulus: `<div style="font-size:120px;">+</div>
+              `,
     choices: "NO_KEYS",
     trial_duration: function(){
        //return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
@@ -520,7 +532,10 @@ var trial_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    trial_duration: 1250,  
+    trial_duration: 1250,
+    prompt: `
+       <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+       `,  
     response_ends_trial: false
  }; 
 
@@ -603,7 +618,9 @@ var pic_test = {
     prompt:  `
     <div style="font-size:24px;">
     <p>Can you tell whose flag is?</p>
-    </div>`
+    </div>
+    <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+    `
 };
 
 //if trial
@@ -680,6 +697,14 @@ var recognition_test = {
   randomize_order: true 
 };
 main_timeline.push(recognition_test);
+
+//Switch off fullscreen before closing the app
+var exit_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: false,
+    delay_after: 0
+};
+main_timeline.push(exit_fullscreen);
 
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
