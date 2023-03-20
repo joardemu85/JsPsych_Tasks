@@ -1,6 +1,7 @@
 var jsPsych = initJsPsych({
     on_finish: function() {
         jsPsych.data.displayData();
+        jsPsych.data.get().localSave('csv','subject_000.csv');
     }
 });
 
@@ -414,9 +415,11 @@ var welcome = {
                <p>Welcome to the experiment.</p> 
                <p>Tap "START" to begin.</p>
                </div>
-               <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
                `,
-               choices: ['START']
+               choices: ['START'],
+    data:{ 
+        task: 'welcome'   
+     },           
 };
 main_timeline.push(welcome); 
 
@@ -447,7 +450,11 @@ var pretest_instructions = {
     </div>
     `,
     choices: ['START'],
-    post_trial_gap: 250
+    post_trial_gap: 250,
+    data:{ 
+        task: 'pretest_instructions',
+        item_name: jsPsych.timelineVariable('name')     
+    },
 };
 main_timeline.push(pretest_instructions);
 
@@ -457,6 +464,10 @@ var pretest_pic = {
     stimulus_width: 640,
     stimulus_height: 480,
     choices: ['Yes', 'No'],
+    data:{ 
+        task: 'pretest',
+        item_name: jsPsych.timelineVariable('name')     
+    },
     prompt:  `
     <div style="font-size:24px;">
     <p>Do you know which country is this flag from?</p>
@@ -535,7 +546,11 @@ var trial_pic = {
     trial_duration: 1250,
     prompt: `
        <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
-       `,  
+       `,
+    data:{ 
+        task: 'study_pic',
+        item_name: jsPsych.timelineVariable('name')     
+    },     
     response_ends_trial: false
  }; 
 
@@ -615,6 +630,10 @@ var pic_test = {
     stimulus_width: 640,
     stimulus_height: 480,
     choices: ['Yes', 'No'],
+    data:{ 
+        task: 'test_pic',
+        item_name: jsPsych.timelineVariable('name')     
+    }, 
     prompt:  `
     <div style="font-size:24px;">
     <p>Can you tell whose flag is?</p>
@@ -632,7 +651,9 @@ var confidence = {
     choices: ['Completely', 'Just Guessing'],
     prompt: `<div style="font-size:24px;">
     <p>How confident do you feel about your decission?</p>
-    </div>`
+    </div>`,
+    data:{ 
+        task: 'confidence_pic'}           
 };
 
 var if_node = {
@@ -661,10 +682,13 @@ var feedback = {
         <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>        
         `;
         },
- 
+        data:{ 
+            task: 'feedback_pic',
+            item_name: jsPsych.timelineVariable('name')    
+        }  
 }; 
 
-var conf = { 
+var check = { 
     type: jsPsychImageButtonResponse,   
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
@@ -675,11 +699,14 @@ var conf = {
         <div style="font-size:24px;"><p>Is this the name you remembered?</p>
         </div>
         `;},
-    choices: ['Yes', 'No'],       
+    choices: ['Yes', 'No'],  
+    data:{ 
+        task: 'feedback_pic',           
+    }  
 };
 
 var if_node_2 = {
-    timeline: [conf],
+    timeline: [check],
     conditional_function: function (){
       var data = jsPsych.data.get().last(2).values()[0];
       console.log(data); 
