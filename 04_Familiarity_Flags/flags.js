@@ -431,7 +431,7 @@ var enter_fullscreen = {
 main_timeline.push(enter_fullscreen);
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 10; //debug value: 20 real task value 100
+var sample_size = 100; //debug value: 20 real task value 100
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
 
@@ -489,8 +489,8 @@ var fixation = {
               `,
     choices: "NO_KEYS",
     trial_duration: function(){
-       //return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
-       return 500;
+       return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
+       //return 500; //value for debugging
       }, 
     data: {
 	    task: 'fixation'
