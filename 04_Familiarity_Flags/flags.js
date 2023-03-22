@@ -1,6 +1,6 @@
 var jsPsych = initJsPsych({
     on_finish: function() {
-        jsPsych.data.displayData();
+        //jsPsych.data.displayData();
         jsPsych.data.get().localSave('csv','subject_000.csv');
     }
 });
@@ -431,7 +431,7 @@ var enter_fullscreen = {
 main_timeline.push(enter_fullscreen);
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 20;
+var sample_size = 10; //debug value: 20 real task value 100
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
 
@@ -463,7 +463,7 @@ var pretest_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    choices: ['Yes', 'No'],
+    choices: ['No', 'Yes'],
     data:{ 
         task: 'pretest',
         item_name: jsPsych.timelineVariable('name')     
@@ -568,11 +568,11 @@ var trial_pic = {
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 2;  //number of repetitions on the study set play around with this one for debug
-var chunk_size = 5; //number of elements to study in one set
+var n_trials = 2;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
+var chunk_size = 5; //number of elements to study in one set. Debug: 5, Real task: 10
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
-//one trial consists of the study of the whole list divided into 5 chunks with the same number of items
+//one trial consists of the study of the whole list divided into chunks with the same number of items
 for (var i=0; i<n_trials; i++){
 
 //first we define where the chunk starts and where it ends    
@@ -629,7 +629,7 @@ var pic_test = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    choices: ['Yes', 'No'],
+    choices: ['No', 'Yes'],
     data:{ 
         task: 'test_pic',
         item_name: jsPsych.timelineVariable('name')     
@@ -648,7 +648,7 @@ var confidence = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,    
-    choices: ['Completely', 'Just Guessing'],
+    choices: ['Just Guessing', 'Completely'],
     prompt: `<div style="font-size:24px;">
     <p>How confident do you feel about your decission?</p>
     </div>`,
@@ -661,7 +661,7 @@ var if_node = {
   conditional_function: function (){
     var data = jsPsych.data.get().last(1).values()[0];
     console.log(data); 
-    if (data.response == 0){
+    if (data.response == 1){
       return true;
     }else {
       return false;
@@ -699,9 +699,9 @@ var check = {
         <div style="font-size:24px;"><p>Is this the name you remembered?</p>
         </div>
         `;},
-    choices: ['Yes', 'No'],  
+    choices: ['No', 'Yes'],  
     data:{ 
-        task: 'feedback_pic',           
+        task: 'check_pic',           
     }  
 };
 
@@ -710,7 +710,7 @@ var if_node_2 = {
     conditional_function: function (){
       var data = jsPsych.data.get().last(2).values()[0];
       console.log(data); 
-      if (data.response == 0){
+      if (data.response == 1){
         return true;
       }else {
         return false;
