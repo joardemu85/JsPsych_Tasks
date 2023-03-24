@@ -472,7 +472,7 @@ var pretest_pic = {
     <div style="font-size:24px;">
     <p>Do you know which country is this flag from?</p>
     </div>
-    <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
     `
 
     //prompt for debugging purposes only, shows the name of the country
@@ -545,7 +545,7 @@ var trial_pic = {
     stimulus_height: 480,
     trial_duration: 1250,
     prompt: `
-       <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+       <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
        `,
     data:{ 
         task: 'study_pic',
@@ -568,8 +568,8 @@ var trial_pic = {
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 2;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
-var chunk_size = 5; //number of elements to study in one set. Debug: 5, Real task: 10
+var n_trials = 4;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
+var chunk_size = 10; //number of elements to study in one set. Debug: 5, Real task: 10
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into chunks with the same number of items
@@ -638,7 +638,7 @@ var pic_test = {
     <div style="font-size:24px;">
     <p>Can you tell whose flag is?</p>
     </div>
-    <div style="font-size:96px;top:325px;position:absolute;right:20px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
     `
 };
 
@@ -685,7 +685,8 @@ var feedback = {
         data:{ 
             task: 'feedback_pic',
             item_name: jsPsych.timelineVariable('name')    
-        }  
+        },
+        response_ends_trial: false  
 }; 
 
 var check = { 
