@@ -413,7 +413,7 @@ var welcome = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `<div style="font-size:32px;">
                <p>Welcome to the experiment.</p> 
-               <p>Tap "START" to begin.</p>
+               <p>Click "START" to begin.</p>
                </div>
                `,
                choices: ['START'],
@@ -463,7 +463,7 @@ var pretest_pic = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    choices: ['No', 'Yes'],
+    choices: ['NO', 'YES'],
     data:{ 
         task: 'pretest',
         item_name: jsPsych.timelineVariable('name')     
@@ -511,7 +511,7 @@ var rest = {
     <p>You can take a short break now.</p>
     <p>Please click CONTINUE when you are ready.</p>
     </div>`,
-    choices: ['Continue'],
+    choices: ['CONTINUE'],
     response_ends_trial: true,
     data: {
 	    task: 'rest'
@@ -566,7 +566,7 @@ var trial_pic = {
         </div>`;
     }, 
     //trial_duration: 1000,
-    choices: ['Next'],
+    choices: ['NEXT'],
     response_ends_trial: true  
 }; 
 
@@ -588,8 +588,7 @@ console.log(random_study);
 
 var announce = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:32px;">
-    <p>Rearranging items.</p>
+    stimulus: `<div style="font-size:48px;">
     <p>Trial ${i+1}/${n_trials}.</p>
     </div>`,        
     response_ends_trial: false,
@@ -632,8 +631,8 @@ var test_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
-    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "Completely" if you are absolutely sure 
-    you can remember, or "Just Guessing if you are not sure your answer is right".</p>    
+    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sure 
+    you can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
     <p>Click "START" to begin.</p>
     </div>
     `,
@@ -648,7 +647,7 @@ var pic_test = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    choices: ['No', 'Yes'],
+    choices: ['NO', 'YES'],
     data:{ 
         task: 'test_pic',
         item_name: jsPsych.timelineVariable('name')     
@@ -667,7 +666,7 @@ var confidence = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,    
-    choices: ['Just Guessing', 'Completely'],
+    choices: ['JUST GUESSING', 'COMPLETELY'],
     prompt: `<div style="font-size:24px;">
     <p>How confident do you feel about your answer?</p>
     </div>`,
@@ -719,7 +718,7 @@ var check = {
         <div style="font-size:24px;"><p>Is this the same name you remembered?</p>
         </div>
         `;},
-    choices: ['No', 'Yes'],  
+    choices: ['NO', 'YES'],  
     data:{ 
         task: 'check_pic',           
     }  

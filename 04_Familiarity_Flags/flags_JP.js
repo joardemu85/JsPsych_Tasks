@@ -529,7 +529,7 @@ var study_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>では、アイテムの勉強会を実施します。</p>
     <p>それぞれの国旗の後に国名がセットで表示され、セットとセットの間に休憩が入ります。</p> 
-    <p>NEXT」ボタンをクリックすると、次の項目へ移動します。</p>    
+    <p>「NEXT」ボタンをクリックすると、次の項目へ移動します。</p>    
     <p>アイテムリスト全体で4回練習することになります。</p>   
     </div>
     <p>「START」をクリックすると開始します。</p>
@@ -588,7 +588,7 @@ console.log(random_study);
 
 var announce = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:32px;">
+    stimulus: `<div style="font-size:48px;">
     <p>反復 ${i+1}/${n_trials}.</p>
     </div>`,        
     response_ends_trial: false,
@@ -646,7 +646,7 @@ var pic_test = {
     stimulus: jsPsych.timelineVariable("picture"),
     stimulus_width: 640,
     stimulus_height: 480,
-    choices: ['No', 'Yes'],
+    choices: ['NO', 'YES'],
     data:{ 
         task: 'test_pic',
         item_name: jsPsych.timelineVariable('name')     
@@ -717,7 +717,7 @@ var check = {
         <div style="font-size:24px;"><p>覚えていた名前と同じですか？</p>
         </div>
         `;},
-    choices: ['No', 'Yes'],  
+    choices: ['NO', 'YES'],  
     data:{ 
         task: 'check_pic',           
     }  
