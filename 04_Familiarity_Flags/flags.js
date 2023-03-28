@@ -218,7 +218,7 @@ var variables = [
     {picture: 'img/dz.png', name: 'ALGERIA'}, // アルジェリア
     {picture: 'img/ad.png', name: 'ANDORRA'}, // アンドラ
     {picture: 'img/ao.png', name: 'ANGOLA'}, // アンゴラ
-    //{picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},// アンティグア・バーブーダ
+    {picture: 'img/ag.png', name: 'ANTIGUA AND BARBUDA'},// アンティグア・バーブーダ
     {picture: 'img/ar.png', name: 'ARGENTINA'}, // アルゼンチン
     {picture: 'img/am.png', name: 'ARMENIA'}, // アルメニア
     {picture: 'img/au.png', name: 'AUSTRALIA'}, // オーストラリア
@@ -234,7 +234,7 @@ var variables = [
     {picture: 'img/bj.png', name: 'BENIN'}, // ベナン
     {picture: 'img/bt.png', name: 'BHUTAN'}, // ブータン
     {picture: 'img/bo.png', name: 'BOLIVIA'}, // ボリビア
-    //{picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},// ボスニア・ヘルツェゴビナ
+    {picture: 'img/ba.png', name: 'BOSNIA AND HERZEGOVINA'},// ボスニア・ヘルツェゴビナ
     {picture: 'img/bw.png', name: 'BOTSWANA'}, // ボツワナ
     {picture: 'img/br.png', name: 'BRAZIL'},// ブラジル
     {picture: 'img/bn.png', name: 'BRUNEI'}, // ブルネイ
@@ -357,9 +357,9 @@ var variables = [
     {picture: 'img/ro.png', name: 'ROMANIA'},// ルーマニア
     {picture: 'img/ru.png', name: 'RUSSIA'},// ロシア
     {picture: 'img/rw.png', name: 'RWANDA'},// ルワンダ
-    //{picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},// セントクリストファー・ネイビス
+    {picture: 'img/kn.png', name: 'SAINT KITTS AND NEVIS'},// セントクリストファー・ネイビス
     {picture: 'img/lc.png', name: 'SAINT LUCIA'},// セントルシア
-    //{picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},// セントビンセント・グレナディーン
+    {picture: 'img/vc.png', name: 'SAINT VINCENT AND THE GRENADINES'},// セントビンセント・グレナディーン
     {picture: 'img/ws.png', name: 'SAMOA'},// サモア
     {picture: 'img/sm.png', name: 'SAN MARINO'}, // サンマリノ
     {picture: 'img/st.png', name: 'SAO TOME AND PRINCIPE'},// サントメ・プリンシペ
@@ -431,7 +431,7 @@ var enter_fullscreen = {
 main_timeline.push(enter_fullscreen);
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 100; //debug value: 20 real task value 100
+var sample_size = 20; //debug value: 20 real task value 100
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
 
@@ -444,9 +444,9 @@ var pretest_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>In this part of the experiment, you will be shown a set of flags corresponding to UN member countries.</p>
     <p>You will be asked if you can name the country the flag belongs to.</p>
-    <p>Tap YES if you recognize to which country the flag belongs to or NO if you do not.</p>     
+    <p>Click YES if you recognize which country the flag belongs to or NO if you do not.</p>     
     </div>
-    <p>Tap "START" to begin.</p>
+    <p>Click "START" to begin.</p>
     </div>
     `,
     choices: ['START'],
@@ -509,10 +509,13 @@ var rest = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `<div style="font-size:32px;">
     <p>You can take a short break now.</p>
-    <p>Please tap CONTINUE button when you are ready.</p>
+    <p>Please click CONTINUE when you are ready.</p>
     </div>`,
     choices: ['Continue'],
-    response_ends_trial: true	  
+    response_ends_trial: true,
+    data: {
+	    task: 'rest'
+    }	  
 };
 main_timeline.push(rest);
 
@@ -525,11 +528,11 @@ var study_instructions = {
     <div style="font-size:24px;">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now, you will perform a study session of the items .</p>
-    <p>Each flag will appear followed by the country name in sets with a short break between sets.</p> 
-    <p>Hit the NEXT button to move on to the next item.</p>    
+    <p>Each flag will appear followed by the country name in sets with a break between sets.</p> 
+    <p>Click the NEXT button to move on to the next item.</p>    
     <p>You will practice on the whole list of items 4 times.</p>   
     </div>
-    <p>Tap "START" to begin.</p>
+    <p>Click "START" to begin.</p>
     </div>
     `,
     choices: ['START'],
@@ -568,8 +571,8 @@ var trial_pic = {
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 4;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
-var chunk_size = 10; //number of elements to study in one set. Debug: 5, Real task: 10
+var n_trials = 2;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
+var chunk_size = 5; //number of elements to study in one set. Debug: 5, Real task: 20
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into chunks with the same number of items
@@ -582,6 +585,21 @@ var last_el = chunk_size;
 //randomize the whole list without repetition
 var random_study = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
 console.log(random_study);
+
+var announce = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<div style="font-size:32px;">
+    <p>Rearranging items.</p>
+    <p>Trial ${i+1}/${n_trials}.</p>
+    </div>`,        
+    response_ends_trial: false,
+    choices: 'NO_KEYS',
+    trial_duration: 1000,
+    data: {
+	    task: 'announcement'
+    }  
+};
+main_timeline.push(announce);
  
  for (var k=0; k<n_sets; k++) {
     
@@ -589,7 +607,7 @@ console.log(random_study);
     //Every set will be studied once, when the whole list is done, it will restart 
     
     set = random_study.slice(first_el, last_el);
-    console.log(set);
+    console.log(set);  
 
     var study_set = {
         timeline: [fixation,trial_pic,trial_name],
@@ -613,9 +631,10 @@ var test_instructions = {
     <div style="font-size:24px;">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
-    <p>Each flag will be shown once and you will click YES if you remember the right name of the country or NO if you do not.</p>
+    <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
     <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "Completely" if you are absolutely sure 
-    you can remember, or "Just Guessing if you are not sure your answer is right".</p>    <p>Tap "START" to begin.</p>
+    you can remember, or "Just Guessing if you are not sure your answer is right".</p>    
+    <p>Click "START" to begin.</p>
     </div>
     `,
     choices: ['START'],
@@ -650,7 +669,7 @@ var confidence = {
     stimulus_height: 480,    
     choices: ['Just Guessing', 'Completely'],
     prompt: `<div style="font-size:24px;">
-    <p>How confident do you feel about your decission?</p>
+    <p>How confident do you feel about your answer?</p>
     </div>`,
     data:{ 
         task: 'confidence_pic'}           
@@ -697,7 +716,7 @@ var check = {
      prompt: function (){
         return `
         <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>
-        <div style="font-size:24px;"><p>Is this the name you remembered?</p>
+        <div style="font-size:24px;"><p>Is this the same name you remembered?</p>
         </div>
         `;},
     choices: ['No', 'Yes'],  
