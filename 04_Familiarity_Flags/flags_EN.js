@@ -430,8 +430,6 @@ var welcome = {
 };
 main_timeline.push(welcome); 
 
-
-
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
 var sample_size = 20; //debug value: 20 real task value 100
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
@@ -633,8 +631,7 @@ var test_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
-    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sure 
-    you can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
+    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sure you can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
     <p>Click "START" to begin.</p>
     </div>
     `,
