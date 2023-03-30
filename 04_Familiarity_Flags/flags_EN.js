@@ -408,10 +408,17 @@ var variables = [
     {picture: 'img/zw.png', name: 'ZIMBABWE'}// ジンバブエ   
 ];  
 
+//Switch on fullscreen
+var enter_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: true
+};
+main_timeline.push(enter_fullscreen);
+
 //The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
 var welcome = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: `<div style="font-size:32px;">
+    stimulus: `<div style="font-size:32px; color:beige">
                <p>Welcome to the experiment.</p> 
                <p>Click "START" to begin.</p>
                </div>
@@ -423,12 +430,7 @@ var welcome = {
 };
 main_timeline.push(welcome); 
 
-//Switch on fullscreen
-var enter_fullscreen = {
-    type: jsPsychFullscreen,
-    fullscreen_mode: true
-};
-main_timeline.push(enter_fullscreen);
+
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
 var sample_size = 20; //debug value: 20 real task value 100
@@ -440,7 +442,7 @@ console.log(sample_variables); //show the item sample in console for debugging
 var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>In this part of the experiment, you will be shown a set of flags corresponding to UN member countries.</p>
     <p>You will be asked if you can name the country the flag belongs to.</p>
@@ -469,10 +471,10 @@ var pretest_pic = {
         item_name: jsPsych.timelineVariable('name')     
     },
     prompt:  `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <p>Do you know which country is this flag from?</p>
-    </div>
     <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    </div>
     `
 
     //prompt for debugging purposes only, shows the name of the country
@@ -485,7 +487,7 @@ var pretest_pic = {
  //Fixation cross inbetween trials 
 var fixation = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:120px;">+</div>
+    stimulus: `<div style="font-size:120px; color:beige">+</div>
               `,
     choices: "NO_KEYS",
     trial_duration: function(){
@@ -507,7 +509,7 @@ var flashcard_pretest = {
  //rest after section is done 
 var rest = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: `<div style="font-size:32px;">
+    stimulus: `<div style="font-size:32px; color:beige">
     <p>You can take a short break now.</p>
     <p>Please click CONTINUE when you are ready.</p>
     </div>`,
@@ -525,7 +527,7 @@ main_timeline.push(rest);
 var study_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now, you will perform a study session of the items .</p>
     <p>Each flag will appear followed by the country name in sets with a break between sets.</p> 
@@ -548,7 +550,7 @@ var trial_pic = {
     stimulus_height: 480,
     trial_duration: 1250,
     prompt: `
-       <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+       <div style="font-size:108px;top:325px;position:absolute;right:50px; color:beige"><p>.</p></div>
        `,
     data:{ 
         task: 'study_pic',
@@ -561,7 +563,7 @@ var trial_pic = {
  var trial_name = {
     type: jsPsychHtmlButtonResponse,   
     stimulus: function (){
-        return `<div style="font-size:72px;">
+        return `<div style="font-size:72px; color:beige">
         <p>${jsPsych.timelineVariable ("name")}</p>
         </div>`;
     }, 
@@ -588,7 +590,7 @@ console.log(random_study);
 
 var announce = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:48px;">
+    stimulus: `<div style="font-size:48px; color:beige">
     <p>Trial ${i+1}/${n_trials}.</p>
     </div>`,        
     response_ends_trial: false,
@@ -627,7 +629,7 @@ main_timeline.push(announce);
 var test_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
@@ -653,10 +655,10 @@ var pic_test = {
         item_name: jsPsych.timelineVariable('name')     
     }, 
     prompt:  `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <p>Can you tell whose flag is?</p>
-    </div>
     <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    </div>
     `
 };
 
@@ -667,7 +669,7 @@ var confidence = {
     stimulus_width: 640,
     stimulus_height: 480,    
     choices: ['JUST GUESSING', 'COMPLETELY'],
-    prompt: `<div style="font-size:24px;">
+    prompt: `<div style="font-size:24px; color:beige">
     <p>How confident do you feel about your answer?</p>
     </div>`,
     data:{ 
@@ -696,8 +698,8 @@ var feedback = {
     trial_duration: 2000,
     prompt: function (){
         return `
-        <div style="font-size:24px;"><p>The right answer is:</p></div>
-        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>        
+        <div style="font-size:24px; color:beige"><p>The right answer is:</p></div>
+        <div style="font-size:42px; color:beige"><p>${jsPsych.timelineVariable ("name")}</p></div>        
         `;
         },
         data:{ 
@@ -714,8 +716,8 @@ var check = {
     stimulus_height: 480,       
      prompt: function (){
         return `
-        <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>
-        <div style="font-size:24px;"><p>Is this the same name you remembered?</p>
+        <div style="font-size:42px; color:beige"><p>${jsPsych.timelineVariable ("name")}</p></div>
+        <div style="font-size:24px; color:beige"><p>Is this the same name you remembered?</p>
         </div>
         `;},
     choices: ['NO', 'YES'],  
@@ -755,7 +757,7 @@ main_timeline.push(exit_fullscreen);
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
-    <div style="font-size:48px;">
+    <div style="font-size:48px; color:beige">
     <p>This is the end of the experiment.</p>
     <p>Thank you very much for your participation.</p>
     </div>`,
