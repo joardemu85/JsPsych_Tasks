@@ -440,7 +440,7 @@ console.log(sample_variables); //show the item sample in console for debugging
 var pretest_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-    <div style="font-size:24px;">
+    <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>この実験では、国連加盟国に対応する国旗の写真が表示されます。</p>
     <p>国の旗を認識することができるだろうかについて問われます。</p>
@@ -743,14 +743,6 @@ var recognition_test = {
 };
 main_timeline.push(recognition_test);
 
-//Switch off fullscreen before closing the app
-var exit_fullscreen = {
-    type: jsPsychFullscreen,
-    fullscreen_mode: false,
-    delay_after: 0
-};
-main_timeline.push(exit_fullscreen);
-
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -761,6 +753,14 @@ var finalization = {
     post_trial_gap: 500
 };
 main_timeline.push(finalization);
+
+//Switch off fullscreen before closing the app
+var exit_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: false,
+    delay_after: 0
+};
+main_timeline.push(exit_fullscreen);
 
 //jsPsych.run([gb].concat(trials));
 jsPsych.run(main_timeline);

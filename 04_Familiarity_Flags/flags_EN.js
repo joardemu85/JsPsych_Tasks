@@ -631,7 +631,7 @@ var test_instructions = {
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>Now you will be asked if you remember the right name of the country associated to its flag.</p>
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
-    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sure you can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
+    <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sureyou can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
     <p>Click "START" to begin.</p>
     </div>
     `,
@@ -743,14 +743,6 @@ var recognition_test = {
 };
 main_timeline.push(recognition_test);
 
-//Switch off fullscreen before closing the app
-var exit_fullscreen = {
-    type: jsPsychFullscreen,
-    fullscreen_mode: false,
-    delay_after: 0
-};
-main_timeline.push(exit_fullscreen);
-
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -761,6 +753,14 @@ var finalization = {
     post_trial_gap: 500
 };
 main_timeline.push(finalization);
+
+//Switch off fullscreen before closing the app
+var exit_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: false,
+    delay_after: 0
+};
+main_timeline.push(exit_fullscreen);
 
 //jsPsych.run([gb].concat(trials));
 jsPsych.run(main_timeline);
