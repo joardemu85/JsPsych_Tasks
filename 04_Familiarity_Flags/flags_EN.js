@@ -430,11 +430,77 @@ var welcome = {
 };
 main_timeline.push(welcome); 
 
+// PART 0: Practice.
+var practice_instructions = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <div style="font-size:32px; color:beige">    
+    <p>Before you start with the experiment, you will perform a practice session.</p>
+    <p>A fixation cross will appear on screen followed by a picture. To switch to the next item, click the "NEXT" button.</p>
+    <p>You can only blink your eyes ONLY when the fixation cross is displayed.</p>     
+    <p>Click "START" to begin.</p>
+    </div>   
+    `,
+    choices: ['START'],
+    post_trial_gap: 0,
+    data:{ 
+        task: 'practice_instructions',
+        item_name: jsPsych.timelineVariable('name')     
+    },
+};
+main_timeline.push(practice_instructions);
+
+var practice_variables = jsPsych.randomization.sampleWithoutReplacement(variables,10);
+
+ //Fixation cross inbetween trials 
+ var fixation = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<div style="font-size:120px; color:beige">+</div>
+              `,
+    choices: "NO_KEYS",
+    trial_duration: function(){
+       return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
+       //return 500; //value for debugging
+      }, 
+    data: {
+	    task: 'fixation'
+	  }
+};
+
+var practice_pic = {
+    type: jsPsychImageButtonResponse,
+    stimulus: jsPsych.timelineVariable("picture"),
+    stimulus_width: 640,
+    stimulus_height: 480,
+    choices: ['NEXT']
+};
+
+var practice = {
+    timeline: [fixation, practice_pic],
+    timeline_variables: practice_variables,
+    randomize_order: false //no need to randomize again fetched items
+ };
+ main_timeline.push(practice);
+
+ var practice_end = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <div style="font-size:32px; color:beige">    
+    <p>This is the end of the practice session.</p> 
+    <p>Click "START" to begin.</p>
+    </div>   
+    `,
+    choices: ['START'],
+    post_trial_gap: 0,
+
+};
+main_timeline.push(practice_end);
+
+
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 20; //debug value: 20 real task value 100
+var sample_size = 20; //debug value: 20 real task value 100, maybe only 50
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
-
 
 // PART 1: PRE-TEST.
 var pretest_instructions = {
@@ -447,7 +513,8 @@ var pretest_instructions = {
     <p>Click YES if you recognize which country the flag belongs to or NO if you do not.</p>     
     </div>
     <p>Click "START" to begin.</p>
-    </div>
+    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    </div>    
     `,
     choices: ['START'],
     post_trial_gap: 250,
@@ -480,21 +547,6 @@ var pretest_pic = {
     //    return `
     //      <div style="font-size:42px;"><p>${jsPsych.timelineVariable ("name")}</p></div>`;
     //},
-};
-
- //Fixation cross inbetween trials 
-var fixation = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:120px; color:beige">+</div>
-              `,
-    choices: "NO_KEYS",
-    trial_duration: function(){
-       return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
-       //return 500; //value for debugging
-      }, 
-    data: {
-	    task: 'fixation'
-	  }
 }; 
 
 var flashcard_pretest = {
@@ -533,6 +585,7 @@ var study_instructions = {
     <p>You will practice on the whole list of items 4 times.</p>   
     </div>
     <p>Click "START" to begin.</p>
+    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -633,6 +686,7 @@ var test_instructions = {
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
     <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sureyou can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
     <p>Click "START" to begin.</p>
+    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
