@@ -11,7 +11,7 @@ var enter_fullscreen = {
 main_timeline.push(enter_fullscreen);
 
 
-for (var i=0;i<10;i++){
+for (var i=0;i<20;i++){
 
     var sens_off = {
     type: jsPsychHtmlKeyboardResponse,
