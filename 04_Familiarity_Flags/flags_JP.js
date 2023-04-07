@@ -498,7 +498,7 @@ main_timeline.push(practice_end);
 
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 20; //debug value: 20 real task value 100
+var sample_size = 30; //Pilot value: 30 Task Value 60
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
 
@@ -624,8 +624,8 @@ var trial_pic = {
 }; 
 
 //consider adding console.log lines to check the output.
-var n_trials = 2;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
-var chunk_size = 5; //number of elements to study in one set. Debug: 5, Real task: 20
+var n_trials = 4;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
+var chunk_size = 10; //number of elements to study in one set. Debug: 5, Real task: 20
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into chunks with the same number of items
