@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>My experiment</title>
+	<script src="https://unpkg.com/jspsych@7.3.1"></script> 
+  <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+	<script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.2"></script> 
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.2"></script> 
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.2"></script> 
+	<link href="https://unpkg.com/jspsych@7.3.1/css/jspsych.css" rel="stylesheet" type="text/css" /> 
+  </head>
+  <body></body>
+  <script>
+    
+    var jsPsych = initJsPsych({
+	   on_finish: function() {
+	     jsPsych.data.displayData() ;
+		 },
+     use_webaudio: false
+	});
+
+    var timeline = [];
+
+    var preload = {
+      type: jsPsychPreload,
+      audio: [
+      'mp3/dichotic-listening_mp3_1_Cat_R_Fall_L.mp3', 
+      'mp3/dichotic-listening_mp3_2_Dog_R_Win_L.mp3', 
+      'mp3/dichotic-listening_mp3_3_Bed_R_More_L.mp3',
+      'mp3/dichotic-listening_mp3_4_Puff_R_Neck_L.mp3', 
+      'mp3/dichotic-listening_mp3_5_Some_R_Gap_L.mp3', 
+      'mp3/dichotic-listening_mp3_6_Bug_R_Jet_L.mp3', 
+      'mp3/dichotic-listening_mp3_7_Tub_R_Hen_L.mp3',
+      'mp3/dichotic-listening_mp3_8_Pig_R_Came_L.mp3', 
+      'mp3/dichotic-listening_mp3_9_Sun_R_Jam_L.mp3',
+      'mp3/dichotic-listening_mp3_10_Kid_R_Let_L.mp3'
+      ]
+    };
+	  timeline.push(preload);
+
+    //define timeline variables
+    var timeline_variables = [
+      {sound: 'mp3/dichotic-listening_mp3_1_Cat_R_Fall_L.mp3', left:['fall'], right: ['cat']},
+      {sound: 'mp3/dichotic-listening_mp3_2_Dog_R_Win_L.mp3', left:['win'], right: ['dog']},
+      {sound: 'mp3/dichotic-listening_mp3_3_Bed_R_More_L.mp3', left:['more'], right: ['bed']},
+      {sound: 'mp3/dichotic-listening_mp3_4_Puff_R_Neck_L.mp3', left:['neck'], right: ['puff']},
+      {sound: 'mp3/dichotic-listening_mp3_5_Some_R_Gap_L.mp3', left:['gap'], right: ['some']},
+      {sound: 'mp3/dichotic-listening_mp3_6_Bug_R_Jet_L.mp3', left:['jet'], right: ['bug']},
+      {sound: 'mp3/dichotic-listening_mp3_7_Tub_R_Hen_L.mp3', left:['hen'], right: ['tub']},
+      {sound: 'mp3/dichotic-listening_mp3_8_Pig_R_Came_L.mp3', left:['came'], right: ['pig']},
+      {sound: 'mp3/dichotic-listening_mp3_9_Sun_R_Jam_L.mp3', left:['jam'], right: ['sun']},
+      {sound: 'mp3/dichotic-listening_mp3_10_Kid_R_Let_L.mp3', left:['let'], right: ['kid']}
+    ];
+
+    var welcome_screen = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p>Welcome to the experiment</p>',
+      choices: ['Continue']
+    };
+    timeline.push(welcome_screen);
+
+    var audio_trial ={
+      type: jsPsychAudioKeyboardResponse,
+      stimulus: jsPsych.timelineVariable('sound'),
+      choices: "NO_KEYS",
+      trial_ends_after_audio: true
+    };
+  
+    var response_trial = {
+      type: jsPsychSurveyText,
+      questions:[
+       {prompt: 'Please write any words that you heard. If you heard more than one word please separate each woerd with a comma'}
+      ],
+      data: {
+       sound: jsPsych.timelineVariable('sound'),
+       phase: 'response'     
+      },
+      on_finish: function(data){
+        var subject_response = JSON.parse(data.responses).Q0;
+        var lower_case_response = subject_response.toLowerCase();
+        var subject_response_words = lower_case_response.split(",");
+        var right_word = false;
+        var left_word = false;
+        for(var i=0; i<subject_response_words.length; i++){
+          var word = subject_response_words[i].trim();
+          if(jsPsych.timelineVariable('right', true).includes(word)){
+            right_word = true;
+          }
+          if(jsPsych.timelineVariable('left', true).includes(word)){
+            left_word = true;
+          }
+        }
+        data.left_word_correct = left_word;
+        data.right_word_correct = right_word;
+      }
+    };   
+
+    var test_procedure = {
+      timeline: [audio_trial, response_trial],
+      timeline_variables: timeline_variables,
+      randomize_order: true
+    };
+    timeline.push(test_procedure);
+
+    jsPsych.run(timeline);  
+
+  </script>
+</html>
