@@ -450,7 +450,7 @@ var practice_instructions = {
 };
 main_timeline.push(practice_instructions);
 
-var practice_variables = jsPsych.randomization.sampleWithoutReplacement(variables,10);
+var practice_variables = jsPsych.randomization.sampleWithoutReplacement(variables,10); //original val = 10
 
  //Fixation cross inbetween trials 
  var fixation = {
@@ -498,7 +498,7 @@ main_timeline.push(practice_end);
 
 
 //Select a sample of the total items in the list, this can be changed depending of the time available for the task
-var sample_size = 30; //Pilot value: 30 Task Value 60
+var sample_size = 60; //Pilot value: 30 Task Value 60
 var sample_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(sample_variables); //show the item sample in console for debugging
 
@@ -625,7 +625,7 @@ var trial_pic = {
 
 //consider adding console.log lines to check the output.
 var n_trials = 4;  //number of repetitions for the section. Debug: 2, Real task: 4 or more 
-var chunk_size = 10; //number of elements to study in one set. Debug: 5, Real task: 20
+var chunk_size = 15; //number of elements to study in one set. Debug: 5, Real task: 20
 var n_sets = sample_size/chunk_size;  // The result of this operation must always be an integer
 
 //one trial consists of the study of the whole list divided into chunks with the same number of items
@@ -660,6 +660,20 @@ main_timeline.push(announce);
     
     set = random_study.slice(first_el, last_el);
     console.log(set);  
+
+    var announce2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<div style="font-size:48px; color:beige">
+        <p>セット${k+1}/${n_sets}.</p>
+        </div>`,        
+        response_ends_trial: false,
+        choices: 'NO_KEYS',
+        trial_duration: 1000,
+        data: {
+            task: 'announcement'
+        }  
+    };
+    main_timeline.push(announce2);
 
     var study_set = {
         timeline: [fixation,trial_pic,trial_name],
