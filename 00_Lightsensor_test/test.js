@@ -31,7 +31,7 @@ var sens_on = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `<div style="font-size:108px; color:beige">
                <p>SENSOR ON</p>  
-               <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+               <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
                </div>
               `,
     choices: "NO_KEYS",

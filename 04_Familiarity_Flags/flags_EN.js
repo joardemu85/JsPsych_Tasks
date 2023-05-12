@@ -513,7 +513,7 @@ var pretest_instructions = {
     <p>Click YES if you recognize which country the flag belongs to or NO if you do not.</p>     
     </div>
     <p>Click "START" to begin.</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>    
     `,
     choices: ['START'],
@@ -538,7 +538,7 @@ var pretest_pic = {
     prompt:  `
     <div style="font-size:24px; color:beige">
     <p>Do you know which country is this flag from?</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `
 
@@ -585,7 +585,7 @@ var study_instructions = {
     <p>You will practice on the whole list of items 4 times.</p>   
     </div>
     <p>Click "START" to begin.</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -601,7 +601,7 @@ var trial_pic = {
     stimulus_height: 480,
     trial_duration: 1250,
     prompt: `
-       <div style="font-size:108px;top:325px;position:absolute;right:50px; color:beige"><p>.</p></div>
+       <div style="font-size:108px;top:325px;position:absolute;right:10px; color:beige"><p>.</p></div>
        `,
     data:{ 
         task: 'study_pic',
@@ -639,19 +639,19 @@ var last_el = chunk_size;
 var random_study = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
 console.log(random_study);
 
-var announce = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:48px; color:beige">
-    <p>Trial ${i+1}/${n_trials}.</p>
-    </div>`,        
-    response_ends_trial: false,
-    choices: 'NO_KEYS',
-    trial_duration: 1000,
-    data: {
-	    task: 'announcement'
-    }  
-};
-main_timeline.push(announce);
+//var announce = {
+//    type: jsPsychHtmlKeyboardResponse,
+//    stimulus: `<div style="font-size:48px; color:beige">
+//    <p>Trial ${i+1}/${n_trials}.</p>
+//    </div>`,        
+//    response_ends_trial: false,
+//    choices: 'NO_KEYS',
+//    trial_duration: 1000,
+//    data: {
+//	    task: 'announcement'
+//    }  
+//};
+//main_timeline.push(announce);
  
  for (var k=0; k<n_sets; k++) {
     
@@ -661,9 +661,10 @@ main_timeline.push(announce);
     set = random_study.slice(first_el, last_el);
     console.log(set);  
 
-    var announce2 = {
+    var announce = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `<div style="font-size:48px; color:beige">
+        <p>Trial ${i+1}/${n_trials}.</p>
         <p>Set ${k+1}/${n_sets}.</p>
         </div>`,        
         response_ends_trial: false,
@@ -673,7 +674,7 @@ main_timeline.push(announce);
             task: 'announcement'
         }  
     };
-    main_timeline.push(announce2);
+    main_timeline.push(announce);
 
     var study_set = {
         timeline: [fixation,trial_pic,trial_name],
@@ -700,7 +701,7 @@ var test_instructions = {
     <p>Each flag will be shown once, and you will click YES if you remember the right name of the country or NO if you do not.</p>
     <p>If you answer YES, you will be asked if you are confident on the name of the country. Please click "COMPLETELY" if you are absolutely sureyou can remember, or "JUST GUESSING if you are not sure your answer is right".</p>    
     <p>Click "START" to begin.</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],

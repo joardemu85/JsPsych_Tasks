@@ -513,7 +513,7 @@ var pretest_instructions = {
     <p>表示している写真がどこの国の国旗がわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>     
     </div>
     <p>「START」をクリックすると、実験を開始します。</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -538,7 +538,7 @@ var pretest_pic = {
     prompt:  `
     <div style="font-size:24px; color:beige">
     <p>この国旗はどこの国のものか知っていますか？</p>    
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `
 
@@ -585,7 +585,7 @@ var study_instructions = {
     <p>アイテムリスト全体で4回練習することになります。</p>   
     </div>
     <p>「START」をクリックすると開始します。</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -601,7 +601,7 @@ var trial_pic = {
     stimulus_height: 480,
     trial_duration: 1250,
     prompt: `
-       <div style="font-size:108px;top:325px;position:absolute;right:50px; color:beige"><p>.</p></div>
+       <div style="font-size:108px;top:325px;position:absolute;right:10px; color:beige"><p>.</p></div>
        `,
     data:{ 
         task: 'study_pic',
@@ -639,19 +639,19 @@ var last_el = chunk_size;
 var random_study = jsPsych.randomization.sampleWithoutReplacement(sample_variables,sample_size); 
 console.log(random_study);
 
-var announce = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:48px; color:beige">
-    <p>反復 ${i+1}/${n_trials}.</p>
-    </div>`,        
-    response_ends_trial: false,
-    choices: 'NO_KEYS',
-    trial_duration: 1000,
-    data: {
-	    task: 'announcement'
-    }  
-};
-main_timeline.push(announce);
+//var announce = {
+//    type: jsPsychHtmlKeyboardResponse,
+//    stimulus: `<div style="font-size:48px; color:beige">
+//    <p>反復 ${i+1}/${n_trials}.</p>
+//    </div>`,        
+//    response_ends_trial: false,
+//    choices: 'NO_KEYS',
+//    trial_duration: 1000,
+//    data: {
+//	    task: 'announcement'
+//    }  
+//};
+//main_timeline.push(announce);
  
  for (var k=0; k<n_sets; k++) {
     
@@ -661,9 +661,10 @@ main_timeline.push(announce);
     set = random_study.slice(first_el, last_el);
     console.log(set);  
 
-    var announce2 = {
+    var announce = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `<div style="font-size:48px; color:beige">
+        <p>反復 ${i+1}/${n_trials}.</p>
         <p>セット${k+1}/${n_sets}.</p>
         </div>`,        
         response_ends_trial: false,
@@ -673,7 +674,7 @@ main_timeline.push(announce);
             task: 'announcement'
         }  
     };
-    main_timeline.push(announce2);
+    main_timeline.push(announce);
 
     var study_set = {
         timeline: [fixation,trial_pic,trial_name],
@@ -700,7 +701,7 @@ var test_instructions = {
     <p>それぞれの国旗が1回ずつ表示され、正しい国名を覚えていれば「YES」、覚えていなければ「NO」をクリックすることになります。</p>
     <p>「はい」と答えた場合、国名に自信があるかどうかを尋ねられます。絶対に覚えている自信がある場合は「COMPLETELY」、自信がない場合は「JUST GUESSING」をクリックしてください。</p>    
     <p>「START」をクリックすると開始します。</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -722,7 +723,7 @@ var pic_test = {
     prompt:  `
     <div style="font-size:24px; color:beige">
     <p>この国旗はどこの国のものか知っていますか？</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `
 };
