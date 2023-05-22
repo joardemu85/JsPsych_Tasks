@@ -226,7 +226,7 @@ var variables = [
     {picture: 'img/az.png', name: 'AZERBAIJAN'}, // アゼルバイジャン
     {picture: 'img/bs.png', name: 'BAHAMAS'}, // バハマ
     {picture: 'img/bh.png', name: 'BAHARAIN'}, // バーレーン
-    {picture: 'img/bd.png', name: 'BANGLADESH'}, // ングラデシュ
+    {picture: 'img/bd.png', name: 'BANGLADESH'}, // バングラデシュ
     {picture: 'img/bb.png', name: 'BARBADOS'},// バルバドス
     {picture: 'img/by.png', name: 'BELARUS'},// ベラルーシ
     {picture: 'img/be.png', name: 'BELGIUM'},// ベルギー
