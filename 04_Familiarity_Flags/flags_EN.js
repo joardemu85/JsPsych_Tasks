@@ -723,7 +723,7 @@ var pic_test = {
     prompt:  `
     <div style="font-size:24px; color:beige">
     <p>Can you tell whose flag is?</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:50px;"><p>.</p></div>
+    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `
 };
