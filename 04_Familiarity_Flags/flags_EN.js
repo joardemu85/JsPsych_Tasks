@@ -623,6 +623,10 @@ var trial_pic = {
     }, 
     //trial_duration: 1000,
     choices: ['NEXT'],
+    data:{ 
+        task: 'study_name',
+        item_name: jsPsych.timelineVariable('name')     
+    },    
     response_ends_trial: true  
 }; 
 
