@@ -1,7 +1,7 @@
 var jsPsych = initJsPsych({
     on_finish: function() {
         //jsPsych.data.displayData();
-        jsPsych.data.get().localSave('csv','subject_000.csv');
+        jsPsych.data.get().localSave('csv','AMT000BH.csv');
     }
 });
 
@@ -589,7 +589,10 @@ var study_instructions = {
     </div>
     `,
     choices: ['START'],
-    post_trial_gap: 500
+    post_trial_gap: 500,
+    data: {
+        task: 'test_instructions'
+    }
 };
 main_timeline.push(study_instructions);
 
@@ -705,7 +708,10 @@ var test_instructions = {
     </div>
     `,
     choices: ['START'],
-    post_trial_gap: 1000
+    post_trial_gap: 1000,
+    data: {
+        task: 'test_instructions'
+    }
 };
 main_timeline.push(test_instructions);
 
