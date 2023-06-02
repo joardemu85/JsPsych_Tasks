@@ -591,7 +591,7 @@ var study_instructions = {
     choices: ['START'],
     post_trial_gap: 500,
     data: {
-        task: 'test_instructions'
+        task: 'study_instructions'
     }
 };
 main_timeline.push(study_instructions);
