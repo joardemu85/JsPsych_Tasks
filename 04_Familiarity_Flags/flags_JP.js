@@ -519,7 +519,7 @@ var pretest_instructions = {
     choices: ['START'],
     post_trial_gap: 250,
     data:{ 
-        task: 'pretest_instructions',
+        task: 'pre_inst',
         item_name: jsPsych.timelineVariable('name')     
     },
 };
@@ -532,7 +532,7 @@ var pretest_pic = {
     stimulus_height: 480,
     choices: ['NO', 'YES'],
     data:{ 
-        task: 'pretest',
+        task: 'pre_pic',
         item_name: jsPsych.timelineVariable('name')     
     },
     prompt:  `
@@ -591,7 +591,7 @@ var study_instructions = {
     choices: ['START'],
     post_trial_gap: 500,
     data: {
-        task: 'study_instructions'
+        task: 'study_inst'
     }
 };
 main_timeline.push(study_instructions);
@@ -714,7 +714,7 @@ var test_instructions = {
     choices: ['START'],
     post_trial_gap: 1000,
     data: {
-        task: 'test_instructions'
+        task: 'test_inst'
     }
 };
 main_timeline.push(test_instructions);
@@ -749,7 +749,7 @@ var confidence = {
     <p>自分の答えにどの程度の自信があるのでしょうか？</p>
     </div>`,
     data:{ 
-        task: 'confidence_pic'}           
+        task: 'conf_pic'}           
 };
 
 var if_node = {
