@@ -749,7 +749,9 @@ var confidence = {
     <p>自分の答えにどの程度の自信があるのでしょうか？</p>
     </div>`,
     data:{ 
-        task: 'conf_pic'}           
+        task: 'conf_pic',
+        item_name: jsPsych.timelineVariable('name') 
+    }           
 };
 
 var if_node = {
