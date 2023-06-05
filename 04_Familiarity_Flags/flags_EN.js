@@ -798,7 +798,8 @@ var check = {
         `;},
     choices: ['NO', 'YES'],  
     data:{ 
-        task: 'check_pic',           
+        task: 'check_pic', 
+        item_name: jsPsych.timelineVariable('name')           
     }  
 };
 
