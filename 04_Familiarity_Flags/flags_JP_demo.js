@@ -696,9 +696,7 @@ console.log(random_study);
     }   
 }
 
-
 //PART 3. TEST
-
 var test_instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
