@@ -350,7 +350,7 @@ var variables = [
     {picture: 'img/pg.png', name: 'PAPUA NEW GUINEA'}, // パプアニューギニア
     {picture: 'img/py.png', name: 'PARAGUAY'},// パラグアイ
     {picture: 'img/pe.png', name: 'PERU'},// ペルー
-    {picture: 'img/ph.png', name: 'PHILIPINES'},// フィリピン
+    {picture: 'img/ph.png', name: 'PHILIPPINES'},// フィリピン
     {picture: 'img/pl.png', name: 'POLAND'},// ポーランド
     {picture: 'img/pt.png', name: 'PORTUGAL'},// ポルトガル
     {picture: 'img/qa.png', name: 'QATAR'},// カタール
@@ -379,7 +379,7 @@ var variables = [
     {picture: 'img/lk.png', name: 'SRI LANKA'},// スリランカ
     {picture: 'img/sd.png', name: 'SUDAN'},// スーダン
     {picture: 'img/sr.png', name: 'SURINAME'},// スリナム
-    {picture: 'img/se.png', name: 'SWEEDEN'},// スウェーデン
+    {picture: 'img/se.png', name: 'SWEDEN'},// スウェーデン
     {picture: 'img/ch.png', name: 'SWITZERLAND'},// スイス
     {picture: 'img/sy.png', name: 'SYRIA'},// シリア
     {picture: 'img/tj.png', name: 'TAJIKISTAN'},// タジキスタン
