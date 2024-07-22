@@ -503,7 +503,7 @@ main_timeline.push(practice_end);
 
 
 // randomize list for studying, Change the number of items to adjust the final number of trials to use
-var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,60);
+var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,80);
 console.log(study_variables); //show the item sample in console for debugging
 
 // PART 1: Study.
@@ -580,7 +580,7 @@ var countdown_rest = {
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 2 * 60 * 1000; // in milliseconds
+    var wait_time = 5 * 60 * 1000; // in milliseconds
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
