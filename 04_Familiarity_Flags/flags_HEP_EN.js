@@ -503,7 +503,7 @@ main_timeline.push(practice_end);
 
 
 // randomize list for studying, Change the number of items to adjust the final number of trials to use
-var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,15);
+var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,60);
 console.log(study_variables); //show the item sample in console for debugging
 
 // PART 1: Study.
@@ -553,51 +553,6 @@ var study_section = {
  };
  main_timeline.push(study_section);
 
-  /*
-  let timer = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: "Hello world",
-    extensions: [
-      {
-        type: jsPsychExtensionCountdown,
-        params: {
-          time: 5000,
-          update_time: 20,
-          format: (time) => {
-            if (time < 3000) {
-              document.querySelector(".jspsych-extension-countdown").style.color = "red";
-            }
-  
-            let time_in_seconds = time / 1000;
-  
-            let minutes = Math.floor(time_in_seconds / 60);
-            time_in_seconds -= minutes * 60;
-  
-            let seconds = Math.floor(time_in_seconds);
-  
-            let format_number = (number) => {
-              let temp_str = `0${number}`;
-              return temp_str.substring(temp_str.length - 2);
-            };
-  
-            return `${format_number(minutes)}:${format_number(seconds)}`;
-          },
-        },
-      },
-    ],
-    on_load: function () {
-      setTimeout(() => {
-        jsPsych.extensions.countdown.pause();
-        setTimeout(() => {
-          jsPsych.extensions.countdown.resume();
-        }, 2000);
-      }, 1000);
-    },
-  };
-  main_timeline.push(timer);*/
-
-
- 
  //rest after section is done 
 
 // Old static rest trial 
