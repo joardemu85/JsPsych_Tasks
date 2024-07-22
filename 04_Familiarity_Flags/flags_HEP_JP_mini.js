@@ -252,7 +252,38 @@ var study_section = {
 
  
  //rest after section is done 
-var rest = {
+ // Countdown implementation
+ var countdown_rest = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `<div style="font-size:32px; color:beige">
+    <p>You can take a short break now.</p>
+    <p>When you are ready, click on "CONTINUE"</p>
+    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+    </div>`,
+  choices: ['CONTINUE'],
+  on_load: function(){
+    var wait_time = 2 * 60 * 1000; // in milliseconds
+    var start_time = performance.now();
+    document.querySelector('button').disabled = true;
+    var interval = setInterval(function(){
+      var time_left = wait_time - (performance.now() - start_time);
+      var minutes = Math.floor(time_left / 1000 / 60);
+      var seconds = Math.floor((time_left - minutes*1000*60)/1000);
+      var seconds_str = seconds.toString().padStart(2,'0');
+      document.querySelector('#clock').innerHTML = minutes + ':' + seconds_str
+      if(time_left <= 0){
+        document.querySelector('#clock').innerHTML = "0:00";
+        document.querySelector('button').disabled = false;
+        clearInterval(interval);
+      }
+    }, 250)
+  }
+};
+main_timeline.push(countdown_rest);
+
+//Old static implementation 
+/*
+ var rest = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `<div style="font-size:32px; color:beige">
     <p>今から少し休憩に取ってください。</p>
@@ -264,7 +295,7 @@ var rest = {
 	    task: 'rest'
     }	  
 };
-main_timeline.push(rest);
+main_timeline.push(rest);*/
 
 
 //PART 2. TEST
