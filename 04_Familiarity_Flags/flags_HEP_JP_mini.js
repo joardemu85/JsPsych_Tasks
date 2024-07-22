@@ -297,7 +297,7 @@ var test_trial = {
   questions: [
     {prompt: function (){
       return `<div style="font-size:24px; color:beige">
-      <p>What is the name of this country?</p>
+      <p>この旗は何国のですか？</p>
       <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
       </div>`; 
       }
@@ -305,8 +305,7 @@ var test_trial = {
   ],
   data:{ 
     task: 'test',    
-    item_name: jsPsych.timelineVariable('name'),    
-    response: jsPsych.surveyt 
+    item_name: jsPsych.timelineVariable('name')   
    },
 } 
 
