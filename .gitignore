@@ -1,5 +1,9 @@
-# Ignore all directories
-*/
+# ignore all files
+*
+
+# except for .js and .html
+!*.js
+!*.html
 
 # Ignore picture files
 *.jpg
