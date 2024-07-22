@@ -1,0 +1,12 @@
+# Ignore all directories
+*/
+
+# Ignore picture files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+
+
+
