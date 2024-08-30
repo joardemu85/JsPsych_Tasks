@@ -691,8 +691,7 @@ console.log(random_study);
      
      //once the set is displayed for study, the indeces are shifted to continue with the next set
      first_el = first_el+chunk_size;
-     last_el = last_el+chunk_size; 
-     
+     last_el = last_el+chunk_size;      
     }   
 }
 
