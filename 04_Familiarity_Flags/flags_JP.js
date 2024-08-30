@@ -704,9 +704,10 @@ var test_instructions = {
     stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
-    <p>国旗に関連する国名を正しく覚えているかどうかが問われます。</p>
-    <p>それぞれの国旗が1回ずつ表示され、正しい国名を覚えていれば「YES」、覚えていなければ「NO」をクリックすることになります。</p>
-    <p>「はい」と答えた場合、国名に自信があるかどうかを尋ねられます。絶対に覚えている自信がある場合は「COMPLETELY」、自信がない場合は「JUST GUESSING」をクリックしてください。</p>    
+    <p>これから、表示される国旗の国名を正しく覚えているかどうか確認します。</p>
+    <p>表示された国旗の正しい国名を覚えていれば「YES」、覚えていなければ「NO」をクリックしてください。</p>
+    <p>また「はい」と答えた場合は、覚えている国名にどのくらい自信があるか尋ねられます。</p>
+    <p>完璧に覚えているとの自信がある場合は「COMPLETELY」、あまり自信がない場合は「JUST GUESSING」をクリックしてください。</p>    
     <p>「START」をクリックすると開始します。</p>
     <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
@@ -746,7 +747,7 @@ var confidence = {
     stimulus_height: 480,    
     choices: ['JUST GUESSING', 'COMPLETELY'],
     prompt: `<div style="font-size:24px; color:beige">
-    <p>自分の答えにどの程度の自信があるのでしょうか？</p>
+    <p>自分の回答にどの程度自信がありますか？</p>
     </div>`,
     data:{ 
         task: 'conf_pic',
@@ -795,7 +796,7 @@ var check = {
      prompt: function (){
         return `
         <div style="font-size:42px; color:beige"><p>${jsPsych.timelineVariable ("name")}</p></div>
-        <div style="font-size:24px; color:beige"><p>覚えていた名前と同じですか？</p>
+        <div style="font-size:24px; color:beige"><p>覚えていた国名と同じでしたか？</p>
         </div>
         `;},
     choices: ['NO', 'YES'],  
@@ -830,7 +831,7 @@ var finalization = {
     stimulus: `
     <div style="font-size:48px; color:beige">
     <p>これで実験は終わりです。</p>
-    <p>ご参加いただいた皆様、誠にありがとうございました</p>
+    <p>実験へのご協力、誠にありがとうございました</p>
     </div>`,
     post_trial_gap: 500
 };
