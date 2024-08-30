@@ -436,9 +436,9 @@ var practice_instructions = {
     stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>実験に入る前に、練習を行います。</p>
-    <p>画面にフィクセーションクロスが表示され、その後に絵が表示されます。次の項目に切り替えるには、「NEXT」ボタンをクリックします。</p>
-    <p>フィクセーションクロスが表示されているときだけ、目を瞬かせることができます。</p>     
-    <p>「START」をクリックすると、実験を開始します。</p>
+    <p>画面に注視点（＋）が表示され、その後に絵が表示されます。次の項目に切り替えるには、「NEXT」ボタンをクリックします。</p>
+    <p>注視点が表示されているときだけ、まばたきができます。</p>     
+    <p>「START」をクリックすると、練習を開始します。</p>
     </div>   
     `,
     choices: ['START'],
@@ -486,7 +486,7 @@ var practice = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:32px; color:beige">    
-    <p>練習は終わりです。</p> 
+    <p>練習はこれで終わりです。</p> 
     <p>「START」をクリックすると、実験を開始します。</p>
     </div>   
     `,
@@ -508,8 +508,8 @@ var pretest_instructions = {
     stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
-    <p>この実験では、国連加盟国に対応する国旗の写真が表示されます。</p>
-    <p>国の旗を認識することができるだろうかについて問われます。</p>
+    <p>この実験では、国連加盟国である国の国旗の写真が表示されます。</p>
+    <p>そして表示される国旗の知識について確認されます。</p>
     <p>表示している写真がどこの国の国旗がわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>     
     </div>
     <p>「START」をクリックすると、実験を開始します。</p>
@@ -537,7 +537,7 @@ var pretest_pic = {
     },
     prompt:  `
     <div style="font-size:24px; color:beige">
-    <p>この国旗はどこの国のものか知っていますか？</p>    
+    <p>この国旗がどこの国のものか知っていますか？</p>    
     <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `
@@ -560,7 +560,7 @@ var flashcard_pretest = {
 var rest = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `<div style="font-size:32px; color:beige">
-    <p>今から少し休憩に取ってください。</p>
+    <p>今から少し休憩を取ってください。</p>
     <p>準備が整いましたら、「CONTINUE」をクリックしてください。</p>
     </div>`,
     choices: ['CONTINUE'],
@@ -579,10 +579,10 @@ var study_instructions = {
     stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
-    <p>では、アイテムの勉強会を実施します。</p>
-    <p>それぞれの国旗の後に国名がセットで表示され、セットとセットの間に休憩が入ります。</p> 
+    <p>では、これから勉強セッションを実施します。</p>
+    <p>国旗の写真とその国名がセットで表示されます。</p> 
     <p>「NEXT」ボタンをクリックすると、次の項目へ移動します。</p>    
-    <p>アイテムリスト全体で4回練習することになります。</p>   
+    <p>アイテムリスト全部で4回練習することになります。</p>   
     </div>
     <p>「START」をクリックすると開始します。</p>
     <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
