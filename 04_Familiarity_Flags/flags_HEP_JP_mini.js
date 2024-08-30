@@ -287,20 +287,25 @@ while (i < n_sets)
       timeline_variables: set,     
      };
 
-    //once the set is displayed for study, the indeces are shifted to continue with the next set
-    first_el = first_el+block_size;
-    last_el = last_el+block_size; 
+   // main_timeline.push(study_trial, inter_block_countdown_rest); 
 
-    main_timeline.push(study_trial, inter_block_countdown_rest); 
+   // There is a bug related to this condition, still working on fixing it
+   if ((i<=n_sets-1) && (k<=n_blocks-1))
+   {
+      main_timeline.push(study_trial, inter_block_countdown_rest);            
+   }
+   //else if ((i=n_sets) && (k=n_blocks))
+   else if (i==n_sets-1)
+   {
+     main_timeline.push(study_trial);
+   } 
+   
+   //once the set is displayed for study, the indeces are shifted to continue with the next set
+   first_el = first_el+block_size;
+   last_el = last_el+block_size; 
+   
+  }  
 
-   /*
-    if ((i=n_sets-1) && (k=n_blocks-1))
-    {
-      main_timeline.push(study_trial);      
-    }
-    else main_timeline.push(study_trial, inter_block_countdown_rest);    
-     */  
-    } 
   i++;
   console.log(i, k);    
 }
@@ -351,7 +356,7 @@ main_timeline.push(countdown_rest);
     }	  
 };
 main_timeline.push(rest);
-
+*/
 
 //PART 2. TEST
 var test_instructions = {
@@ -401,7 +406,7 @@ var test = {
 };
 main_timeline.push(test);
 
-*/
+
 var finalization = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
