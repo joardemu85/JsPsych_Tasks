@@ -171,7 +171,7 @@ var study_instructions = {
     <p>表示している写真がどこの国の国旗がわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>     
     </div>
     <p>「START」"ボタンをクリックします。</p>
-    <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
+    <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
     choices: ['START'],
@@ -195,7 +195,7 @@ var study_item = {
     prompt:function (){
         return `<div style="font-size:36px; color:beige">
         <p>${jsPsych.timelineVariable ("name")}</p>
-        <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
+        <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
         </div>
         `; 
     },
@@ -370,7 +370,7 @@ var test_instructions = {
     <p>それぞれの国旗が1回ずつ表示され、正しい国名を覚えていれば「YES」、覚えていなければ「NO」をクリックすることになります。</p>
     <p>「はい」と答えた場合、国名に自信があるかどうかを尋ねられます。絶対に覚えている自信がある場合は「COMPLETELY」、自信がない場合は「JUST GUESSING」をクリックしてください。</p>    
     <p>「START」をクリックすると開始します。</p>
-    <div style="font-size:108px;top:325px;position:absolute;right:10px;"><p>.</p></div>
+    <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>`,
     choices: ['START'],
     post_trial_gap: 1000,
@@ -390,7 +390,7 @@ var test_trial = {
     {prompt: function (){
       return `<div style="font-size:24px; color:beige">
       <p>この旗は何国のですか？</p>
-      <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
+      <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
       </div>`; 
       }
     }
