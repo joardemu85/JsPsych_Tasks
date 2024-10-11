@@ -290,14 +290,14 @@ while (i < n_sets)
    // main_timeline.push(study_trial, inter_block_countdown_rest); 
 
    // There is a bug related to this condition, still working on fixing it
-   if ((i<=n_sets-1) && (k<=n_blocks-1))
+   if ((i==n_sets-1) && (k==n_blocks-1))
    {
-      main_timeline.push(study_trial, inter_block_countdown_rest);            
+      main_timeline.push(study_trial);            
    }
    //else if ((i=n_sets) && (k=n_blocks))
-   else if (i==n_sets-1)
+   else
    {
-     main_timeline.push(study_trial);
+     main_timeline.push(study_trial,inter_block_countdown_rest);
    } 
    
    //once the set is displayed for study, the indeces are shifted to continue with the next set
@@ -307,7 +307,7 @@ while (i < n_sets)
   }  
 
   i++;
-  console.log(i, k);    
+ // console.log(i, k);    
 }
 
 
@@ -316,7 +316,9 @@ while (i < n_sets)
  var countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
+    <p>This is the end of the study section.</p>    
     <p>You can take a short break now.</p>
+    <p>Next, you will try to remember as many items as possible.</p>
     <p>When you are ready, click on "CONTINUE"</p>
     <p>The next part of the experiment will start in <span id="clock">1:00</span>
     </div>`,
