@@ -90,8 +90,9 @@ var practice_instructions = {
     stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>実験に入る前に、練習を行います。</p>
-    <p>画面に注視点（＋）が表示され、その後に絵が表示されます。次の項目に切り替えるには、「NEXT」ボタンをクリックします。</p>
-    <p>注視点が表示されているときだけ、まばたきができます。</p>     
+    <p>画面に注視点（＋）が表示され、その後に画像が表示されます。</p>
+    <p>次に進むには、「NEXT」ボタンをクリックしてください。</p>
+    <p>また注視点が表示されているときだけ、まばたきができます。</p>
     <p>「START」をクリックすると、実験を開始します。</p>
     </div>   
     `,
@@ -144,7 +145,7 @@ var practice = {
     stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>練習はこれで終わりです。</p> 
-    <p>「START」をクリックすると、実験を開始します。</p>
+    <p>「START」をクリックすると、実験が始まります。</p>
     </div>   
     `,
     choices: ['START'],
@@ -167,11 +168,11 @@ var study_instructions = {
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>これから勉強セッションが始まります。</p>
-    <p>それぞれの国旗が国名とともに表示されます。</p>
+    <p>国旗が国名とともに表示されるので、表示されている国旗がどこの国のものかわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>
     <p>次の項目に進むには、「NEXT」ボタンをクリックしてください。</p>
-    <p>また、表示している写真がどこの国の国旗がわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>     
+    <p>また注視点が表示されているときだけ、まばたきができます。</p>
     </div>
-    <p>「START」をクリックすると、実験を開始します。</p>
+    <p>「START」をクリックすると、実験が始まります。</p>
     <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
