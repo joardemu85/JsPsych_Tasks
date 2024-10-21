@@ -632,7 +632,7 @@ var inter_block_countdown_rest = {
     `,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 5 *60 * 1000; // in milliseconds (5 minutes)
+    var wait_time = 2 *60 * 1000; // in milliseconds (5 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
@@ -661,7 +661,7 @@ var inter_rep_countdown_rest = {
     `,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 20 * 1000; // in milliseconds
+    var wait_time = 3 * 60 * 1000; // in milliseconds
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
@@ -756,14 +756,14 @@ while (i < n_sets)
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
     <p>これで勉強セクションは終わります。</p>    
-    <p>今は少し休んでください。/p>
+    <p>今は少し休んでください。</p>
     <p>次に、できるだけ多くの項目を覚えるようにします。</p>
     <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
     <p>実験はまだ続く： <span id="clock">1:00</span>
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 10 * 60 * 1000; // in milliseconds (10 minutes)
+    var wait_time = 5 * 60 * 1000; // in milliseconds (10 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
@@ -790,8 +790,8 @@ var test_instructions = {
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>国旗に関連する国名を正しく覚えているかどうかが問われます。</p>
-    <p>それぞれの国旗が1回ずつ表示され、正しい国名を覚えていれば「YES」、覚えていなければ「NO」をクリックすることになります。</p>
-    <p>「はい」と答えた場合、国名に自信があるかどうかを尋ねられます。絶対に覚えている自信がある場合は「COMPLETELY」、自信がない場合は「JUST GUESSING」をクリックしてください。</p>    
+    <p>それぞれの国旗が1回ずつ表示され、正しい国名をボックスに入力ることになります。</p>
+    <p>正しい国名を覚えていない場合は、空欄のままで構いません。</p>
     <p>「START」をクリックすると開始します。</p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>`,
