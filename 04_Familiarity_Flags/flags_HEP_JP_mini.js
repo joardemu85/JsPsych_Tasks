@@ -623,9 +623,9 @@ var study_item = {
 var inter_block_countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
-    <p>You can take a short break now.</p>
-    <p>When you are ready, click on "CONTINUE"</p>
-    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+    <p>今は少し休んでください。</p>
+    <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
+    <p>実験はまだ続く：  <span id="clock">1:00</span>
     </div>
     `,
   choices: ['CONTINUE'],
@@ -652,9 +652,9 @@ var inter_block_countdown_rest = {
 var inter_rep_countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
-    <p>You can take a short break now.</p>
-    <p>When you are ready, click on "CONTINUE"</p>
-    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+    <p>今は少し休んでください。</p>
+    <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
+    <p>実験はまだ続く：  <span id="clock">1:00</span>
     </div>
     `,
   choices: ['CONTINUE'],
@@ -753,19 +753,15 @@ while (i < n_sets)
  var countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
-    <p>This is the end of the study section.</p>    
-    <p>You can take a short break now.</p>
-    <p>Next, you will try to remember as many items as possible.</p>
-    <p>When you are ready, click on "CONTINUE"</p>
-    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+    <p>これで練習セクションは終わります。</p>    
+    <p>今は少し休んでください。/p>
+    <p>次に、できるだけ多くの項目を覚えるようにします。</p>
+    <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
+    <p>実験はまだ続く： <span id="clock">1:00</span>
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
-<<<<<<< HEAD
     var wait_time = 10 * 60 * 1000; // in milliseconds (10 minutes)
-=======
-    var wait_time = 1 * 60 * 1000; // in milliseconds
->>>>>>> f71e2e40622a4288bcd60c2a1d085046dbbdcd2c
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
