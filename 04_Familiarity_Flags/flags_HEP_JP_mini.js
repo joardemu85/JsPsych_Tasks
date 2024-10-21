@@ -495,8 +495,9 @@ var practice_instructions = {
     stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>実験に入る前に、練習を行います。</p>
-    <p>画面にフィクセーションクロスが表示され、その後に絵が表示されます。次の項目に切り替えるには、「NEXT」ボタンをクリックします。</p>
-    <p>フィクセーションクロスが表示されているときだけ、目を瞬かせることができます。</p>     
+    <p>画面に注視点（＋）が表示され、その後に画像が表示されます。</p>
+    <p>次に進むには、「NEXT」ボタンをクリックしてください。</p>
+    <p>また注視点が表示されているときだけ、まばたきができます。</p>
     <p>「START」をクリックすると、実験を開始します。</p>
     </div>   
     `,
@@ -548,8 +549,8 @@ var practice = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
     <div style="font-size:32px; color:beige">    
-    <p>練習は終わりです。</p> 
-    <p>「START」をクリックすると、実験を開始します。</p>
+    <p>練習はこれで終わりです。</p> 
+    <p>「START」をクリックすると、実験が始まります。</p>
     </div>   
     `,
     choices: ['START'],
@@ -571,12 +572,18 @@ var study_instructions = {
     stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
-    <p>その後、その項目について勉強会を行うそれぞれの国旗が国名とともに表示されます。</p>
-    <p>次の項目に進むには、「NEXT」ボタンをクリックします。</p>
-    <p>表示している写真がどこの国の国旗がわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>     
+    <p>これから勉強セッションが始まります。</p>
+    <p>国旗が国名とともに表示されるので、表示されている国旗がどこの国のものかわかる場合は「YES」を、わからない場合は「NO」をクリックしてください。</p>
+    <p>次の項目に進むには、「NEXT」ボタンをクリックしてください。</p>
+    <p>また注視点が表示されているときだけ、まばたきができます。</p>
     </div>
+<<<<<<< HEAD
     <p>「START」"ボタンをクリックします。</p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
+=======
+    <p>「START」をクリックすると、実験が始まります。</p>
+    <div style="font-size:108px;top:225px;position:absolute;right:10px;"><p>.</p></div>
+>>>>>>> dev
     </div>
     `,
     choices: ['START'],
@@ -623,9 +630,15 @@ var study_item = {
 var inter_block_countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
+<<<<<<< HEAD
     <p>今は少し休んでください。</p>
     <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
     <p>実験はまだ続く：  <span id="clock">1:00</span>
+=======
+    <p>今から少し休憩を取ってください。</p>
+    <p>準備が整いましたら、「CONTINUE」をクリックしてください。</p>
+    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+>>>>>>> dev
     </div>
     `,
   choices: ['CONTINUE'],
@@ -753,11 +766,17 @@ while (i < n_sets)
  var countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
+<<<<<<< HEAD
     <p>これで練習セクションは終わります。</p>    
     <p>今は少し休んでください。/p>
     <p>次に、できるだけ多くの項目を覚えるようにします。</p>
     <p>準備ができたら、「CONTINUE 」ボタンをクリックしてください。</p>
     <p>実験はまだ続く： <span id="clock">1:00</span>
+=======
+    <p>今から少し休憩を取ってください。</p>
+    <p>準備が整いましたら、「CONTINUE」をクリックしてください。</p>
+    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+>>>>>>> dev
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
@@ -835,7 +854,7 @@ var finalization = {
     stimulus: `
     <div style="font-size:48px; color:beige">
     <p>これで実験は終わりです。</p>
-    <p>ご参加いただいた皆様、誠にありがとうございました</p>
+    <p>実験へのご協力、誠にありがとうございました</p>
     </div>`,
     post_trial_gap: 500
 };
