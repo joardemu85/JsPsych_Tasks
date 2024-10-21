@@ -560,7 +560,7 @@ main_timeline.push(practice_end);
 
 
 // randomize list for studying
-var sample_size = 100;  // Use 100 items for the task, 20 for debugging
+var sample_size = 20;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(study_variables); //show the item sample in console for debugging
 
@@ -649,8 +649,38 @@ var inter_block_countdown_rest = {
 };
 
 
-var n_sets = 2;  //number of repetitions for the section. D
-var block_size = 20; //number of elements to study in one block. Debug: 5, Real task: 20
+var inter_rep_countdown_rest = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `<div style="font-size:32px; color:beige">
+    <p>You can take a short break now.</p>
+    <p>When you are ready, click on "CONTINUE"</p>
+    <p>The next part of the experiment will start in <span id="clock">1:00</span>
+    </div>
+    `,
+  choices: ['CONTINUE'],
+  on_load: function(){
+    var wait_time = 20 * 1000; // in milliseconds
+    var start_time = performance.now();
+    document.querySelector('button').disabled = true;
+    var interval = setInterval(function(){
+      var time_left = wait_time - (performance.now() - start_time);
+      var minutes = Math.floor(time_left / 1000 / 60);
+      var seconds = Math.floor((time_left - minutes*1000*60)/1000);
+      var seconds_str = seconds.toString().padStart(2,'0');
+      document.querySelector('#clock').innerHTML = minutes + ':' + seconds_str
+      if(time_left <= 0){
+        document.querySelector('#clock').innerHTML = "0:00";
+        document.querySelector('button').disabled = false;
+        clearInterval(interval);
+      }
+    }, 250)
+  }
+};
+
+
+
+var n_sets = 3;  //number of repetitions for the section. D
+var block_size = 5; //number of elements to study in one block. Debug: 5, Real task: 20
 var n_blocks = sample_size/block_size;  // The result of this operation must always be an integer
 console
 
@@ -699,16 +729,18 @@ while (i < n_sets)
    {
       main_timeline.push(study_trial);            
    }
-   //else if ((i=n_sets) && (k=n_blocks))
+   else if (k==n_blocks-1)
+   {
+      main_timeline.push(study_trial, inter_rep_countdown_rest);  
+   }
    else
    {
-     main_timeline.push(study_trial,inter_block_countdown_rest);
+      main_timeline.push(study_trial,inter_block_countdown_rest);
    } 
    
    //once the set is displayed for study, the indeces are shifted to continue with the next set
    first_el = first_el+block_size;
-   last_el = last_el+block_size; 
-   
+   last_el = last_el+block_size;    
   }  
 
   i++;
@@ -729,7 +761,11 @@ while (i < n_sets)
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
+<<<<<<< HEAD
     var wait_time = 10 * 60 * 1000; // in milliseconds (10 minutes)
+=======
+    var wait_time = 1 * 60 * 1000; // in milliseconds
+>>>>>>> f71e2e40622a4288bcd60c2a1d085046dbbdcd2c
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
@@ -748,22 +784,6 @@ while (i < n_sets)
 };
 main_timeline.push(countdown_rest);
 
-//Old static implementation 
-/*
- var rest = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `<div style="font-size:32px; color:beige">
-    <p>今から少し休憩に取ってください。</p>
-    <p>準備が整いましたら、「CONTINUE」をクリックしてください。</p>
-    </div>`,
-    choices: ['CONTINUE'],
-    response_ends_trial: true,
-    data: {
-	    task: 'rest'
-    }	  
-};
-main_timeline.push(rest);
-*/
 
 //PART 2. TEST
 var test_instructions = {
