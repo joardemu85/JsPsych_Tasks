@@ -11,35 +11,40 @@ var main_timeline = [];
 
 //Preload Media
 
-//Mini version
-/*var preload = {
+//items for practice
+var preload_practice = {
     type: jsPsychPreload,
     images: [
-            'img/kp.png',
-            'img/lr.png',
-            'img/pa.png',
-            'img/gm.png',
-            'img/ke.png',
-            'img/bt.png',
-            'img/by.png',
-            'img/tm.png',
-            'img/ee.png',
-            'img/cl.png',
-            'img/il.png',
-            'img/in.png',
-            'img/es.png',
-            'img/jm.png',
-            'img/at.png',
-            'img/ro.png',
-            'img/lt.png',
-            'img/ls.png',
-            'img/bh.png',
-            'img/sn.png'
+            'practice_img/ck.png',
+            'practice_img/eh.png',
+            'practice_img/mp.png',
+            'practice_img/mq.png',
+            'practice_img/nc.png',
+            'practice_img/nu.png',
+            'practice_img/ps.png',
+            'practice_img/tw.png',
+            'practice_img/va.png',
+            'practice_img/xk.png'
     ]
-};*/
+};
+main_timeline.push(preload_practice);
 
-//Full Version
-var preload = {
+var practice_vars = [
+  //STAND ALONE FORMAT 
+  {picture: 'practice_img/ck.png', name: 'COOK ISLANDS'}, //COOK ISLANDS 
+  {picture: 'practice_img/eh.png', name: 'WESTERN SAHARA'}, //WESTERN SAHARA 
+  {picture: 'practice_img/mp.png', name: 'NORTHERN MARIANAS ISLANDS'}, //WESTERN SAHARA 
+  {picture: 'practice_img/mq.png', name: 'MARTINIQUE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/nc.png', name: 'NEW CALEDONIA'}, //NORTH CALEDONIA 
+  {picture: 'practice_img/nu.png', name: 'NIUE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/ps.png', name: 'PALESTINE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/tw.png', name: 'TAIWAN'}, //WESTERN SAHARA 
+  {picture: 'practice_img/va.png', name: 'VATICAN CITY'}, //WESTERN SAHARA 
+  {picture: 'practice_img/xk.png', name: 'KOSOVO'}, //WESTERN SAHARA 
+];
+
+//Items for task
+var preload_task = {
   type: jsPsychPreload,
   images: [
       'img/af.png',
@@ -239,7 +244,7 @@ var preload = {
   ]
 };
 
-main_timeline.push(preload);
+main_timeline.push(preload_task);
 
 //timeline variables
 
@@ -510,7 +515,7 @@ var practice_instructions = {
 };
 main_timeline.push(practice_instructions);
 
-var practice_variables = jsPsych.randomization.sampleWithoutReplacement(variables,10); 
+var practice_variables = jsPsych.randomization.sampleWithoutReplacement(practice_vars); 
 
 //Fixation cross inbetween trials 
 var fixation = {
@@ -561,7 +566,7 @@ main_timeline.push(practice_end);
 
 
 // randomize list for studying
-var sample_size = 20;  // Use 100 items for the task, 20 for debugging
+var sample_size = 70;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(study_variables); //show the item sample in console for debugging
 
@@ -680,9 +685,8 @@ var inter_rep_countdown_rest = {
 };
 
 
-
 var n_sets = 3;  //number of repetitions for the section. D
-var block_size = 5; //number of elements to study in one block. Debug: 5, Real task: 20
+var block_size = 15; //number of elements to study in one block. Debug: 5, Real task: 20
 var n_blocks = sample_size / block_size;  // The result of this operation must always be an integer
 console
 
@@ -690,7 +694,7 @@ var i = 0;
 while (i < n_sets) {
   //first we define where the block starts and where it ends    
   var first_el = 0;
-  var last_el = block_size - 1;
+  var last_el = block_size;
 
   //shuffle the list
   var random_study = jsPsych.randomization.sampleWithoutReplacement(study_variables, sample_size);
@@ -722,22 +726,6 @@ while (i < n_sets) {
       timeline_variables: set,
     };
 
-    // main_timeline.push(study_trial, inter_block_countdown_rest); 
-
-    // There is a bug related to this condition, still working on fixing it
-    if ((i == n_sets - 1) && (k == n_blocks - 1)) {
-      main_timeline.push(study_trial);
-    }
-    else if (k == n_blocks - 1) {
-      main_timeline.push(study_trial, inter_rep_countdown_rest);
-    }
-    else {
-      main_timeline.push(study_trial, inter_block_countdown_rest);
-    }
-
-   // main_timeline.push(study_trial, inter_block_countdown_rest); 
-
-   // There is a bug related to this condition, still working on fixing it
    if ((i==n_sets-1) && (k==n_blocks-1))
    {
       main_timeline.push(study_trial);            
@@ -747,7 +735,7 @@ while (i < n_sets) {
       main_timeline.push(study_trial, inter_rep_countdown_rest);  
    }
    else
-   {
+   { 
       main_timeline.push(study_trial,inter_block_countdown_rest);
    } 
    
