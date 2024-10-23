@@ -686,7 +686,7 @@ var inter_rep_countdown_rest = {
 
 
 var n_sets = 3;  //number of repetitions for the section. D
-var block_size = 15; //number of elements to study in one block. Debug: 5, Real task: 20
+var block_size = 14; //number of elements to study in one block. Debug: 5, Real task: 20
 var n_blocks = sample_size / block_size;  // The result of this operation must always be an integer
 console
 
