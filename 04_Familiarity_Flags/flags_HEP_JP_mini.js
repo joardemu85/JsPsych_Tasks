@@ -1,9 +1,9 @@
 var jsPsych = initJsPsych({
   //extensions: [{ type: jsPsychExtensionCountdown }],  
-  on_finish: function() {
-        //jsPsych.data.displayData();
-        jsPsych.data.get().localSave('csv','AMT000BH.csv');
-    }
+  on_finish: function () {
+    //jsPsych.data.displayData();
+    jsPsych.data.get().localSave('csv', 'HEP000BH.csv');
+  }
 });
 
 //declare main timeline
@@ -11,35 +11,40 @@ var main_timeline = [];
 
 //Preload Media
 
-//Mini version
-/*var preload = {
+//items for practice
+var preload_practice = {
     type: jsPsychPreload,
     images: [
-            'img/kp.png',
-            'img/lr.png',
-            'img/pa.png',
-            'img/gm.png',
-            'img/ke.png',
-            'img/bt.png',
-            'img/by.png',
-            'img/tm.png',
-            'img/ee.png',
-            'img/cl.png',
-            'img/il.png',
-            'img/in.png',
-            'img/es.png',
-            'img/jm.png',
-            'img/at.png',
-            'img/ro.png',
-            'img/lt.png',
-            'img/ls.png',
-            'img/bh.png',
-            'img/sn.png'
+            'practice_img/ck.png',
+            'practice_img/eh.png',
+            'practice_img/mp.png',
+            'practice_img/mq.png',
+            'practice_img/nc.png',
+            'practice_img/nu.png',
+            'practice_img/ps.png',
+            'practice_img/tw.png',
+            'practice_img/va.png',
+            'practice_img/xk.png'
     ]
-};*/
+};
+main_timeline.push(preload_practice);
 
-//Full Version
-var preload = {
+var practice_vars = [
+  //STAND ALONE FORMAT 
+  {picture: 'practice_img/ck.png', name: 'COOK ISLANDS'}, //COOK ISLANDS 
+  {picture: 'practice_img/eh.png', name: 'WESTERN SAHARA'}, //WESTERN SAHARA 
+  {picture: 'practice_img/mp.png', name: 'NORTHERN MARIANAS ISLANDS'}, //WESTERN SAHARA 
+  {picture: 'practice_img/mq.png', name: 'MARTINIQUE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/nc.png', name: 'NEW CALEDONIA'}, //NORTH CALEDONIA 
+  {picture: 'practice_img/nu.png', name: 'NIUE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/ps.png', name: 'PALESTINE'}, //WESTERN SAHARA 
+  {picture: 'practice_img/tw.png', name: 'TAIWAN'}, //WESTERN SAHARA 
+  {picture: 'practice_img/va.png', name: 'VATICAN CITY'}, //WESTERN SAHARA 
+  {picture: 'practice_img/xk.png', name: 'KOSOVO'}, //WESTERN SAHARA 
+];
+
+//Items for task
+var preload_task = {
   type: jsPsychPreload,
   images: [
       'img/af.png',
@@ -239,7 +244,7 @@ var preload = {
   ]
 };
 
-main_timeline.push(preload);
+main_timeline.push(preload_task);
 
 //timeline variables
 
@@ -469,107 +474,107 @@ var variables = [
 
 //Switch on fullscreen
 var enter_fullscreen = {
-    type: jsPsychFullscreen,
-    fullscreen_mode: true
+  type: jsPsychFullscreen,
+  fullscreen_mode: true
 };
 main_timeline.push(enter_fullscreen);
 
 //The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
 var welcome = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `<div style="font-size:32px; color:beige">
-               <p>Welcome to the experiment.</p> 
-               <p>「START」をクリックすると、実験を開始します。</p>
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `<div style="font-size:32px; color:beige">
+               <p>ようこそ</p> 
+               <p>「START」をクリックすると、実験が始まります。</p>
                </div>
                `,
-               choices: ['START'],
-    data:{ 
-        task: 'welcome'   
-     },           
+  choices: ['START'],
+  data: {
+    task: 'welcome'
+  },
 };
-main_timeline.push(welcome); 
+main_timeline.push(welcome);
 
 // PART 0: Practice.
 var practice_instructions = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
     <div style="font-size:32px; color:beige">    
-    <p>実験に入る前に、練習を行います。</p>
+    <p>まず、練習を行います。</p>
     <p>画面に注視点（＋）が表示され、その後に画像が表示されます。</p>
-    <p>次に進むには、「NEXT」ボタンをクリックしてください。</p>
-    <p>また注視点が表示されているときだけ、まばたきができます。</p>
-    <p>「START」をクリックすると、実験を開始します。</p>
+    <p>※注視点が出ている間だけ、まばたきができます※</p>
+    <p>次の試行に進むには、「NEXT」をクリックしてください。</p>
+    <p>「START」をクリックすると、練習が始まります。</p>
     </div>   
     `,
-    choices: ['START'],
-    post_trial_gap: 0,
-    data:{ 
-        task: 'practice_instructions',
-        item_name: jsPsych.timelineVariable('name')     
-    },
+  choices: ['START'],
+  post_trial_gap: 0,
+  data: {
+    task: 'practice_instructions',
+    item_name: jsPsych.timelineVariable('name')
+  },
 };
 main_timeline.push(practice_instructions);
 
-var practice_variables = jsPsych.randomization.sampleWithoutReplacement(variables,10); 
+var practice_variables = jsPsych.randomization.sampleWithoutReplacement(practice_vars); 
 
- //Fixation cross inbetween trials 
- var fixation = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div style="font-size:120px; color:beige">+</div>`,
-    choices: "NO_KEYS",
-    trial_duration: function(){
-       return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
-       //return 500; //value for debugging
-      }, 
-    data: {
-	    task: 'fixation'
-	  }
+//Fixation cross inbetween trials 
+var fixation = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `<div style="font-size:120px; color:beige">+</div>`,
+  choices: "NO_KEYS",
+  trial_duration: function () {
+    return jsPsych.randomization.sampleWithoutReplacement([800, 900, 1000, 1200, 1300], 1)[0];
+    //return 500; //value for debugging
+  },
+  data: {
+    task: 'fixation'
+  }
 };
 
 //DONT FORGET THIS TO PLACE THE CUSTOMIZABLE PROMPT: USE FUNCTIONS
 var practice_pic = {
-    type: jsPsychImageButtonResponse,
-    stimulus: jsPsych.timelineVariable("picture"),
-    /*prompt:function (){
-           return `<div style="font-size:36px; color:beige">
-           <p>${jsPsych.timelineVariable ("name")}</p>
-           </div>`;
-    }, */
-    choices: ['NEXT']
+  type: jsPsychImageButtonResponse,
+  stimulus: jsPsych.timelineVariable("picture"),
+  /*prompt:function (){
+         return `<div style="font-size:36px; color:beige">
+         <p>${jsPsych.timelineVariable ("name")}</p>
+         </div>`;
+  }, */
+  choices: ['NEXT']
 };
 
 var practice = {
-    timeline: [fixation, practice_pic],
-    timeline_variables: practice_variables,
-    randomize_order: false //no need to randomize again fetched items
- };
- main_timeline.push(practice);
+  timeline: [fixation, practice_pic],
+  timeline_variables: practice_variables,
+  randomize_order: false //no need to randomize again fetched items
+};
+main_timeline.push(practice);
 
- var practice_end = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `
+var practice_end = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>練習はこれで終わりです。</p> 
-    <p>「START」をクリックすると、実験が始まります。</p>
+    <p>「START」をクリックすると、本実験が始まります。</p>
     </div>   
     `,
-    choices: ['START'],
-    post_trial_gap: 0,
+  choices: ['START'],
+  post_trial_gap: 0,
 
 };
 main_timeline.push(practice_end);
 
 
 // randomize list for studying
-var sample_size = 20;  // Use 100 items for the task, 20 for debugging
+var sample_size = 70;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(study_variables); //show the item sample in console for debugging
 
 
 // PART 1: Study.
 var study_instructions = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
     <p>これから勉強セッションが始まります。</p>
@@ -581,12 +586,12 @@ var study_instructions = {
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>
     `,
-    choices: ['START'],
-    post_trial_gap: 250,
-    data:{ 
-        task: 'study_inst',
-        item_name: jsPsych.timelineVariable('name')     
-    },
+  choices: ['START'],
+  post_trial_gap: 250,
+  data: {
+    task: 'study_inst',
+    item_name: jsPsych.timelineVariable('name')
+  },
 };
 main_timeline.push(study_instructions);
 
@@ -604,22 +609,22 @@ var study_item = {
         <p>${jsPsych.timelineVariable ("name")}</p>
         <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
         </div>
-        `; 
-    },
-    //Set a timer to disable the button for a minimmum time. Initially is 0.5 seconds, it can be modified.
-    //This timer is a simplification of the one used for break, removing the clock on screen
-    on_load: function(){
-      var wait_time = 500; // in milliseconds
-      var start_time = performance.now();
-      document.querySelector('button').disabled = true;
-      var interval = setInterval(function(){
-        var time_left = wait_time - (performance.now() - start_time);
-        if(time_left <= 0){
-          document.querySelector('button').disabled = false;
-          clearInterval(interval);
-        }
-      }, 250)
-    }
+        `;
+  },
+  //Set a timer to disable the button for a minimmum time. Initially is 0.5 seconds, it can be modified.
+  //This timer is a simplification of the one used for break, removing the clock on screen
+  on_load: function () {
+    var wait_time = 500; // in milliseconds
+    var start_time = performance.now();
+    document.querySelector('button').disabled = true;
+    var interval = setInterval(function () {
+      var time_left = wait_time - (performance.now() - start_time);
+      if (time_left <= 0) {
+        document.querySelector('button').disabled = false;
+        clearInterval(interval);
+      }
+    }, 250)
+  }
 };
 
 var inter_block_countdown_rest = {
@@ -635,13 +640,13 @@ var inter_block_countdown_rest = {
     var wait_time = 2 *60 * 1000; // in milliseconds (5 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
-    var interval = setInterval(function(){
+    var interval = setInterval(function () {
       var time_left = wait_time - (performance.now() - start_time);
       var minutes = Math.floor(time_left / 1000 / 60);
-      var seconds = Math.floor((time_left - minutes*1000*60)/1000);
-      var seconds_str = seconds.toString().padStart(2,'0');
+      var seconds = Math.floor((time_left - minutes * 1000 * 60) / 1000);
+      var seconds_str = seconds.toString().padStart(2, '0');
       document.querySelector('#clock').innerHTML = minutes + ':' + seconds_str
-      if(time_left <= 0){
+      if (time_left <= 0) {
         document.querySelector('#clock').innerHTML = "0:00";
         document.querySelector('button').disabled = false;
         clearInterval(interval);
@@ -680,53 +685,47 @@ var inter_rep_countdown_rest = {
 };
 
 
-
 var n_sets = 3;  //number of repetitions for the section. D
-var block_size = 5; //number of elements to study in one block. Debug: 5, Real task: 20
-var n_blocks = sample_size/block_size;  // The result of this operation must always be an integer
+var block_size = 14; //number of elements to study in one block. Debug: 5, Real task: 20
+var n_blocks = sample_size / block_size;  // The result of this operation must always be an integer
 console
 
 var i = 0;
-while (i < n_sets)
-{
+while (i < n_sets) {
   //first we define where the block starts and where it ends    
   var first_el = 0;
-  var last_el = block_size-1;
+  var last_el = block_size;
 
   //shuffle the list
-  var random_study = jsPsych.randomization.sampleWithoutReplacement(study_variables,sample_size); 
-  
-  for (var k=0; k<n_blocks; k++) 
-  {    
+  var random_study = jsPsych.randomization.sampleWithoutReplacement(study_variables, sample_size);
+
+  for (var k = 0; k < n_blocks; k++) {
     //Inside this loop, we go through the whole item list in sets defined by chunk_size variable,
     //Every set will be studied once, when the whole list is done, it will restart 
     set = random_study.slice(first_el, last_el);
-    console.log(set);  
+    console.log(set);
 
     var announce = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: `<div style="font-size:48px; color:beige">
-        <p>Set ${i+1}/${n_sets}.</p>
-        <p>Block ${k+1}/${n_blocks}.</p>
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `<div style="font-size:48px; color:beige">
+        <p>Set ${i + 1}/${n_sets}.</p>
+        <p>Block ${k + 1}/${n_blocks}.</p>
         </div>
-        `,        
-        response_ends_trial: false,
-        choices: 'NO_KEYS',
-        trial_duration: 1000,
-        data: {
-            task: 'announcement'
-        }  
+        `,
+      response_ends_trial: false,
+      choices: 'NO_KEYS',
+      trial_duration: 1000,
+      data: {
+        task: 'announcement'
+      }
     };
     main_timeline.push(announce);
 
     var study_trial = {
       timeline: [fixation, study_item],
-      timeline_variables: set,     
-     };
+      timeline_variables: set,
+    };
 
-   // main_timeline.push(study_trial, inter_block_countdown_rest); 
-
-   // There is a bug related to this condition, still working on fixing it
    if ((i==n_sets-1) && (k==n_blocks-1))
    {
       main_timeline.push(study_trial);            
@@ -736,7 +735,7 @@ while (i < n_sets)
       main_timeline.push(study_trial, inter_rep_countdown_rest);  
    }
    else
-   {
+   { 
       main_timeline.push(study_trial,inter_block_countdown_rest);
    } 
    
@@ -750,9 +749,9 @@ while (i < n_sets)
 }
 
 
- //rest after section is done 
- // Countdown implementation
- var countdown_rest = {
+//rest after section is done 
+// Countdown implementation
+var countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
     <p>これで勉強セクションは終わります。</p>    
@@ -766,13 +765,13 @@ while (i < n_sets)
     var wait_time = 5 * 60 * 1000; // in milliseconds (10 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
-    var interval = setInterval(function(){
+    var interval = setInterval(function () {
       var time_left = wait_time - (performance.now() - start_time);
       var minutes = Math.floor(time_left / 1000 / 60);
-      var seconds = Math.floor((time_left - minutes*1000*60)/1000);
-      var seconds_str = seconds.toString().padStart(2,'0');
+      var seconds = Math.floor((time_left - minutes * 1000 * 60) / 1000);
+      var seconds_str = seconds.toString().padStart(2, '0');
       document.querySelector('#clock').innerHTML = minutes + ':' + seconds_str
-      if(time_left <= 0){
+      if (time_left <= 0) {
         document.querySelector('#clock').innerHTML = "0:00";
         document.querySelector('button').disabled = false;
         clearInterval(interval);
@@ -785,8 +784,8 @@ main_timeline.push(countdown_rest);
 
 //PART 2. TEST
 var test_instructions = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: `
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
     <p>国旗に関連する国名を正しく覚えているかどうかが問われます。</p>
@@ -795,19 +794,19 @@ var test_instructions = {
     <p>「START」をクリックすると開始します。</p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>`,
-    choices: ['START'],
-    post_trial_gap: 1000,
-    data: {
-        task: 'test_inst'
-    }
+  choices: ['START'],
+  post_trial_gap: 1000,
+  data: {
+    task: 'test_inst'
+  }
 };
 main_timeline.push(test_instructions);
 
 /*
 var test_trial = {
   type: jsPsychSurveyText,
-  preamble:function (){
-    return `<img src='${jsPsych.timelineVariable ("picture")}'></img>`
+  preamble: function () {
+    return `<img src='${jsPsych.timelineVariable("picture")}'></img>`
   },
   questions: [
     {prompt: function (){
@@ -866,31 +865,36 @@ var test_trial = {
   }
 };
 
+  data: {
+    task: 'test',
+    item_name: jsPsych.timelineVariable('name')
+  },
+}
 
 var test = {
   timeline: [fixation, test_trial],
   timeline_variables: study_variables,
-  randomize_order: true 
+  randomize_order: true
 };
 main_timeline.push(test);
 
 
 var finalization = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
     <div style="font-size:48px; color:beige">
-    <p>これで実験は終わりです。</p>
-    <p>実験へのご協力、誠にありがとうございました</p>
+    <p>以上で実験は終わりです。</p>
+    <p>ご協力、誠にありがとうございました</p>
     </div>`,
-    post_trial_gap: 500
+  post_trial_gap: 500
 };
 main_timeline.push(finalization);
 
 //Switch off fullscreen before closing the app
 var exit_fullscreen = {
-    type: jsPsychFullscreen,
-    fullscreen_mode: false,
-    delay_after: 0
+  type: jsPsychFullscreen,
+  fullscreen_mode: false,
+  delay_after: 0
 };
 main_timeline.push(exit_fullscreen);
 
