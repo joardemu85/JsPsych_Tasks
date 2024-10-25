@@ -803,7 +803,7 @@ var test_instructions = {
 };
 main_timeline.push(test_instructions);
 
-
+/*
 var test_trial = {
   type: jsPsychSurveyText,
   preamble:function (){
@@ -823,6 +823,49 @@ var test_trial = {
     item_name: jsPsych.timelineVariable('name')   
    },
 } 
+*/
+
+
+var test_trial = {
+  type: jsPsychSurveyMultiChoice,
+  preamble: function() {
+    return `<img src='${jsPsych.timelineVariable("picture")}'></img>`;
+  },
+  questions: [
+    {
+      prompt: function () {
+        return `<div style="font-size:24px; color:beige">
+                <p>この旗は何国のですか？</p>
+                </div>`;
+      },
+      options: function() {
+        // Options pool (including the correct answer)
+        var correct_answer = jsPsych.timelineVariable('name');
+        var incorrect_answers = jsPsych.timelineVariable('incorrect_options');
+        
+        // Combine the correct and incorrect answers into a single array
+        var options = incorrect_answers.slice(); // Copy the incorrect answers array
+        options.push(correct_answer);
+        
+        // Shuffle the options to randomize their positions
+        return jsPsych.randomization.shuffle(options);
+      },
+      required: true,
+      horizontal: false // Set to true if you want the options horizontally
+    }
+  ],
+  data: {
+    task: 'test',
+    item_name: jsPsych.timelineVariable('name'),
+    correct_answer: jsPsych.timelineVariable('name') // Storing the correct answer
+  },
+  on_finish: function(data) {
+    // Mark the trial as correct or incorrect
+    var selected_answer = data.response.Q0; // Accessing the selected answer (Q0 is the index of the first question)
+    data.correct = (selected_answer === jsPsych.timelineVariable('name')); // Comparing with the correct answer
+  }
+};
+
 
 var test = {
   timeline: [fixation, test_trial],
