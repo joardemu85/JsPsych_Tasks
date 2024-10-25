@@ -566,7 +566,7 @@ main_timeline.push(practice_end);
 
 
 // randomize list for studying
-var sample_size = 50;  // Use 100 items for the task, 20 for debugging
+var sample_size = 60;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(study_variables); //show the item sample in console for debugging
 
@@ -616,7 +616,7 @@ var study_item = {
   on_load: function () {
     
     //disable button
-    var wait_time = 3000; // in milliseconds
+    var wait_time = 2000; // in milliseconds
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function () {
@@ -688,7 +688,7 @@ var inter_rep_countdown_rest = {
 
 
 var n_sets = 3;  //number of repetitions for the section. D
-var block_size = 10; //number of elements to study in one block. Debug: 5, Real task: 20
+var block_size = 15; //number of elements to study in one block. Debug: 5, Real task: 20
 var n_blocks = sample_size / block_size;  // The result of this operation must always be an integer
 console
 
