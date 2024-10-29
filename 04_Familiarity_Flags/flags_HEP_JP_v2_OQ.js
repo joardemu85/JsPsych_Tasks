@@ -282,6 +282,8 @@ main_timeline.push(practice_end);
 
 /******************************PART 1: STUDY*****************************/
 
+/*
+
 // randomize list for studying
 var sample_size = 60;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
@@ -522,7 +524,7 @@ var test_instructions = {
 };
 main_timeline.push(test_instructions);
 
-/*
+
 //Old open survey version
 var test_trial = {
   type: jsPsychSurveyText,
@@ -543,134 +545,18 @@ var test_trial = {
     item_name: jsPsych.timelineVariable('name')   
    },
 } 
-*/
 
-//define groups of items
-const item_groups = [
-  [variables[2], variables[10], variables[15], variables[57]],   //Group 1 (Armenia, Colombia, Ecuador, Venezuela)
-  [variables[26], variables[36], variables[47], variables[51]],  //Group 2 (Indonesia, Monaco, Poland, Singapore)
-  [variables[20], variables[38], variables[45], variables[48]],  //Group 3 (Serbia, Netherlands, Paraguay, Russia)
-  [variables[6], variables[27], variables[29], variables[35]],   //Group 4 (Bulgaria, Iran, Tajikistan, Hungary)
-  [variables[5], variables[8], variables[23], variables[50]],    //Group 5 (Ghana, Cameroon, Guinea-Bissau, Senegal)
-  [variables[33], variables[34], variables[54], variables[55]],  //Group 6 (Maldives, Mauritania, Tunisia, Turkey)
-  [variables[1], variables[17], variables[24], variables[51]],   //Group 7 (Argentina, El Salvador, Honduras, Nicaragua)
-  [variables[3], variables[18], variables[39], variables[56]],   //Group 8 (Australia, Fiji, New Zealand, Tuvalu)
-  [variables[12], variables[19], variables[25], variables[42]],  //Group 9 (Denmark, Finland, Iceland, Norway)
-  [variables[13], variables[22], variables[37], variables[58]],  //Group 10 (Burkina Faso, Suriname, Myanmar, Vietnam)
-  [variables[0], variables[41], variables[43], variables[49]],   //Group 11 (Algeria, Nigeria, Pakistan, Mexico) 
-  [variables[16], variables[28], variables[52], variables[59]],  //Group 12 (Egypt, Iraq, Syria, Yemen)
-  [variables[4], variables[31], variables[32], variables[46]],   //Group 13 (Austria, Latvia, Lebanon, Peru)
-  [variables[9], variables[14], variables[21], variables[44]],   //Group 14 (Chad, Moldova, Romania, Barbados) 
-  [variables[7], variables[11], variables[30], variables[53]]    //Group 15 (Cambodia, Costa Rica, Laos, Thailand)
-]
+//RANDOMIZE VARIABLES
+var test_variables = jsPsych.randomization.sampleWithoutReplacement(variables); 
 
-
-
-
-
-// Function to generate incorrect options by excluding the correct answer
-function getIncorrectOptions(correct_answer, all_options, num_incorrect) {
-  // Filter out the correct answer from the list of all options
-  var incorrect_pool = all_options.filter(function(item) {
-    return item.name !== correct_answer;
-  });
-  
-  // Randomly select a number of incorrect options from the pool
-  return jsPsych.randomization.sampleWithoutReplacement(incorrect_pool.map(item => item.name), num_incorrect);
-}
-
-// Generate trials dynamically from the study variables
-var trials = [];
-for (var i = 0; i < study_variables.length; i++) {
-  var correct_answer = study_variables[i].name;
-  
-  // Get 3 incorrect options dynamically
-  var incorrect_options = getIncorrectOptions(correct_answer, study_variables, 3);
-  
-  // Create a trial with the correct and incorrect options
-  trials.push({
-    picture: study_variables[i].picture,
-    name: correct_answer,
-    incorrect_options: incorrect_options
-  });
-}
-
-
-// Multiple choice
-var test_trial = {
-  type: jsPsychSurveyMultiChoice,
-  preamble: function() {
-    return `<img src='${jsPsych.timelineVariable("picture")}'></img>`;
-  },
-  questions: [
-    {
-      prompt: function () {
-        return `<div style="font-size:24px; color:beige">
-                <p>この旗は何国のですか？</p>
-                <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
-                </div>`;
-      },
-      options: function() {
-        // Options pool (including the correct answer)
-        var correct_answer = jsPsych.timelineVariable('name');
-        var incorrect_answers = jsPsych.timelineVariable('incorrect_options');
-        
-        // Combine the correct and incorrect answers into a single array
-        var options = incorrect_answers.slice(); // Copy the incorrect answers array
-        options.push(correct_answer);
-        
-        // Shuffle the options to randomize their positions
-        //return jsPsych.randomization.shuffle(options);
-        var shuffled_options = jsPsych.randomization.shuffle(options);       
-
-        return shuffled_options;         
-
-      },
-      required: true,
-      horizontal: false // Set to true if you want the options horizontally
-    }
-  ],
-  data: {
-    task: 'test',
-    item_name: jsPsych.timelineVariable('name'),
-    correct_answer: jsPsych.timelineVariable('name') // Storing the correct answer
-  },
-  on_finish: function(data) {
-    // Mark the trial as correct or incorrect
-    var selected_answer = data.response.Q0; // Accessing the selected answer (Q0 is the index of the first question)
-    data.correct = (selected_answer === jsPsych.timelineVariable('name')); // Comparing with the correct answer
-  },
-  on_load: function() {
-    // Apply custom styling to the options after the page loads
-    var option_elements = document.querySelectorAll('label.jspsych-survey-multi-choice-text');
-    option_elements.forEach(function(el) {
-      el.style.fontSize = '24px';  // Change the font size
-      el.style.color = 'beige';  // Change the color
-    });
-  }
-};
-
-// Randomize the order of the trials
-var randomized_trials = jsPsych.randomization.shuffle(trials);
-
-// Loop through the randomized trials and push them to the timeline
-var timeline = [];
-for (var i = 0; i < randomized_trials.length; i++) {
-  main_timeline.push({
-    timeline: [fixation,test_trial], // test_trial from earlier
-    timeline_variables: [randomized_trials[i]]
-  });
-}
-
-
-/*
 var test = {
+  //timeline: [fixation, test_trial],
   timeline: [fixation, test_trial],
-  timeline_variables: study_variables,
+  timeline_variables: test_variables,
   randomize_order: true
 };
 main_timeline.push(test);
-*/
+
 
 var finalization = {
   type: jsPsychHtmlKeyboardResponse,
