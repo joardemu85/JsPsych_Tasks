@@ -1,3 +1,5 @@
+/***************************INITIALIZE LIBRARY***************************/ 
+
 var jsPsych = initJsPsych({
   //extensions: [{ type: jsPsychExtensionCountdown }],  
   on_finish: function () {
@@ -5,13 +7,15 @@ var jsPsych = initJsPsych({
     jsPsych.data.get().localSave('csv', 'HEP000BH.csv');
   }
 });
+/************************************************************************/ 
 
-//declare main timeline
+/*****************************DEFINE TIMELINE****************************/ 
 var main_timeline = [];
+/************************************************************************/ 
 
-//Preload Media
+/*****************************PRELOAD MEDIA*****************************/ 
 
-//items for practice
+/***items for practice***/
 var preload_practice = {
     type: jsPsychPreload,
     images: [
@@ -43,150 +47,148 @@ var practice_vars = [
   {picture: 'practice_img/xk.png', name: 'KOSOVO'}, //WESTERN SAHARA 
 ];
 
-//Items for task
+/***items for task***/
 var preload_task = {
   type: jsPsychPreload,
   images: [
-      'img/dz.png', //ALGERIA 
-      'img/ar.png',  //ARGENTINA 
-      'img/am.png', //ARMENIA 
-      'img/au.png', //AUSTRALIA 
-      'img/at.png', //AUSTRIA 
-      'img/bj.png', //BENIN 
-      'img/bg.png', //BULGARIA 
-      'img/kh.png', //CAMBODIA 
-      'img/cm.png', //CAMEROON 
-      'img/cv.png', //CAPE VERDE  
-      'img/co.png', //COLOMBIA 
-      'img/cr.png', //COSTA RICA 
-      'img/dk.png', //DENMARK 
-      'img/dj.png', //DJIBOUTI
-      'img/do.png', //DOMINICAN REPUBLIC
-      'img/ec.png', //ECUADOR 
-      'img/eg.png', //EGYPT 
-      'img/sv.png', //EL SALVADOR
-      'img/fj.png', //FIJI 
-      'img/fi.png', //FINLAND 
-      'img/fr.png', //FRANCE 
-      'img/ge.png', //GEORGIA 
-      'img/gh.png', //GHANA 
-      'img/gn.png', //GUINEA 
-      'img/hn.png', //HONDURAS 
-      'img/is.png', //ICELAND 
-      'img/id.png', //INDONESIA 
-      'img/ir.png', //IRAN 
-      'img/iq.png', //IRAQ 
-      'img/it.png', //ITALY 
-      'img/la.png', //LAOS 
-      'img/lv.png', //LATVIA 
-      'img/lb.png', //LEBANON 
-      'img/mv.png', //MALDIVES 
-      'img/mr.png', //MAURITANIA 
-      'img/mx.png', //MEXICO 
-      'img/mc.png', //MONACO 
-      'img/ma.png', //MOROCCO 
-      'img/nl.png', //NETHERLANDS 
-      'img/nz.png', //NEW ZEALAND 
-      'img/ni.png', //NICARAGUA 
-      'img/ng.png', //NIGERIA 
-      'img/no.png', //NORWAY 
-      'img/pk.png', //PAKISTAN 
-      'img/pa.png', //PANAMA 
-      'img/py.png', //PARAGUAY 
-      'img/pe.png', //PERU 
-      'img/pl.png', //POLAND 
-      'img/ru.png', //RUSSIA 
-      'img/sa.png', //SAUDI ARABIA 
-      'img/sn.png', //SENEGAL 
-      'img/sg.png', //SINGAPORE 
-      'img/sy.png', //SYRIA 
-      'img/th.png', //THAILAND 
-      'img/tn.png', //TUNISIA 
-      'img/tr.png', //TURKEY 
-      'img/tv.png', //TUVALU 
-      'img/ve.png', //VENEZUELA 
-      'img/vn.png', //VIETNAM 
-      'img/ye.png' //YEMEN 
-      ]
+    'img/dz.png',
+    'img/ar.png', 
+    'img/am.png', 
+    'img/au.png', 
+    'img/at.png', 
+    'img/gh.png', 
+    'img/bg.png',  
+    'img/kh.png',  
+    'img/cm.png',  
+    'img/td.png', 
+    'img/co.png', 
+    'img/cr.png', 
+    'img/dk.png',  
+    'img/bf.png',  
+    'img/md.png', 
+    'img/ec.png',  
+    'img/eg.png',  
+    'img/sv.png', 
+    'img/fj.png', 
+    'img/fi.png',  
+    'img/rs.png', 
+    'img/ro.png',  
+    'img/sr.png',  
+    'img/gw.png', 
+    'img/hn.png', 
+    'img/is.png', 
+    'img/id.png', 
+    'img/ir.png', 
+    'img/iq.png', 
+    'img/tj.png',  
+    'img/la.png',  
+    'img/lv.png',  
+    'img/lb.png',  
+    'img/mv.png',  
+    'img/mr.png',  
+    'img/hu.png',  
+    'img/mc.png',  
+    'img/mm.png', 
+    'img/nl.png',  
+    'img/nz.png',  
+    'img/ni.png',  
+    'img/ng.png',  
+    'img/no.png', 
+    'img/pk.png',  
+    'img/bb.png', 
+    'img/py.png', 
+    'img/pe.png', 
+    'img/pl.png',  
+    'img/ru.png',  
+    'img/mx.png',  
+    'img/sn.png',  
+    'img/sg.png',  
+    'img/sy.png', 
+    'img/th.png',  
+    'img/tn.png', 
+    'img/tr.png', 
+    'img/tv.png',  
+    'img/ve.png',  
+    'img/vn.png',
+     'img/ye.png' 
+  ]
 };
-
 main_timeline.push(preload_task);
 
-//timeline variables
-
-//Full version
 var variables = [
   //STAND ALONE FORMAT 
-    {picture: 'img/dz.png', name: 'アルジェリア'}, //ALGERIA 
-    {picture: 'img/ar.png', name: 'アルゼンチン'}, //ARGENTINA 
-    {picture: 'img/am.png', name: 'アルメニア'}, //ARMENIA 
-    {picture: 'img/au.png', name: 'オーストラリア'}, //AUSTRALIA 
-    {picture: 'img/at.png', name: 'オーストリア'}, //AUSTRIA 
-    {picture: 'img/bj.png', name: 'ベナン'}, //BENIN 
-    {picture: 'img/bg.png', name: 'ブルガリア'}, //BULGARIA 
-    {picture: 'img/kh.png', name: 'カンボジア'}, //CAMBODIA 
-    {picture: 'img/cm.png', name: 'カメルーン'}, //CAMEROON 
-    {picture: 'img/cv.png', name: 'カーボベルデ'}, //CAPE VERDE  
-    {picture: 'img/co.png', name: 'コロンビア'}, //COLOMBIA 
-    {picture: 'img/cr.png', name: 'コスタリカ'}, //COSTA RICA 
-    {picture: 'img/dk.png', name: 'デンマーク'}, //DENMARK 
-    {picture: 'img/dj.png', name: 'ジブチ'}, //DJIBOUTI
-    {picture: 'img/do.png', name: 'ドミニカ共和国'}, //DOMINICAN REPUBLIC
-    {picture: 'img/ec.png', name: 'エクアドル'}, //ECUADOR 
-    {picture: 'img/eg.png', name: 'エジプト'}, //EGYPT 
-    {picture: 'img/sv.png', name: 'エルサルバドル'}, //EL SALVADOR
-    {picture: 'img/fj.png', name: 'フィジー'},//FIJI 
-    {picture: 'img/fi.png', name: 'フィンランド'},//FINLAND 
-    {picture: 'img/fr.png', name: 'フランス'},//FRANCE 
-    {picture: 'img/ge.png', name: 'ジョージア'},//GEORGIA 
-    {picture: 'img/gh.png', name: 'ガーナ'}, //GHANA 
-    {picture: 'img/gn.png', name: 'ギニア'},//GUINEA 
-    {picture: 'img/hn.png', name: 'ホンジュラス'},//HONDURAS 
-    {picture: 'img/is.png', name: 'アイスランド'},//ICELAND 
-    {picture: 'img/id.png', name: 'インドネシア'},//INDONESIA 
-    {picture: 'img/ir.png', name: 'イラン'},//IRAN 
-    {picture: 'img/iq.png', name: 'イラク'},//IRAQ 
-    {picture: 'img/it.png', name: 'イタリア'},//ITALY 
-    {picture: 'img/la.png', name: 'ラオス'}, //LAOS 
-    {picture: 'img/lv.png', name: 'ラトビア'},//LATVIA 
-    {picture: 'img/lb.png', name: 'レバノン'},//LEBANON 
-    {picture: 'img/mv.png', name: 'モルディブ'},//MALDIVES 
-    {picture: 'img/mr.png', name: 'モーリタニア'},//MAURITANIA 
-    {picture: 'img/mx.png', name: 'メキシコ'},//MEXICO 
-    {picture: 'img/mc.png', name: 'モナコ'},//MONACO 
-    {picture: 'img/ma.png', name: 'モロッコ'},//MOROCCO 
-    {picture: 'img/nl.png', name: 'オランダ'},//NETHERLANDS 
-    {picture: 'img/nz.png', name: 'ニュージーランド'},//NEW ZEALAND 
-    {picture: 'img/ni.png', name: 'ニカラグア'},//NICARAGUA 
-    {picture: 'img/ng.png', name: 'ナイジェリア'},//NIGERIA 
-    {picture: 'img/no.png', name: 'ノルウェー'},//NORWAY 
-    {picture: 'img/pk.png', name: 'パキスタン'},//PAKISTAN 
-    {picture: 'img/pa.png', name: 'パナマ'}, //PANAMA 
-    {picture: 'img/py.png', name: 'パラグアイ'},//PARAGUAY 
-    {picture: 'img/pe.png', name: 'ペルー'},//PERU 
-    {picture: 'img/pl.png', name: 'ポーランド'},//POLAND 
-    {picture: 'img/ru.png', name: 'ロシア'},//RUSSIA 
-    {picture: 'img/sa.png', name: 'サウジアラビア'},//SAUDI ARABIA 
-    {picture: 'img/sn.png', name: 'セネガル'},//SENEGAL 
-    {picture: 'img/sg.png', name: 'シンガポール'},//SINGAPORE 
-    {picture: 'img/sy.png', name: 'シリア'},//SYRIA 
-    {picture: 'img/th.png', name: 'タイ'},//THAILAND 
-    {picture: 'img/tn.png', name: 'チュニジア'},//TUNISIA 
-    {picture: 'img/tr.png', name: 'トルコ'},//TURKEY 
-    {picture: 'img/tv.png', name: 'ツバル'}, //TUVALU 
-    {picture: 'img/ve.png', name: 'ベネズエラ'},//VENEZUELA 
-    {picture: 'img/vn.png', name: 'ベトナム'},//VIETNAM 
-    {picture: 'img/ye.png', name: 'イエメン'},//YEMEN    
+  {picture: 'img/dz.png', name: 'アルジェリア'}, //0 ALGERIA 
+  {picture: 'img/ar.png', name: 'アルゼンチン'}, //1 ARGENTINA 
+  {picture: 'img/am.png', name: 'アルメニア'}, //2 ARMENIA 
+  {picture: 'img/au.png', name: 'オーストラリア'}, //3 AUSTRALIA 
+  {picture: 'img/at.png', name: 'オーストリア'}, //4 AUSTRIA 
+  {picture: 'img/gh.png', name: 'ガーナ'}, //5 GHANA 
+  {picture: 'img/bg.png', name: 'ブルガリア'}, //6 BULGARIA 
+  {picture: 'img/kh.png', name: 'カンボジア'}, //7 CAMBODIA 
+  {picture: 'img/cm.png', name: 'カメルーン'}, //8 CAMEROON 
+  {picture: 'img/td.png', name: 'チャド'}, //9 CHAD 
+  {picture: 'img/co.png', name: 'コロンビア'}, //10 COLOMBIA 
+  {picture: 'img/cr.png', name: 'コスタリカ'}, //11 COSTA RICA 
+  {picture: 'img/dk.png', name: 'デンマーク'}, //12 DENMARK 
+  {picture: 'img/bf.png', name: 'ブルキナファソ'}, //13 BURKINA FASO 
+  {picture: 'img/md.png', name: 'モルドバ'},//14 MOLDOVA 
+  {picture: 'img/ec.png', name: 'エクアドル'}, //15 ECUADOR 
+  {picture: 'img/eg.png', name: 'エジプト'}, //16 EGYPT 
+  {picture: 'img/sv.png', name: 'エルサルバドル'}, //17 EL SALVADOR
+  {picture: 'img/fj.png', name: 'フィジー'},//18 FIJI 
+  {picture: 'img/fi.png', name: 'フィンランド'},//19 FINLAND 
+  {picture: 'img/rs.png', name: 'セルビア'},//20 SERBIA 
+  {picture: 'img/ro.png', name: 'ルーマニア'},//21 ROMANIA 
+  {picture: 'img/sr.png', name: 'スリナム'},//22 SURINAME 
+  {picture: 'img/gw.png', name: 'ギニアビサウ'},//23 GUINEA-BISSAU
+  {picture: 'img/hn.png', name: 'ホンジュラス'},//24 HONDURAS 
+  {picture: 'img/is.png', name: 'アイスランド'},//25 ICELAND 
+  {picture: 'img/id.png', name: 'インドネシア'},//26 INDONESIA 
+  {picture: 'img/ir.png', name: 'イラン'},//27 IRAN 
+  {picture: 'img/iq.png', name: 'イラク'},//28 IRAQ 
+  {picture: 'img/tj.png', name: 'タジキスタン'},//29 TAJIKISTAN 
+  {picture: 'img/la.png', name: 'ラオス'}, //30 LAOS 
+  {picture: 'img/lv.png', name: 'ラトビア'},//31 LATVIA 
+  {picture: 'img/lb.png', name: 'レバノン'},//32 LEBANON 
+  {picture: 'img/mv.png', name: 'モルディブ'},//33 MALDIVES 
+  {picture: 'img/mr.png', name: 'モーリタニア'},//34 MAURITANIA 
+  {picture: 'img/hu.png', name: 'ハンガリー'},//35 HUNGARY 
+  {picture: 'img/mc.png', name: 'モナコ'},//36 MONACO 
+  {picture: 'img/mm.png', name: 'ミャンマー'},//37 MYANMAR 
+  {picture: 'img/nl.png', name: 'オランダ'},//38 NETHERLANDS 
+  {picture: 'img/nz.png', name: 'ニュージーランド'},//39 NEW ZEALAND 
+  {picture: 'img/ni.png', name: 'ニカラグア'},//40 NICARAGUA 
+  {picture: 'img/ng.png', name: 'ナイジェリア'},//41 NIGERIA 
+  {picture: 'img/no.png', name: 'ノルウェー'},//42 NORWAY 
+  {picture: 'img/pk.png', name: 'パキスタン'},//43 PAKISTAN 
+  {picture: 'img/bb.png', name: 'バルバドス'},//44 BARBADOS 
+  {picture: 'img/py.png', name: 'パラグアイ'},//45 PARAGUAY 
+  {picture: 'img/pe.png', name: 'ペルー'},//46 PERU 
+  {picture: 'img/pl.png', name: 'ポーランド'},//47 POLAND 
+  {picture: 'img/ru.png', name: 'ロシア'},//48 RUSSIA 
+  {picture: 'img/mx.png', name: 'メキシコ'},//49 MEXICO 
+  {picture: 'img/sn.png', name: 'セネガル'},//50 SENEGAL 
+  {picture: 'img/sg.png', name: 'シンガポール'},//51 SINGAPORE 
+  {picture: 'img/sy.png', name: 'シリア'},//52 SYRIA 
+  {picture: 'img/th.png', name: 'タイ'},//53 THAILAND 
+  {picture: 'img/tn.png', name: 'チュニジア'},//54 TUNISIA 
+  {picture: 'img/tr.png', name: 'トルコ'},//55 TURKEY 
+  {picture: 'img/tv.png', name: 'ツバル'}, //56 TUVALU 
+  {picture: 'img/ve.png', name: 'ベネズエラ'},//57 VENEZUELA 
+  {picture: 'img/vn.png', name: 'ベトナム'},//58 VIETNAM 
+  {picture: 'img/ye.png', name: 'イエメン'},//59 YEMEN         
 ];
+/************************************************************************/
 
-//Switch on fullscreen
+/**************************SWITCH TO FULLSCREEN**************************/ 
 var enter_fullscreen = {
   type: jsPsychFullscreen,
   fullscreen_mode: true
 };
 main_timeline.push(enter_fullscreen);
+/************************************************************************/
 
-//The first trial will be a simple welcome message using the html-kbeyboard-response plugin.   
+/*****************************WELCOME MESSAGE****************************/    
 var welcome = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
@@ -200,8 +202,11 @@ var welcome = {
   },
 };
 main_timeline.push(welcome);
+/************************************************************************/
 
-// PART 0: Practice.
+/*****************************PART 0: PRACTICE***************************/
+
+// INSTRUCTIONS
 var practice_instructions = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -222,6 +227,7 @@ var practice_instructions = {
 };
 main_timeline.push(practice_instructions);
 
+//RANDOMIZE VARIABLES
 var practice_variables = jsPsych.randomization.sampleWithoutReplacement(practice_vars); 
 
 //Fixation cross inbetween trials 
@@ -250,6 +256,7 @@ var practice_pic = {
   choices: ['NEXT']
 };
 
+//PRACTICE TRIAL
 var practice = {
   timeline: [fixation, practice_pic],
   timeline_variables: practice_variables,
@@ -257,6 +264,7 @@ var practice = {
 };
 main_timeline.push(practice);
 
+//END TRIAL
 var practice_end = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -270,15 +278,14 @@ var practice_end = {
 
 };
 main_timeline.push(practice_end);
+/************************************************************************/
 
+/******************************PART 1: STUDY*****************************/
 
 // randomize list for studying
 var sample_size = 60;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
 console.log(study_variables); //show the item sample in console for debugging
-
-
-// PART 1: Study.
 var study_instructions = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -302,7 +309,7 @@ var study_instructions = {
 };
 main_timeline.push(study_instructions);
 
-
+// Define study item structure
 var study_item = {
     type: jsPsychImageButtonResponse,
     stimulus: jsPsych.timelineVariable("picture"),
@@ -336,6 +343,7 @@ var study_item = {
   }
 };
 
+//define between blocks rest countdown
 var inter_block_countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
@@ -364,7 +372,7 @@ var inter_block_countdown_rest = {
   }
 };
 
-
+//define between sets rest countdown
 var inter_rep_countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
@@ -393,14 +401,16 @@ var inter_rep_countdown_rest = {
   }
 };
 
-
+// Define block size and repetition parameters
 var n_sets = 3;  //number of repetitions for the section. D
 var block_size = 15; //number of elements to study in one block. Debug: 5, Real task: 20
 var n_blocks = sample_size / block_size;  // The result of this operation must always be an integer
 console
 
+// 
 var i = 0;
 while (i < n_sets) {
+  
   //first we define where the block starts and where it ends    
   var first_el = 0;
   var last_el = block_size;
@@ -408,6 +418,7 @@ while (i < n_sets) {
   //shuffle the list
   var random_study = jsPsych.randomization.sampleWithoutReplacement(study_variables, sample_size);
 
+  // iterate across block size
   for (var k = 0; k < n_blocks; k++) {
     //Inside this loop, we go through the whole item list in sets defined by chunk_size variable,
     //Every set will be studied once, when the whole list is done, it will restart 
@@ -457,7 +468,6 @@ while (i < n_sets) {
  // console.log(i, k);    
 }
 
-
 //rest after section is done 
 // Countdown implementation
 var countdown_rest = {
@@ -489,9 +499,11 @@ var countdown_rest = {
   }
 };
 main_timeline.push(countdown_rest);
+/************************************************************************/
 
+/***************************PART 2. TEST*********************************/
 
-//PART 2. TEST
+// Section instructions
 var test_instructions = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -532,6 +544,28 @@ var test_trial = {
    },
 } 
 */
+
+//define groups of items
+const item_groups = [
+  [variables[2], variables[10], variables[15], variables[57]],   //Group 1 (Armenia, Colombia, Ecuador, Venezuela)
+  [variables[26], variables[36], variables[47], variables[51]],  //Group 2 (Indonesia, Monaco, Poland, Singapore)
+  [variables[20], variables[38], variables[45], variables[48]],  //Group 3 (Serbia, Netherlands, Paraguay, Russia)
+  [variables[6], variables[27], variables[29], variables[35]],   //Group 4 (Bulgaria, Iran, Tajikistan, Hungary)
+  [variables[5], variables[8], variables[23], variables[50]],    //Group 5 (Ghana, Cameroon, Guinea-Bissau, Senegal)
+  [variables[33], variables[34], variables[54], variables[55]],  //Group 6 (Maldives, Mauritania, Tunisia, Turkey)
+  [variables[1], variables[17], variables[24], variables[51]],   //Group 7 (Argentina, El Salvador, Honduras, Nicaragua)
+  [variables[3], variables[18], variables[39], variables[56]],   //Group 8 (Australia, Fiji, New Zealand, Tuvalu)
+  [variables[12], variables[19], variables[25], variables[42]],  //Group 9 (Denmark, Finland, Iceland, Norway)
+  [variables[13], variables[22], variables[37], variables[58]],  //Group 10 (Burkina Faso, Suriname, Myanmar, Vietnam)
+  [variables[0], variables[41], variables[43], variables[49]],   //Group 11 (Algeria, Nigeria, Pakistan, Mexico) 
+  [variables[16], variables[28], variables[52], variables[59]],  //Group 12 (Egypt, Iraq, Syria, Yemen)
+  [variables[4], variables[31], variables[32], variables[46]],   //Group 13 (Austria, Latvia, Lebanon, Peru)
+  [variables[9], variables[14], variables[21], variables[44]],   //Group 14 (Chad, Moldova, Romania, Barbados) 
+  [variables[7], variables[11], variables[30], variables[53]]    //Group 15 (Cambodia, Costa Rica, Laos, Thailand)
+]
+
+
+
 
 
 // Function to generate incorrect options by excluding the correct answer
