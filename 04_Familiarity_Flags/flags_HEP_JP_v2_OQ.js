@@ -282,8 +282,6 @@ main_timeline.push(practice_end);
 
 /******************************PART 1: STUDY*****************************/
 
-/*
-
 // randomize list for studying
 var sample_size = 60;  // Use 100 items for the task, 20 for debugging
 var study_variables = jsPsych.randomization.sampleWithoutReplacement(variables,sample_size);
