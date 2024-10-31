@@ -354,7 +354,7 @@ var inter_block_countdown_rest = {
     `,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 2*60*1000; // in milliseconds (5 minutes)
+    var wait_time = 1*60*1000; // in milliseconds (5 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function () {
@@ -383,7 +383,7 @@ var inter_rep_countdown_rest = {
     `,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 3*60*1000; // in milliseconds
+    var wait_time = 2*60*1000; // in milliseconds
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function(){
@@ -481,7 +481,7 @@ var countdown_rest = {
     </div>`,
   choices: ['CONTINUE'],
   on_load: function(){
-    var wait_time = 5*60*1000; // in milliseconds (10 minutes)
+    var wait_time = 3*60*1000; // in milliseconds (10 minutes)
     var start_time = performance.now();
     document.querySelector('button').disabled = true;
     var interval = setInterval(function () {
