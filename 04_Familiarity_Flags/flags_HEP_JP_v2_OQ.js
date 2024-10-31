@@ -1,4 +1,4 @@
-/***************************INITIALIZE LIBRARY***************************/ 
+ /***************************INITIALIZE LIBRARY***************************/ 
 
 var jsPsych = initJsPsych({
   //extensions: [{ type: jsPsychExtensionCountdown }],  
@@ -508,10 +508,11 @@ var test_instructions = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
     <div style="font-size:24px; color:beige">
-    <div style='float: center;'><img src='img/un.png' width="320" height="240"></img> 
-    <p>国旗に関連する国名を正しく覚えているかどうかが問われます。</p>
-    <p>それぞれの国旗が1回ずつ表示され、正しい国名を選択してください。</p>   
-    <p>「START」をクリックすると開始します。</p>
+    <p>国旗と、それに対応する国名をどれだけ正しく覚えられているか確認します。</p>
+    <p>国旗が表示されたら、入力欄にその国名を入力してください。</p>
+    <p>正しい国名を覚えていないときは、空欄のまま、次に進んでください。</p>
+    <p>次の項目に進むには、「NEXT」をクリックまたは「ENTER」を押してください。</p>
+    <p>「START」をクリックすると始まります。</p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>`,
   choices: ['START'],
