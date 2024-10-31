@@ -282,7 +282,7 @@ main_timeline.push(practice_end);
 
 /******************************PART 1: STUDY*****************************/
 
-/*
+
 
 // randomize list for studying
 var sample_size = 60;  // Use 100 items for the task, 20 for debugging
@@ -526,29 +526,6 @@ var test_instructions = {
 main_timeline.push(test_instructions);
 
 
-//Old open survey version
-var test_trial = {
-  type: jsPsychSurveyText,
-  preamble: function () {
-    return `<img src='${jsPsych.timelineVariable("picture")}'></img>`
-  },
-  questions: [
-    {prompt: function (){
-      return `<div style="font-size:24px; color:beige">
-      <p>この旗は何国のですか？</p>
-      <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
-      </div>`; 
-      }
-    }
-  ],
-  data:{ 
-    task: 'test',    
-    item_name: jsPsych.timelineVariable('name')   
-   },
-} 
-
-
-/*
 //define groups of items
 var item_groups = [
   [variables[2], variables[10], variables[15], variables[57]],   //Group 1 (Armenia, Colombia, Ecuador, Venezuela)
@@ -557,7 +534,7 @@ var item_groups = [
   [variables[6], variables[27], variables[29], variables[35]],   //Group 4 (Bulgaria, Iran, Tajikistan, Hungary)
   [variables[5], variables[8], variables[23], variables[50]],    //Group 5 (Ghana, Cameroon, Guinea-Bissau, Senegal)
   [variables[33], variables[34], variables[54], variables[55]],  //Group 6 (Maldives, Mauritania, Tunisia, Turkey)
-  [variables[1], variables[17], variables[24], variables[51]],   //Group 7 (Argentina, El Salvador, Honduras, Nicaragua)
+  [variables[1], variables[17], variables[24], variables[40]],   //Group 7 (Argentina, El Salvador, Honduras, Nicaragua)
   [variables[3], variables[18], variables[39], variables[56]],   //Group 8 (Australia, Fiji, New Zealand, Tuvalu)
   [variables[12], variables[19], variables[25], variables[42]],  //Group 9 (Denmark, Finland, Iceland, Norway)
   [variables[13], variables[22], variables[37], variables[58]],  //Group 10 (Burkina Faso, Suriname, Myanmar, Vietnam)
@@ -568,7 +545,7 @@ var item_groups = [
   [variables[7], variables[11], variables[30], variables[53]]    //Group 15 (Cambodia, Costa Rica, Laos, Thailand)
 ];
 
-/*
+
 // Loop through each group
 item_groups.forEach((group, index) => {
   console.log(`Group ${index + 1}:`);
@@ -578,124 +555,108 @@ item_groups.forEach((group, index) => {
     console.log(`- ${item.name} (Image: ${item.picture})`);
   });
 });
-*/
 
+// Function to generate incorrect options by restricting them to the same group
+function getIncorrectOptions(correct_answer, item_groups, num_incorrect) {
+  // Find the group containing the correct answer
+  let group = item_groups.find(group => group.some(item => item.name === correct_answer));
 
-//RANDOMIZE VARIABLES
-var test_variables = jsPsych.randomization.sampleWithoutReplacement(variables); 
+  // If the group is found, filter out the correct answer
+  if (group) {
+      let incorrect_pool = group.filter(item => item.name !== correct_answer);
 
-/*
-// Function to get incorrect options from the same group as the correct answer
-function getIncorrectOptions(correctAnswer, groupedOptions, numOptions = 3) {
-  // Find the group that contains the correct answer
-  var correctGroup = groupedOptions.find(group => group.includes(correctAnswer));
-
-  if (!correctGroup) {
-      throw new Error("Correct answer not found in any group.");
+      // Randomly select the desired number of incorrect options from the group
+      return jsPsych.randomization.sampleWithoutReplacement(incorrect_pool.map(item => item.name), num_incorrect);
+  } else {
+      console.error("Correct answer not found in any group.");
+      return [];
   }
-
-  // Filter out the correct answer from the group
-  var incorrectOptions = correctGroup.filter(option => option !== correctAnswer);
-
-  // Randomly select a number of incorrect options from the pool
-  return jsPsych.randomization.sampleWithoutReplacement(incorrectOptions.map(item => item.name), numOptions);
 }
 
-/*
-// Generate trials dynamically from the study variables
-var trials = [];
-for (var i = 0; i < test_variables.length; i++) {
-    var correct_answer = test_variables[i].name;
-  
-    // Get 3 incorrect options dynamically from the same group
+  // Generate trials dynamically from the study variables
+  var trials = [];
+  for (var i = 0; i < variables.length; i++) {
+    var correct_answer = variables[i].name;
+    
+    // Get 3 incorrect options dynamically
+    //var incorrect_options = getIncorrectOptions(correct_answer, variables, 3);
     var incorrect_options = getIncorrectOptions(correct_answer, item_groups, 3);
-  
+
     // Create a trial with the correct and incorrect options
     trials.push({
-        picture: test_variables[i].picture,
-        name: correct_answer,
-        incorrect_options: incorrect_options
-    });
-}
-
-console.log(trials)
-
-
-// Multiple choice
-var test_trial = {
-  type: jsPsychSurveyMultiChoice,
-  preamble: function() {
-    return `<img src='${jsPsych.timelineVariable("picture")}'></img>`;
-  },
-  questions: [
-    {
-      prompt: function () {
-        return `<div style="font-size:24px; color:beige">
-                <p>この旗は何国のですか？</p>
-                <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
-                </div>`;
-      },
-      options: function() {
-        // Options pool (including the correct answer)
-        var correct_answer = jsPsych.timelineVariable('name');
-        var incorrect_answers = jsPsych.timelineVariable('incorrect_options');
-        
-        // Combine the correct and incorrect answers into a single array
-        var options = incorrect_answers.slice(); // Copy the incorrect answers array
-        options.push(correct_answer);
-        
-        // Shuffle the options to randomize their positions
-        //return jsPsych.randomization.shuffle(options);
-        var shuffled_options = jsPsych.randomization.shuffle(options);       
-
-        return shuffled_options;         
-
-      },
-      required: true,
-      horizontal: false // Set to true if you want the options horizontally
-    }
-  ],
-  data: {
-    task: 'test',
-    item_name: jsPsych.timelineVariable('name'),
-    correct_answer: jsPsych.timelineVariable('name') // Storing the correct answer
-  },
-  on_finish: function(data) {
-    // Mark the trial as correct or incorrect
-    var selected_answer = data.response.Q0; // Accessing the selected answer (Q0 is the index of the first question)
-    data.correct = (selected_answer === jsPsych.timelineVariable('name')); // Comparing with the correct answer
-  },
-  on_load: function() {
-    // Apply custom styling to the options after the page loads
-    var option_elements = document.querySelectorAll('label.jspsych-survey-multi-choice-text');
-    option_elements.forEach(function(el) {
-      el.style.fontSize = '24px';  // Change the font size
-      el.style.color = 'beige';  // Change the color
+      picture: variables[i].picture,
+      name: correct_answer,
+      incorrect_options: incorrect_options
     });
   }
-};
-
+  
+  
+  // Multiple choice
+  var test_trial = {
+    type: jsPsychSurveyMultiChoice,
+    preamble: function() {
+      return `<img src='${jsPsych.timelineVariable("picture")}'></img>`;
+    },
+    questions: [
+      {
+        prompt: function () {
+          return `<div style="font-size:24px; color:beige">
+                  <p>この旗は何国のですか？</p>
+                  <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
+                  </div>`;
+        },
+        options: function() {
+          // Options pool (including the correct answer)
+          var correct_answer = jsPsych.timelineVariable('name');
+          var incorrect_answers = jsPsych.timelineVariable('incorrect_options');
+          
+          // Combine the correct and incorrect answers into a single array
+          var options = incorrect_answers.slice(); // Copy the incorrect answers array
+          options.push(correct_answer);
+          
+          // Shuffle the options to randomize their positions
+          //return jsPsych.randomization.shuffle(options);
+          var shuffled_options = jsPsych.randomization.shuffle(options);       
+  
+          return shuffled_options;         
+  
+        },
+        required: true,
+        horizontal: false // Set to true if you want the options horizontally
+      }
+    ],
+    data: {
+      task: 'test',
+      item_name: jsPsych.timelineVariable('name'),
+      correct_answer: jsPsych.timelineVariable('name') // Storing the correct answer
+    },
+    on_finish: function(data) {
+      // Mark the trial as correct or incorrect
+      var selected_answer = data.response.Q0; // Accessing the selected answer (Q0 is the index of the first question)
+      data.correct = (selected_answer === jsPsych.timelineVariable('name')); // Comparing with the correct answer
+    },
+    on_load: function() {
+      // Apply custom styling to the options after the page loads
+      var option_elements = document.querySelectorAll('label.jspsych-survey-multi-choice-text');
+      option_elements.forEach(function(el) {
+        el.style.fontSize = '24px';  // Change the font size
+        el.style.color = 'beige';  // Change the color
+      });
+    }
+  };
+  
 // Randomize the order of the trials
 var randomized_trials = jsPsych.randomization.shuffle(trials);
-
+  
 // Loop through the randomized trials and push them to the timeline
 var timeline = [];
-for (var i = 0; i < randomized_trials.length; i++) {
-  main_timeline.push({
+  for (var i = 0; i < randomized_trials.length; i++) {
+    main_timeline.push({
     timeline: [fixation,test_trial], // test_trial from earlier
+    //timeline: [test_trial], // test_trial from earlier
     timeline_variables: [randomized_trials[i]]
   });
-}*/
-
-
-var test = {
-  //timeline: [fixation, test_trial],
-  timeline: [fixation, test_trial],
-  timeline_variables: test_variables,
-  randomize_order: true
-};
-main_timeline.push(test);
-
+}
 
 var finalization = {
   type: jsPsychHtmlKeyboardResponse,

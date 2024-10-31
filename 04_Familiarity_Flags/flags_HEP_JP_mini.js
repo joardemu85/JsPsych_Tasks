@@ -830,6 +830,7 @@ var test_trial = {
 // Function to generate incorrect options by excluding the correct answer
 function getIncorrectOptions(correct_answer, all_options, num_incorrect) {
   // Filter out the correct answer from the list of all options
+  
   var incorrect_pool = all_options.filter(function(item) {
     return item.name !== correct_answer;
   });
