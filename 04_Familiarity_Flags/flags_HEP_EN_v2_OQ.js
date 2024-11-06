@@ -128,7 +128,7 @@ var variables = [
   {picture: 'img/cm.png', name: 'CAMEROON'}, //8 CAMEROON 
   {picture: 'img/td.png', name: 'CHAD'}, //9 CHAD 
   {picture: 'img/co.png', name: 'COLOMBIA'}, //10 COLOMBIA 
-  {picture: 'img/cr.png', name: 'COSTA RICAコスタリカ'}, //11 COSTA RICA 
+  {picture: 'img/cr.png', name: 'COSTA RICA'}, //11 COSTA RICA 
   {picture: 'img/dk.png', name: 'DENMARK'}, //12 DENMARK 
   {picture: 'img/bf.png', name: 'BURKINA FASO '}, //13 BURKINA FASO 
   {picture: 'img/md.png', name: 'MOLDOVA'},//14 MOLDOVA 
@@ -192,7 +192,7 @@ main_timeline.push(enter_fullscreen);
 var welcome = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
-               <p>Welcome</p> 
+               <p>Welcome!</p> 
                <p>Click「START」to begin the experiment.</p>
                </div>
                `,
@@ -212,7 +212,7 @@ var practice_instructions = {
   stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>This is a practice section. </p>
-    <p>A fixation poitn（＋）will appear on the screen followed by a picture.</p>
+    <p>A fixation point（＋）will appear on the screen followed by a picture.</p>
     <p>※You can only blink while the fixation point is on screen.※</p>
     <p>To switch items, click the「NEXT」button.</p>
     <p>Click on「START」button to start with the practice.</p>
@@ -270,7 +270,7 @@ var practice_end = {
   stimulus: `
     <div style="font-size:32px; color:beige">    
     <p>This is the end of the practice section.</p> 
-    <p>Please click「START」to begin with the experiment.</p>
+    <p>Please click the「START」button to begin with the experiment.</p>
     </div>   
     `,
   choices: ['START'],
@@ -291,10 +291,10 @@ var study_instructions = {
   stimulus: `
     <div style="font-size:24px; color:beige">
     <div style='float: center;'><img src='img/un.png' width="320" height="240"></img>  
-    <p>Now, we will begin a study session</p>
+    <p>Now, we will begin a study session.</p>
     <p>Flags with the name of their respective country will appear. You will learn the name of the country the flag belongs to.</p>
     <p>To swicth to the next item, click the「NEXT」button.</p>
-    <p>Also, remember to blink only when the fixation ppoint is displayed.</p>
+    <p>Also, remember to blink only when the fixation point is displayed.</p>
     </div>
     <p>Click the 「START」button to begin. </p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
@@ -474,7 +474,7 @@ var countdown_rest = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `<div style="font-size:32px; color:beige">
     <p>This is the end of the study session.</p>    
-    <p>You can take a break now.。</p>
+    <p>You can take a break now.</p>
     <p>Next, you will try to memorize as many items as possible.</p>
     <p>When you are ready, click the「CONTINUE」button.</p>
     <p>The experiment will resume in: <span id="clock">1:00</span>
@@ -511,8 +511,8 @@ var test_instructions = {
     <p>Let's check how well you remember the flag and the corresponding country name correctly.</p>
     <p>When a flag appears, enter the name of that country in the text box.</p>
     <p>If you do not remember the correct country name, leave it blank and continue.</p>
-    <p>To proceed with the next item, click「NEXT」or push the「ENTER」key.</p>
-    <p>Click「START」to begin.</p>
+    <p>To proceed with the next item, click the「NEXT」button or push the「ENTER」key.</p>
+    <p>Click the「START」button to begin.</p>
     <div style="font-size:108px;bottom:0px;position:absolute;right:10px;"><p>.</p></div>
     </div>`,
   choices: ['START'],
